@@ -1,0 +1,23 @@
+<div class="overviewV">
+  <div class="balance">
+    <div class="heading">Balance</div>
+    <div class="section">
+      <span class="name">Current:</span><span class="value">{{overviewC.wallet.current}} ECC</span>
+    </div>
+    <div class="section">
+      <span class="name">Pending:</span><span class="value">{{overviewC.wallet.pending}} ECC</span>
+    </div>
+    <div class="section total">
+      <span class="name">Total:</span><span class="value">{{overviewC.wallet.current + overviewC.wallet.pending}} ECC</span>
+    </div>
+  </div>
+  <div class="value">
+    <div class="heading">Current Value</div>
+    <div class="section" ng-repeat="(exchange, price) in overviewC.value">
+      <span class="name">{{exchange}}:</span><span class="value">{{price}} BTC</span>
+    </div>
+  </div>
+  <div class="transactions">
+    <div class="heading">Recent Transactions</div>
+  </div>
+</div>

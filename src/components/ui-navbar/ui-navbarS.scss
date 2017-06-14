@@ -1,0 +1,26 @@
+.navbar {
+  @extend .row;
+  @extend .f1;
+  justify-content: flex-end;
+
+  .link {
+    @extend .row;
+    align-items: center;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    -webkit-app-region: no-drag;
+    text-decoration: none;
+    color: #333;
+    border-left: 1px solid #EEE;
+    transition: background 100ms ease;
+
+    &:hover {
+      background: #F5F5F5;
+    }
+
+    &.active {
+      background: $green;
+      color: white;
+    }
+  }
+}

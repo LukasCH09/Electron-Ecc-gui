@@ -1,0 +1,40 @@
+$green: #13CE66;
+
+body {
+  @extend .col;
+  min-width: 100vw;
+  max-width: 100vw;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0;
+  text-rendering: geometricPrecision;
+  font-family: sans-serif;
+  user-select: none;
+  overflow: hidden;
+}
+
+ui-navbar {
+  @extend .row;
+  flex: 0 0 2.5rem;
+  border-bottom: 1px solid #EEE;
+  -webkit-app-region: drag;
+}
+
+ui-view {
+  @extend .f1;
+  @extend .row;
+}
+
+.f1 {
+  flex: 1 0;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,72 @@
+.sendV {
+  @extend .f1;
+  @extend .col;
+  padding: 1rem;
+
+  .form {
+    @extend .row;
+    margin: 0.5rem;
+
+    .label {
+      padding: 0.5rem;
+      padding-left: 0;
+    }
+
+    .input {
+      @extend .f1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      outline: none;
+      border: 1px solid #DDD;
+      transition: border-color 100ms ease;
+      border-radius: 4px;
+
+      &:hover {
+        border-color: #BBB;
+      }
+
+      &:focus {
+        border-color: $green;
+      }
+
+      &.button-right {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
+      &::-webkit-input-placeholder {
+        color: #CCC;
+      }
+    }
+
+
+    .button {
+      border: 1px solid #DDD;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      transition: all 100ms ease;
+      font-size: 1rem;
+      outline: none;
+      background: $green;
+      color: white;
+
+      &.input-button {
+        background: #EEE;
+        color: #333;
+        border-left: 0;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
+      }
+
+      &:hover, &:focus {
+        border-color: #BBB;
+        border-left: 1px solid #BBB;
+      }
+    }
+
+    &.align-right {
+      justify-content: flex-end;
+    }
+  }
+
+}

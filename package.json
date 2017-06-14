@@ -1,0 +1,34 @@
+{
+  "name": "ecc-client",
+  "version": "2.0.0-0",
+  "description": "This is the electron GUI alternative to the traditional in wallet gui for E-Currency Coin",
+  "main": "index.js",
+  "repository": "https://github.com/Greg-Griffith/Electron-Ecc-gui.git",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "gulp src",
+    "dev": "gulp dev"
+  },
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.3",
+    "electron": "^1.6.11",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  },
+  "devDependencies": {
+    "add-stream": "^1.0.0",
+    "eslint": "^4.0.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0"
+  }
+}

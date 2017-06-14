@@ -1,0 +1,43 @@
+.overviewV {
+  @extend .f1;
+  @extend .row;
+  flex-wrap: wrap;
+
+  .heading {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .section {
+    @extend .row;
+    margin: 0.25rem 1rem;
+    color: #666;
+
+    .value {
+      @extend .f1;
+      text-align: right;
+      color: #111;
+    }
+  }
+
+  .balance {
+    @extend .col;
+    flex: 0 0 50%;
+
+    .section.total {
+      border-top: 1px solid #EEE;
+      padding-top: 0.5rem;
+    }
+  }
+
+  .value {
+    flex: 0 0 50%;
+  }
+
+  .transactions {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+}
