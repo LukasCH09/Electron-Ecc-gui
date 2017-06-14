@@ -28,6 +28,10 @@
         url: '/transactions',
         templateUrl: 'views/transactions/transactionsV.html',
         controller: 'transactionsC as transactionsC',
+      })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'views/about/aboutV.html',
       });
   }
 })();

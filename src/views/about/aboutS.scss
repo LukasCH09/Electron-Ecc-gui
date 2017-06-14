@@ -1,0 +1,64 @@
+.aboutV {
+  @extend .col;
+  @extend .f1;
+  align-items: center;
+
+  .heading {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #333;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .subheading {
+    color: #888;
+
+    a {
+      color: $green;
+    }
+  }
+
+  .social {
+    @extend .row;
+    align-items: center;
+
+    .section {
+      @extend .f1;
+      @extend .col;
+      padding: 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: #444;
+
+      img {
+        max-width: 8rem;
+        max-height: 8rem;
+
+        &.slack {
+          padding-left: 5px;
+        }
+      }
+    }
+  }
+
+  .source {
+    @extend .row;
+    padding-top: 1rem;
+
+    img {
+      max-width: 6rem;
+      max-height: 6rem;
+    }
+
+    .section {
+      @extend .col;
+      justify-content: center;
+
+      a {
+        color: $green;
+        margin: 0.5rem;
+      }
+    }
+  }
+}
