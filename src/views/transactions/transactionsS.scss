@@ -1,0 +1,59 @@
+.transactionsV {
+  @extend .f1;
+  @extend .row;
+  flex-wrap: wrap;
+
+  .heading {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .txtable {
+    @extend .row;
+    flex: 0 0 100%;
+  }
+
+  .tablerow {
+    flex: 0 0 100%;
+    @extend .row;
+  }
+
+  .date-heading {
+    @extend .col;
+    flex: 0 0 15%;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+  
+  .confirmations-heading {
+    @extend .col;
+    flex: 0 0 15%;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .txid-heading {
+    @extend .col;
+    flex: 0 0 40%;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .amount-heading {
+    @extend .col;
+    flex: 0 0 30%;
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    border-bottom: 1px solid #CCC;
+  }
+
+}
