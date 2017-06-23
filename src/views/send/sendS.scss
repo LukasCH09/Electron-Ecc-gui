@@ -1,7 +1,128 @@
 .sendV {
   @extend .f1;
   @extend .col;
-  padding: 1rem;
+
+  .editstate {
+    .add, .remove, .edit {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+  }
+
+  .btn {
+    background: $blue;
+    color: white;
+    border-radius: 4px;
+    padding: 0.5rem;
+    border: none;
+  }
+
+  .addressbook {
+    @extend .f1;
+    @extend .col;
+
+    .header {
+      @extend .row;
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+      margin: 0.5rem;
+
+      .heading {
+        @extend .f1;
+      }
+
+      .add {
+        color: white;
+        border-radius: 4px;
+        background: $blue;
+        padding: 0.1rem 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .list {
+      @extend .f1;
+      border-top: 1px solid #AAA;
+      border-bottom: 1px solid #AAA;
+
+      .entry {
+        @extend .row;
+        padding: 0.5rem;
+        border-bottom: 1px solid #CCC;
+        transition: background 100ms ease;
+        cursor: pointer;
+
+        .base, .editing {
+          @extend .f1;
+          @extend .row;
+          align-items: center;
+        }
+
+        .label {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        .address {
+          margin: 0.5rem;
+          color: #666;
+          @extend .f1;
+          font-size: 0.8rem;
+        }
+
+        .edit, .remove {
+          opacity: 0;
+          transition: opacity 100ms ease;
+        }
+
+        .remove {
+          background: $red;
+        }
+
+        .btn {
+          margin-left: 0.5rem;
+        }
+
+        .editing {
+
+          .input {
+            @extend .f1;
+            padding: 0.4rem;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+            border: 1px solid #DDD;
+            transition: border-color 100ms ease;
+            border-radius: 4px;
+
+            &:hover {
+              border-color: #BBB;
+            }
+
+            &:focus {
+              border-color: $green;
+            }
+
+            &::-webkit-input-placeholder {
+              color: #CCC;
+            }
+          }
+        }
+
+        &:hover {
+          background: #F5F5F5;
+
+          .edit, .remove {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .payout {
+    padding: 0.5rem;
+  }
 
   .form {
     @extend .row;
@@ -39,7 +160,6 @@
       }
     }
 
-
     .button {
       border: 1px solid #DDD;
       padding: 0.5rem 1rem;
@@ -62,6 +182,11 @@
         border-color: #BBB;
         border-left: 1px solid #BBB;
       }
+    }
+
+    .btn {
+      margin-left: 0.5rem;
+      background: $green;
     }
 
     &.align-right {

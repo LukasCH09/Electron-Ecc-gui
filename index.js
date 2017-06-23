@@ -12,6 +12,7 @@ app.on('ready', () => {
     width: 800,
     height: 600,
     titleBarStyle: 'hidden-inset',
+    resizable: false,
   });
 
   mainWindow.loadURL(url.format({
