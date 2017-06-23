@@ -9,7 +9,7 @@
     "start": "electron .",
     "postinstall": "gulp src",
     "dev": "electron . & gulp watch",
-    "dist": "electron-builder"
+    "dist": "electron-builder -m zip -l zip -w zip"
   },
   "build": {
     "appId": "io.cryptounited.ecc-gui",
