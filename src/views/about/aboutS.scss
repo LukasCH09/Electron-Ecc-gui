@@ -16,6 +16,8 @@
 
     a {
       color: $green;
+      text-decoration: underline;
+      cursor: pointer;
     }
   }
 
@@ -30,6 +32,7 @@
       text-align: center;
       text-decoration: none;
       color: #444;
+      cursor: pointer;
 
       img {
         max-width: 8rem;
@@ -58,6 +61,8 @@
       a {
         color: $green;
         margin: 0.5rem;
+        text-decoration: underline;
+        cursor: pointer;
       }
     }
   }
