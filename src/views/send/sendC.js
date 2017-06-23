@@ -12,12 +12,12 @@
     };
 
     this.addAddress = () => {
-      this.addressbook.push({
+      this.addressbook.unshift({
         label: '',
         address: '',
       });
 
-      this.editAddress(this.addressbook.length - 1);
+      this.editAddress(0);
     };
 
     this.save = (index) => {

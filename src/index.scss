@@ -13,6 +13,7 @@ body {
   font-family: sans-serif;
   user-select: none;
   overflow: hidden;
+  cursor: default;
 }
 
 ui-navbar {
@@ -38,4 +39,20 @@ ui-view {
 .col {
   display: flex;
   flex-direction: column;
+}
+
+.card {
+  @extend .f1;
+  background: #FFF;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,.3);
+  margin: 0.5rem;
+  padding: 0.5rem 0;
+  padding-bottom: 1rem;
+
+  .header {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-bottom: 1px solid #DDD;
+  }
 }

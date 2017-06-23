@@ -1,35 +1,34 @@
 <div class="sendV">
-  <div class="addressbook {{sendC.editing === null ? '': 'editstate'}}">
+  <div class="card addressBook {{sendC.editing === null ? '': 'editing'}}">
     <div class="header">
-      <div class="heading"> Address Book </div>
+      <div class="main"> Address Book </div>
       <div class="btn add" ng-click="sendC.addAddress()">+</div>
     </div>
     <div class="list">
-      <div ng-repeat="entry in sendC.addressbook" class="entry">
-        <div class="base" ng-if="sendC.editing !== $index"  ng-click="sendC.selectPayTo(entry.address)">
+      <div class="entry" ng-repeat="entry in sendC.addressbook">
+        <div class="basestate row" ng-if="sendC.editing !== $index" ng-click="sendC.selectPayTo(entry.address)">
           <div class="label">{{entry.label}}</div>
           <div class="address">{{entry.address}}</div>
           <div class="btn edit" ng-click="sendC.editAddress($index, $event)">Edit</div>
         </div>
-        <div class="editing" ng-if="sendC.editing === $index">
-          <input class="input" placeholder="Label" ng-model="entry.label">
-          <input class="input {{sendC.addressError === $index ? 'err' : ''}}" placeholder="ECC Address" ng-model="entry.address">
+        <div class="editstate row" ng-if="sendC.editing === $index">
+          <input class="input" ng-model="entry.label" placeholder="Label">
+          <input class="input {{sendC.addressError === $index ? 'err' : ''}}" ng-model="entry.address" placeholder="ECC Address">
           <div class="btn remove" ng-click="sendC.removeAddress($index, $event)">Remove</div>
           <div class="btn save" ng-click="sendC.save($index)">Save</div>
         </div>
       </div>
     </div>
   </div>
-  <div class="payout">
-    <div class="form">
+  <div class="card sendForm">
+    <div class="row">
       <div class="label">Pay To:</div>
-      <input ng-model="sendC.payTo" class="input" placeholder="ECC Address">
+      <input class="input" type="text" ng-model="sendC.sendAddress" placeholder="ECC Address">
     </div>
-    <div class="form">
+    <div class="row">
       <div class="label">Amount:</div>
-      <input class="input button-right" placeholder="0.0">
-      <button class="button input-button">Max</button>
-      <div class="btn">Send ECC</div>
+      <input class="input" type="text" ng-model="sendC.sendAmount" placeholder="0.0000">
+      <div class="btn">Send</div>
     </div>
   </div>
 </div>
