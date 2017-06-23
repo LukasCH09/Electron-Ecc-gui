@@ -3,22 +3,9 @@
     .module('ecc')
     .controller('sendC', sendC);
 
-  function sendC(rpc, ls) {
+  function sendC(rpc, ls, $scope) {
     this.editing = null;
-    this.addressbook = ls.get('addressbook') || [
-      {
-        label: 'CoinExchange',
-        address: '9448q7has48j4',
-      },
-      {
-        label: 'Bittrex',
-        address: 'adu894uuj9adsa',
-      },
-      {
-        label: 'Tony',
-        address: 'dfi0dw9k4nf0',
-      },
-    ];
+    this.addressbook = ls.get('addressbook') || [];
 
     this.selectPayTo = (address) => {
       this.payTo = address;
@@ -33,9 +20,25 @@
       this.editAddress(this.addressbook.length - 1);
     };
 
-    this.save = () => {
-      this.editing = null;
-      ls.set('addressbook', this.addressbook);
+    this.save = (index) => {
+      if (index !== undefined) {
+        rpc.validateAddress(this.addressbook[index].address)
+          .then((data) => {
+            if (!data.isvalid) {
+              this.addressError = index;
+              $scope.$apply();
+            } else {
+              this.addressError = null;
+              this.editing = null;
+              $scope.$apply();
+              ls.set('addressbook', this.addressbook);
+            }
+          });
+      } else {
+        this.addressError = null;
+        this.editing = null;
+        ls.set('addressbook', this.addressbook);
+      }
     };
 
     this.removeAddress = (index, event) => {

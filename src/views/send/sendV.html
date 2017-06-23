@@ -9,13 +9,13 @@
         <div class="base" ng-if="sendC.editing !== $index"  ng-click="sendC.selectPayTo(entry.address)">
           <div class="label">{{entry.label}}</div>
           <div class="address">{{entry.address}}</div>
-          <div class="btn remove" ng-click="sendC.removeAddress($index, $event)">Remove</div>
           <div class="btn edit" ng-click="sendC.editAddress($index, $event)">Edit</div>
         </div>
         <div class="editing" ng-if="sendC.editing === $index">
           <input class="input" placeholder="Label" ng-model="entry.label">
-          <input class="input" placeholder="ECC Address" ng-model="entry.address">
-          <div class="btn save" ng-click="sendC.save()">Save</div>
+          <input class="input {{sendC.addressError === $index ? 'err' : ''}}" placeholder="ECC Address" ng-model="entry.address">
+          <div class="btn remove" ng-click="sendC.removeAddress($index, $event)">Remove</div>
+          <div class="btn save" ng-click="sendC.save($index)">Save</div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@
   @extend .col;
 
   .editstate {
-    .add, .remove, .edit {
+    .add, .edit {
       opacity: 0 !important;
       pointer-events: none;
     }
@@ -70,7 +70,7 @@
           font-size: 0.8rem;
         }
 
-        .edit, .remove {
+        .edit {
           opacity: 0;
           transition: opacity 100ms ease;
         }
@@ -105,6 +105,10 @@
 
             &::-webkit-input-placeholder {
               color: #CCC;
+            }
+
+            &.err {
+              border-color: $red;
             }
           }
         }
