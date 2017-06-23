@@ -6,7 +6,7 @@
     </div>
     <div class="list">
       <div class="entry" ng-repeat="entry in sendC.addressbook">
-        <div class="basestate row" ng-if="sendC.editing !== $index" ng-click="sendC.selectPayTo(entry.address)">
+        <div class="basestate row" ng-if="sendC.editing !== $index" ng-click="sendC.selectSendAddress(entry.address)">
           <div class="label">{{entry.label}}</div>
           <div class="address">{{entry.address}}</div>
           <div class="btn edit" ng-click="sendC.editAddress($index, $event)">Edit</div>
@@ -27,7 +27,7 @@
     </div>
     <div class="row">
       <div class="label">Amount:</div>
-      <input class="input" type="text" ng-model="sendC.sendAmount" placeholder="0.0000">
+      <input class="input" type="number" ng-model="sendC.sendAmount" placeholder="0.0000">
       <div class="btn">Send</div>
     </div>
   </div>

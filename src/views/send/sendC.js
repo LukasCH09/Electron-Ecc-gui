@@ -7,8 +7,8 @@
     this.editing = null;
     this.addressbook = ls.get('addressbook') || [];
 
-    this.selectPayTo = (address) => {
-      this.payTo = address;
+    this.selectSendAddress = (address) => {
+      this.sendAddress = address;
     };
 
     this.addAddress = () => {
