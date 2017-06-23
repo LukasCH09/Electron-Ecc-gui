@@ -13,9 +13,4 @@ This is the electron GUI alternative to the traditional in wallet gui for E-Curr
 
 ## development
 
-  Running `yarn dev` or `npm run dev` will compile the files under `src/`, as well as watch them for changes and rebuild them automatically. When the dev tools are open in the application `CMD + R` can be used to reload it. So the optimal workflow looks something like this:
-
-  1) Ensure the devtools are enabled in `index.js`.
-  1) Open to command line tabs, in one run `yarn dev`, and in the other run `yarn start`.
-  1) Make changes to the source, and save them.
-  1) When the application has focus press `CMD + R` to reload it and see your changes reflected.
+  Running `yarn dev` or `npm run dev` will start the application, compile the files under `src/`, as well as watch them for changes and rebuild them automatically. When the dev tools are open in the application `CMD + R` can be used to reload it.

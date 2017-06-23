@@ -2,9 +2,29 @@
 # yarn lockfile v1
 
 
+"7zip-bin-linux@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/7/7zip-bin-linux/_attachments/7zip-bin-linux-1.1.0.tgz#2ca309fd6a2102e18bd81e3a5d91b39db9adab71"
+
+"7zip-bin-mac@^1.0.1":
+  version "1.0.1"
+  resolved "https://npm.exaptive.com/7/7zip-bin-mac/_attachments/7zip-bin-mac-1.0.1.tgz#3e68778bbf0926adc68159427074505d47555c02"
+
+"7zip-bin-win@^2.1.0":
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/7/7zip-bin-win/_attachments/7zip-bin-win-2.1.0.tgz#ce632da797ec282c5d2a8d07b60e8df7ca7f164d"
+
+"7zip-bin@^2.1.0":
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/7/7zip-bin/_attachments/7zip-bin-2.1.0.tgz#d728d3f950895cfcfee1a166fe93afc07dfe35a9"
+  optionalDependencies:
+    "7zip-bin-linux" "^1.1.0"
+    "7zip-bin-mac" "^1.0.1"
+    "7zip-bin-win" "^2.1.0"
+
 "@types/node@^7.0.18":
-  version "7.0.31"
-  resolved "https://npm.exaptive.com/@/@types/node/_attachments/node-7.0.31.tgz#80ea4d175599b2a00149c29a10a4eb2dff592e86"
+  version "7.0.32"
+  resolved "https://npm.exaptive.com/@/@types/node/_attachments/node-7.0.32.tgz#6afe6c66520a4c316623a14aef123908d01b4bba"
 
 "@uirouter/core@5.0.3":
   version "5.0.3"
@@ -40,11 +60,24 @@ ajv-keywords@^1.0.0:
   version "1.5.1"
   resolved "https://npm.exaptive.com/a/ajv-keywords/_attachments/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
 
+ajv-keywords@^2.1.0:
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/a/ajv-keywords/_attachments/ajv-keywords-2.1.0.tgz#a296e17f7bfae7c1ce4f7e0de53d29cb32162df0"
+
 ajv@^4.7.0, ajv@^4.9.1:
   version "4.11.8"
   resolved "https://npm.exaptive.com/a/ajv/_attachments/ajv-4.11.8.tgz#82ffb02b29e662ae53bdc20af15947706739c536"
   dependencies:
     co "^4.6.0"
+    json-stable-stringify "^1.0.1"
+
+ajv@^5.2.0:
+  version "5.2.0"
+  resolved "https://npm.exaptive.com/a/ajv/_attachments/ajv-5.2.0.tgz#c1735024c5da2ef75cc190713073d44f098bf486"
+  dependencies:
+    co "^4.6.0"
+    fast-deep-equal "^0.1.0"
+    json-schema-traverse "^0.3.0"
     json-stable-stringify "^1.0.1"
 
 alter@~0.2.0:
@@ -66,6 +99,12 @@ angular-ui-router@^1.0.3:
 angular@^1.6.4:
   version "1.6.4"
   resolved "https://npm.exaptive.com/a/angular/_attachments/angular-1.6.4.tgz#03b7b15c01a0802d7e2cf593240e604054dc77fb"
+
+ansi-align@^2.0.0:
+  version "2.0.0"
+  resolved "https://npm.exaptive.com/a/ansi-align/_attachments/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
+  dependencies:
+    string-width "^2.0.0"
 
 ansi-escapes@^2.0.0:
   version "2.0.0"
@@ -114,9 +153,17 @@ array-differ@^1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/a/array-differ/_attachments/array-differ-1.0.0.tgz#eff52e3758249d33be402b8bb8e564bb2b5d4031"
 
+array-each@^1.0.1:
+  version "1.0.1"
+  resolved "https://npm.exaptive.com/a/array-each/_attachments/array-each-1.0.1.tgz#a794af0c05ab1752846ee753a1f211a05ba0c44f"
+
 array-find-index@^1.0.1:
   version "1.0.2"
   resolved "https://npm.exaptive.com/a/array-find-index/_attachments/array-find-index-1.0.2.tgz#df010aa1287e164bbda6f9723b0a96a1ec4187a1"
+
+array-slice@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/a/array-slice/_attachments/array-slice-1.0.0.tgz#e73034f00dcc1f40876008fd20feae77bd4b7c2f"
 
 array-union@^1.0.1:
   version "1.0.2"
@@ -135,6 +182,13 @@ array-unique@^0.2.1:
 arrify@^1.0.0:
   version "1.0.1"
   resolved "https://npm.exaptive.com/a/arrify/_attachments/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
+
+asar-integrity@0.1.1:
+  version "0.1.1"
+  resolved "https://npm.exaptive.com/a/asar-integrity/_attachments/asar-integrity-0.1.1.tgz#1a709dd78443707fc260f7ce363d9569983caf76"
+  dependencies:
+    bluebird-lst "^1.0.2"
+    fs-extra-p "^4.3.0"
 
 asn1@~0.2.3:
   version "0.2.3"
@@ -176,6 +230,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/b/balanced-match/_attachments/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+base64-js@1.2.0:
+  version "1.2.0"
+  resolved "https://npm.exaptive.com/b/base64-js/_attachments/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
+
 bcrypt-pbkdf@^1.0.0:
   version "1.0.1"
   resolved "https://npm.exaptive.com/b/bcrypt-pbkdf/_attachments/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
@@ -202,11 +260,33 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
+bluebird-lst@^1.0.2:
+  version "1.0.2"
+  resolved "https://npm.exaptive.com/b/bluebird-lst/_attachments/bluebird-lst-1.0.2.tgz#c7b26176b6c8fa458be703deb0644a28f64a475b"
+  dependencies:
+    bluebird "^3.5.0"
+
+bluebird@^3.4.7, bluebird@^3.5.0:
+  version "3.5.0"
+  resolved "https://npm.exaptive.com/b/bluebird/_attachments/bluebird-3.5.0.tgz#791420d7f551eea2897453a8a77653f96606d67c"
+
 boom@2.x.x:
   version "2.10.1"
   resolved "https://npm.exaptive.com/b/boom/_attachments/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+boxen@^1.0.0:
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/b/boxen/_attachments/boxen-1.1.0.tgz#b1b69dd522305e807a99deee777dbd6e5167b102"
+  dependencies:
+    ansi-align "^2.0.0"
+    camelcase "^4.0.0"
+    chalk "^1.1.1"
+    cli-boxes "^1.0.0"
+    string-width "^2.0.0"
+    term-size "^0.1.0"
+    widest-line "^1.0.0"
 
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.8"
@@ -258,6 +338,14 @@ camelcase@^3.0.0:
   version "3.0.0"
   resolved "https://npm.exaptive.com/c/camelcase/_attachments/camelcase-3.0.0.tgz#32fc4b9fcdaf845fcdf7e73bb97cac2261f0ab0a"
 
+camelcase@^4.0.0, camelcase@^4.1.0:
+  version "4.1.0"
+  resolved "https://npm.exaptive.com/c/camelcase/_attachments/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
+
+capture-stack-trace@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/c/capture-stack-trace/_attachments/capture-stack-trace-1.0.0.tgz#4a6fa07399c26bba47f0b2496b4d0fb408c5550d"
+
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://npm.exaptive.com/c/caseless/_attachments/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -272,15 +360,27 @@ chalk@^1.0.0, chalk@^1.1.0, chalk@^1.1.1, chalk@^1.1.3:
     strip-ansi "^3.0.0"
     supports-color "^2.0.0"
 
+chromium-pickle-js@^0.2.0:
+  version "0.2.0"
+  resolved "https://npm.exaptive.com/c/chromium-pickle-js/_attachments/chromium-pickle-js-0.2.0.tgz#04a106672c18b085ab774d983dfa3ea138f22205"
+
+ci-info@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/c/ci-info/_attachments/ci-info-1.0.0.tgz#dc5285f2b4e251821683681c381c3388f46ec534"
+
 circular-json@^0.3.1:
   version "0.3.1"
   resolved "https://npm.exaptive.com/c/circular-json/_attachments/circular-json-0.3.1.tgz#be8b36aefccde8b3ca7aa2d6afc07a37242c0d2d"
 
-clean-css@4.1.3:
-  version "4.1.3"
-  resolved "https://npm.exaptive.com/c/clean-css/_attachments/clean-css-4.1.3.tgz#07cfe8980edb20d455ddc23aadcf1e04c6e509ce"
+clean-css@4.1.4:
+  version "4.1.4"
+  resolved "https://npm.exaptive.com/c/clean-css/_attachments/clean-css-4.1.4.tgz#eec8811db27457e0078d8ca921fa81b72fa82bf4"
   dependencies:
     source-map "0.5.x"
+
+cli-boxes@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/c/cli-boxes/_attachments/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
 
 cli-cursor@^2.1.0:
   version "2.1.0"
@@ -336,11 +436,19 @@ code-point-at@^1.0.0:
   version "1.1.0"
   resolved "https://npm.exaptive.com/c/code-point-at/_attachments/code-point-at-1.1.0.tgz#0d070b4d043a5bea33a2f1a40e2edb3d9a4ccf77"
 
+color-convert@~0.5.0:
+  version "0.5.3"
+  resolved "https://npm.exaptive.com/c/color-convert/_attachments/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
+
 combined-stream@^1.0.5, combined-stream@~1.0.5:
   version "1.0.5"
   resolved "https://npm.exaptive.com/c/combined-stream/_attachments/combined-stream-1.0.5.tgz#938370a57b4a51dea2c77c15d5c5fdf895164009"
   dependencies:
     delayed-stream "~1.0.0"
+
+compare-version@^0.1.2:
+  version "0.1.2"
+  resolved "https://npm.exaptive.com/c/compare-version/_attachments/compare-version-0.1.2.tgz#0162ec2d9351f5ddd59a9202cba935366a725080"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -360,6 +468,17 @@ concat-with-sourcemaps@*, concat-with-sourcemaps@^1.0.0:
   dependencies:
     source-map "^0.5.1"
 
+configstore@^3.0.0:
+  version "3.1.0"
+  resolved "https://npm.exaptive.com/c/configstore/_attachments/configstore-3.1.0.tgz#45df907073e26dfa1cf4b2d52f5b60545eaa11d1"
+  dependencies:
+    dot-prop "^4.1.0"
+    graceful-fs "^4.1.2"
+    make-dir "^1.0.0"
+    unique-string "^1.0.0"
+    write-file-atomic "^2.0.0"
+    xdg-basedir "^3.0.0"
+
 console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://npm.exaptive.com/c/console-control-strings/_attachments/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
@@ -376,9 +495,29 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://npm.exaptive.com/c/core-util-is/_attachments/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
+create-error-class@^3.0.0:
+  version "3.0.2"
+  resolved "https://npm.exaptive.com/c/create-error-class/_attachments/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
+  dependencies:
+    capture-stack-trace "^1.0.0"
+
+cross-spawn-async@^2.1.1:
+  version "2.2.5"
+  resolved "https://npm.exaptive.com/c/cross-spawn-async/_attachments/cross-spawn-async-2.2.5.tgz#845ff0c0834a3ded9d160daca6d390906bb288cc"
+  dependencies:
+    lru-cache "^4.0.0"
+    which "^1.2.8"
+
 cross-spawn@^3.0.0:
   version "3.0.1"
   resolved "https://npm.exaptive.com/c/cross-spawn/_attachments/cross-spawn-3.0.1.tgz#1256037ecb9f0c5f79e3d6ef135e30770184b982"
+  dependencies:
+    lru-cache "^4.0.1"
+    which "^1.2.9"
+
+cross-spawn@^4.0.0:
+  version "4.0.2"
+  resolved "https://npm.exaptive.com/c/cross-spawn/_attachments/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
   dependencies:
     lru-cache "^4.0.1"
     which "^1.2.9"
@@ -388,6 +527,14 @@ cryptiles@2.x.x:
   resolved "https://npm.exaptive.com/c/cryptiles/_attachments/cryptiles-2.0.5.tgz#3bdfecdc608147c1c67202fa291e7dca59eaa3b8"
   dependencies:
     boom "2.x.x"
+
+crypto-random-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/c/crypto-random-string/_attachments/crypto-random-string-1.0.0.tgz#a230f64f568310e1498009940790ec99545bca7e"
+
+cuint@^0.2.2:
+  version "0.2.2"
+  resolved "https://npm.exaptive.com/c/cuint/_attachments/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
@@ -418,7 +565,7 @@ debug@2.2.0:
   dependencies:
     ms "0.7.1"
 
-debug@^2.1.3, debug@^2.2.0, debug@^2.6.8:
+debug@2.6.8, debug@^2.1.3, debug@^2.2.0, debug@^2.6.1, debug@^2.6.6, debug@^2.6.8:
   version "2.6.8"
   resolved "https://npm.exaptive.com/d/debug/_attachments/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -486,11 +633,21 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
+dot-prop@^4.1.0:
+  version "4.1.1"
+  resolved "https://npm.exaptive.com/d/dot-prop/_attachments/dot-prop-4.1.1.tgz#a8493f0b7b5eeec82525b5c7587fa7de7ca859c1"
+  dependencies:
+    is-obj "^1.0.0"
+
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://npm.exaptive.com/d/duplexer2/_attachments/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
   dependencies:
     readable-stream "~1.1.9"
+
+duplexer3@^0.1.4:
+  version "0.1.4"
+  resolved "https://npm.exaptive.com/d/duplexer3/_attachments/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
 
 duplexer@~0.1.1:
   version "0.1.1"
@@ -501,6 +658,79 @@ ecc-jsbn@~0.1.1:
   resolved "https://npm.exaptive.com/e/ecc-jsbn/_attachments/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+electron-builder-http@19.7.0, electron-builder-http@~19.7.0:
+  version "19.7.0"
+  resolved "https://npm.exaptive.com/e/electron-builder-http/_attachments/electron-builder-http-19.7.0.tgz#619e1015200127952e846cbc18f2c54b0edb3f2c"
+  dependencies:
+    debug "2.6.8"
+    fs-extra-p "^4.3.0"
+
+electron-builder-util@19.7.0, electron-builder-util@~19.7.0:
+  version "19.7.0"
+  resolved "https://npm.exaptive.com/e/electron-builder-util/_attachments/electron-builder-util-19.7.0.tgz#c7ce4297e5ea8a50b08ad571fc88563a4e455adc"
+  dependencies:
+    "7zip-bin" "^2.1.0"
+    bluebird-lst "^1.0.2"
+    chalk "^1.1.3"
+    debug "2.6.8"
+    electron-builder-http "~19.7.0"
+    fcopy-pre-bundled "0.3.4"
+    fs-extra-p "^4.3.0"
+    ini "^1.3.4"
+    is-ci "^1.0.10"
+    node-emoji "^1.5.1"
+    source-map-support "^0.4.15"
+    stat-mode "^0.2.2"
+    tunnel-agent "^0.6.0"
+
+electron-builder@^19.7.1:
+  version "19.7.1"
+  resolved "https://npm.exaptive.com/e/electron-builder/_attachments/electron-builder-19.7.1.tgz#5f81c097398aaf0b3224f1151341592952cdd986"
+  dependencies:
+    "7zip-bin" "^2.1.0"
+    ajv "^5.2.0"
+    ajv-keywords "^2.1.0"
+    asar-integrity "0.1.1"
+    bluebird-lst "^1.0.2"
+    chalk "^1.1.3"
+    chromium-pickle-js "^0.2.0"
+    cuint "^0.2.2"
+    debug "2.6.8"
+    electron-builder-http "19.7.0"
+    electron-builder-util "19.7.0"
+    electron-download-tf "4.3.1"
+    electron-osx-sign "0.4.6"
+    electron-publish "19.7.0"
+    fs-extra-p "^4.3.0"
+    hosted-git-info "^2.4.2"
+    is-ci "^1.0.10"
+    isbinaryfile "^3.0.2"
+    js-yaml "^3.8.4"
+    json5 "^0.5.1"
+    minimatch "^3.0.4"
+    normalize-package-data "^2.3.8"
+    parse-color "^1.0.0"
+    plist "^2.1.0"
+    sanitize-filename "^1.6.1"
+    semver "^5.3.0"
+    update-notifier "^2.2.0"
+    uuid-1345 "^0.99.6"
+    yargs "^8.0.2"
+
+electron-download-tf@4.3.1:
+  version "4.3.1"
+  resolved "https://npm.exaptive.com/e/electron-download-tf/_attachments/electron-download-tf-4.3.1.tgz#7930f24a08e3669eaad38a5f7f288a10461caf72"
+  dependencies:
+    debug "^2.6.6"
+    env-paths "^1.0.0"
+    fs-extra "^3.0.1"
+    minimist "^1.2.0"
+    nugget "^2.0.1"
+    path-exists "^3.0.0"
+    rc "^1.2.1"
+    semver "^5.3.0"
+    sumchecker "^2.0.2"
 
 electron-download@^3.0.1:
   version "3.3.0"
@@ -516,9 +746,32 @@ electron-download@^3.0.1:
     semver "^5.3.0"
     sumchecker "^1.2.0"
 
+electron-osx-sign@0.4.6:
+  version "0.4.6"
+  resolved "https://npm.exaptive.com/e/electron-osx-sign/_attachments/electron-osx-sign-0.4.6.tgz#2398e2d7cab5c1d8c3eeabb1cd490376528ec39a"
+  dependencies:
+    bluebird "^3.4.7"
+    compare-version "^0.1.2"
+    debug "^2.6.1"
+    isbinaryfile "^3.0.2"
+    minimist "^1.2.0"
+    plist "^2.0.1"
+    tempfile "^1.1.1"
+
+electron-publish@19.7.0:
+  version "19.7.0"
+  resolved "https://npm.exaptive.com/e/electron-publish/_attachments/electron-publish-19.7.0.tgz#28056db1a749646ce9ad50b45947abd8d3fda7c3"
+  dependencies:
+    bluebird-lst "^1.0.2"
+    chalk "^1.1.3"
+    electron-builder-http "~19.7.0"
+    electron-builder-util "~19.7.0"
+    fs-extra-p "^4.3.0"
+    mime "^1.3.6"
+
 electron@^1.6.11:
-  version "1.6.11"
-  resolved "https://npm.exaptive.com/e/electron/_attachments/electron-1.6.11.tgz#be79c0ebdcefedb5bf28117409800fa53baceffa"
+  version "1.7.3"
+  resolved "https://npm.exaptive.com/e/electron/_attachments/electron-1.7.3.tgz#839cab0a0598835a100dceede215988ba99c325b"
   dependencies:
     "@types/node" "^7.0.18"
     electron-download "^3.0.1"
@@ -529,6 +782,10 @@ end-of-stream@~0.1.5:
   resolved "https://npm.exaptive.com/e/end-of-stream/_attachments/end-of-stream-0.1.5.tgz#8e177206c3c80837d85632e8b9359dfe8b2f6eaf"
   dependencies:
     once "~1.3.0"
+
+env-paths@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/e/env-paths/_attachments/env-paths-1.0.0.tgz#4168133b42bb05c38a35b1ae4397c8298ab369e0"
 
 error-ex@^1.2.0:
   version "1.3.1"
@@ -557,19 +814,19 @@ eslint-import-resolver-node@^0.2.0:
     resolve "^1.1.6"
 
 eslint-module-utils@^2.0.0:
-  version "2.0.0"
-  resolved "https://npm.exaptive.com/e/eslint-module-utils/_attachments/eslint-module-utils-2.0.0.tgz#a6f8c21d901358759cdc35dbac1982ae1ee58bce"
+  version "2.1.1"
+  resolved "https://npm.exaptive.com/e/eslint-module-utils/_attachments/eslint-module-utils-2.1.1.tgz#abaec824177613b8a95b299639e1b6facf473449"
   dependencies:
-    debug "2.2.0"
+    debug "^2.6.8"
     pkg-dir "^1.0.0"
 
 eslint-plugin-import@^2.3.0:
-  version "2.3.0"
-  resolved "https://npm.exaptive.com/e/eslint-plugin-import/_attachments/eslint-plugin-import-2.3.0.tgz#37c801e0ada0e296cbdf20c3f393acb5b52af36b"
+  version "2.6.0"
+  resolved "https://npm.exaptive.com/e/eslint-plugin-import/_attachments/eslint-plugin-import-2.6.0.tgz#2a4bbad36a078e052a3c830ce3dfbd6b8a12c6e5"
   dependencies:
     builtin-modules "^1.1.1"
     contains-path "^0.1.0"
-    debug "^2.2.0"
+    debug "^2.6.8"
     doctrine "1.5.0"
     eslint-import-resolver-node "^0.2.0"
     eslint-module-utils "^2.0.0"
@@ -640,19 +897,15 @@ esquery@^1.0.0:
     estraverse "^4.0.0"
 
 esrecurse@^4.1.0:
-  version "4.1.0"
-  resolved "https://npm.exaptive.com/e/esrecurse/_attachments/esrecurse-4.1.0.tgz#4713b6536adf7f2ac4f327d559e7756bff648220"
+  version "4.2.0"
+  resolved "https://npm.exaptive.com/e/esrecurse/_attachments/esrecurse-4.2.0.tgz#fa9568d98d3823f9a41d91e902dcab9ea6e5b163"
   dependencies:
-    estraverse "~4.1.0"
+    estraverse "^4.1.0"
     object-assign "^4.0.1"
 
-estraverse@^4.0.0, estraverse@^4.1.1, estraverse@^4.2.0:
+estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
   version "4.2.0"
   resolved "https://npm.exaptive.com/e/estraverse/_attachments/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
-
-estraverse@~4.1.0:
-  version "4.1.1"
-  resolved "https://npm.exaptive.com/e/estraverse/_attachments/estraverse-4.1.1.tgz#f6caca728933a850ef90661d0e17982ba47111a2"
 
 esutils@^2.0.2:
   version "2.0.2"
@@ -670,6 +923,29 @@ event-stream@*, event-stream@3.3.2:
     stream-combiner "~0.0.4"
     through "~2.3.1"
 
+execa@^0.4.0:
+  version "0.4.0"
+  resolved "https://npm.exaptive.com/e/execa/_attachments/execa-0.4.0.tgz#4eb6467a36a095fabb2970ff9d5e3fb7bce6ebc3"
+  dependencies:
+    cross-spawn-async "^2.1.1"
+    is-stream "^1.1.0"
+    npm-run-path "^1.0.0"
+    object-assign "^4.0.1"
+    path-key "^1.0.0"
+    strip-eof "^1.0.0"
+
+execa@^0.5.0:
+  version "0.5.1"
+  resolved "https://npm.exaptive.com/e/execa/_attachments/execa-0.5.1.tgz#de3fb85cb8d6e91c85bcbceb164581785cb57b36"
+  dependencies:
+    cross-spawn "^4.0.0"
+    get-stream "^2.2.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
 expand-brackets@^0.1.4:
   version "0.1.5"
   resolved "https://npm.exaptive.com/e/expand-brackets/_attachments/expand-brackets-0.1.5.tgz#df07284e342a807cd733ac5af72411e581d1177b"
@@ -682,11 +958,17 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
-expand-tilde@^1.2.1, expand-tilde@^1.2.2:
+expand-tilde@^1.2.2:
   version "1.2.2"
   resolved "https://npm.exaptive.com/e/expand-tilde/_attachments/expand-tilde-1.2.2.tgz#0b81eba897e5a3d31d1c3d102f8f01441e559449"
   dependencies:
     os-homedir "^1.0.1"
+
+expand-tilde@^2.0.2:
+  version "2.0.2"
+  resolved "https://npm.exaptive.com/e/expand-tilde/_attachments/expand-tilde-2.0.2.tgz#97e801aa052df02454de46b02bf621642cdc8502"
+  dependencies:
+    homedir-polyfill "^1.0.1"
 
 extend@^3.0.0, extend@~3.0.0:
   version "3.0.1"
@@ -726,9 +1008,17 @@ fancy-log@^1.1.0, fancy-log@^1.2.0:
     chalk "^1.1.1"
     time-stamp "^1.0.0"
 
+fast-deep-equal@^0.1.0:
+  version "0.1.0"
+  resolved "https://npm.exaptive.com/f/fast-deep-equal/_attachments/fast-deep-equal-0.1.0.tgz#5c6f4599aba6b333ee3342e2ed978672f1001f8d"
+
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://npm.exaptive.com/f/fast-levenshtein/_attachments/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
+
+fcopy-pre-bundled@0.3.4:
+  version "0.3.4"
+  resolved "https://npm.exaptive.com/f/fcopy-pre-bundled/_attachments/fcopy-pre-bundled-0.3.4.tgz#7ff1a1c339e877baa86b0856bebb33621cd5620b"
 
 fd-slicer@~1.0.1:
   version "1.0.1"
@@ -790,15 +1080,13 @@ findup-sync@^0.4.0, findup-sync@^0.4.2:
     resolve-dir "^0.1.0"
 
 fined@^1.0.1:
-  version "1.0.2"
-  resolved "https://npm.exaptive.com/f/fined/_attachments/fined-1.0.2.tgz#5b28424b760d7598960b7ef8480dff8ad3660e97"
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/f/fined/_attachments/fined-1.1.0.tgz#b37dc844b76a2f5e7081e884f7c0ae344f153476"
   dependencies:
-    expand-tilde "^1.2.1"
-    lodash.assignwith "^4.0.7"
-    lodash.isempty "^4.2.1"
-    lodash.isplainobject "^4.0.4"
-    lodash.isstring "^4.0.1"
-    lodash.pick "^4.2.1"
+    expand-tilde "^2.0.2"
+    is-plain-object "^2.0.3"
+    object.defaults "^1.1.0"
+    object.pick "^1.2.0"
     parse-filepath "^1.0.1"
 
 first-chunk-stream@^1.0.0:
@@ -828,6 +1116,12 @@ for-own@^0.1.4:
   dependencies:
     for-in "^1.0.1"
 
+for-own@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/f/for-own/_attachments/for-own-1.0.0.tgz#c63332f415cedc4b04dbfe70cf836494c53cb44b"
+  dependencies:
+    for-in "^1.0.1"
+
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://npm.exaptive.com/f/forever-agent/_attachments/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -848,6 +1142,13 @@ fs-exists-sync@^0.1.0:
   version "0.1.0"
   resolved "https://npm.exaptive.com/f/fs-exists-sync/_attachments/fs-exists-sync-0.1.0.tgz#982d6893af918e72d08dec9e8673ff2b5a8d6add"
 
+fs-extra-p@^4.3.0:
+  version "4.3.0"
+  resolved "https://npm.exaptive.com/f/fs-extra-p/_attachments/fs-extra-p-4.3.0.tgz#2e148a544287df0258931cabc583063b4eed2303"
+  dependencies:
+    bluebird-lst "^1.0.2"
+    fs-extra "^3.0.1"
+
 fs-extra@^0.30.0:
   version "0.30.0"
   resolved "https://npm.exaptive.com/f/fs-extra/_attachments/fs-extra-0.30.0.tgz#f233ffcc08d4da7d432daa449776989db1df93f0"
@@ -857,6 +1158,14 @@ fs-extra@^0.30.0:
     klaw "^1.0.0"
     path-is-absolute "^1.0.0"
     rimraf "^2.2.8"
+
+fs-extra@^3.0.1:
+  version "3.0.1"
+  resolved "https://npm.exaptive.com/f/fs-extra/_attachments/fs-extra-3.0.1.tgz#3794f378c58b342ea7dbbb23095109c4b3b62291"
+  dependencies:
+    graceful-fs "^4.1.2"
+    jsonfile "^3.0.0"
+    universalify "^0.1.0"
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -917,6 +1226,17 @@ get-caller-file@^1.0.1:
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://npm.exaptive.com/g/get-stdin/_attachments/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
+
+get-stream@^2.2.0:
+  version "2.3.1"
+  resolved "https://npm.exaptive.com/g/get-stream/_attachments/get-stream-2.3.1.tgz#5f38f93f346009666ee0150a054167f91bdd95de"
+  dependencies:
+    object-assign "^4.0.1"
+    pinkie-promise "^2.0.0"
+
+get-stream@^3.0.0:
+  version "3.0.0"
+  resolved "https://npm.exaptive.com/g/get-stream/_attachments/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
 
 getpass@^0.1.1:
   version "0.1.7"
@@ -1041,13 +1361,29 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
+got@^6.7.1:
+  version "6.7.1"
+  resolved "https://npm.exaptive.com/g/got/_attachments/got-6.7.1.tgz#240cd05785a9a18e561dc1b44b41c763ef1e8db0"
+  dependencies:
+    create-error-class "^3.0.0"
+    duplexer3 "^0.1.4"
+    get-stream "^3.0.0"
+    is-redirect "^1.0.0"
+    is-retry-allowed "^1.0.0"
+    is-stream "^1.0.0"
+    lowercase-keys "^1.0.0"
+    safe-buffer "^5.0.1"
+    timed-out "^4.0.0"
+    unzip-response "^2.0.1"
+    url-parse-lax "^1.0.0"
+
 graceful-fs@^3.0.0:
   version "3.0.11"
   resolved "https://npm.exaptive.com/g/graceful-fs/_attachments/graceful-fs-3.0.11.tgz#7613c778a1afea62f25c630a086d7f3acbbdd818"
   dependencies:
     natives "^1.1.0"
 
-graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
+graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.1.11"
   resolved "https://npm.exaptive.com/g/graceful-fs/_attachments/graceful-fs-4.1.11.tgz#0e8bdfe4d1ddb8854d64e04ea7c00e2a026e5658"
 
@@ -1067,10 +1403,10 @@ gulp-angular-templatecache@^2.0.0:
     jsesc "2.2.0"
 
 gulp-clean-css@^3.4.1:
-  version "3.4.1"
-  resolved "https://npm.exaptive.com/g/gulp-clean-css/_attachments/gulp-clean-css-3.4.1.tgz#b61a449ea056c038b8dcdc857041b2382b09b0d5"
+  version "3.4.2"
+  resolved "https://npm.exaptive.com/g/gulp-clean-css/_attachments/gulp-clean-css-3.4.2.tgz#04387e17a88aa0f29d88edafca16403dbb106d5d"
   dependencies:
-    clean-css "4.1.3"
+    clean-css "4.1.4"
     gulp-util "3.0.8"
     through2 "2.0.3"
     vinyl-sourcemaps-apply "0.2.1"
@@ -1268,13 +1604,13 @@ home-path@^1.0.1:
   version "1.0.5"
   resolved "https://npm.exaptive.com/h/home-path/_attachments/home-path-1.0.5.tgz#788b29815b12d53bacf575648476e6f9041d133f"
 
-homedir-polyfill@^1.0.0:
+homedir-polyfill@^1.0.0, homedir-polyfill@^1.0.1:
   version "1.0.1"
   resolved "https://npm.exaptive.com/h/homedir-polyfill/_attachments/homedir-polyfill-1.0.1.tgz#4c2bbc8a758998feebf5ed68580f76d46768b4bc"
   dependencies:
     parse-passwd "^1.0.0"
 
-hosted-git-info@^2.1.4:
+hosted-git-info@^2.1.4, hosted-git-info@^2.4.2:
   version "2.4.2"
   resolved "https://npm.exaptive.com/h/hosted-git-info/_attachments/hosted-git-info-2.4.2.tgz#0076b9f46a270506ddbaaea56496897460612a67"
 
@@ -1287,12 +1623,16 @@ http-signature@~1.1.0:
     sshpk "^1.7.0"
 
 iconv-lite@^0.4.17:
-  version "0.4.17"
-  resolved "https://npm.exaptive.com/i/iconv-lite/_attachments/iconv-lite-0.4.17.tgz#4fdaa3b38acbc2c031b045d0edcdfe1ecab18c8d"
+  version "0.4.18"
+  resolved "https://npm.exaptive.com/i/iconv-lite/_attachments/iconv-lite-0.4.18.tgz#23d8656b16aae6742ac29732ea8f0336a4789cf2"
 
 ignore@^3.3.3:
   version "3.3.3"
   resolved "https://npm.exaptive.com/i/ignore/_attachments/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
+
+import-lazy@^2.1.0:
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/i/import-lazy/_attachments/import-lazy-2.1.0.tgz#05698e3d45c88e8d7e9d92cb0584e77f096f3e43"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -1319,7 +1659,7 @@ inherits@1:
   version "1.0.2"
   resolved "https://npm.exaptive.com/i/inherits/_attachments/inherits-1.0.2.tgz#ca4309dadee6b54cc0b8d247e8d7c7a0975bdc9b"
 
-inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1:
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://npm.exaptive.com/i/inherits/_attachments/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
@@ -1328,8 +1668,8 @@ ini@^1.3.4, ini@~1.3.0:
   resolved "https://npm.exaptive.com/i/ini/_attachments/ini-1.3.4.tgz#0537cb79daf59b59a1a517dff706c86ec039162e"
 
 inquirer@^3.0.6:
-  version "3.1.0"
-  resolved "https://npm.exaptive.com/i/inquirer/_attachments/inquirer-3.1.0.tgz#e05400d48b94937c2d3caa7038663ba9189aab01"
+  version "3.1.1"
+  resolved "https://npm.exaptive.com/i/inquirer/_attachments/inquirer-3.1.1.tgz#87621c4fba4072f48a8dd71c9f9df6f100b2d534"
   dependencies:
     ansi-escapes "^2.0.0"
     chalk "^1.0.0"
@@ -1374,6 +1714,12 @@ is-builtin-module@^1.0.0:
   resolved "https://npm.exaptive.com/i/is-builtin-module/_attachments/is-builtin-module-1.0.0.tgz#540572d34f7ac3119f8f76c30cbc1b1e037affbe"
   dependencies:
     builtin-modules "^1.0.0"
+
+is-ci@^1.0.10:
+  version "1.0.10"
+  resolved "https://npm.exaptive.com/i/is-ci/_attachments/is-ci-1.0.10.tgz#f739336b2632365061a9d48270cd56ae3369318e"
+  dependencies:
+    ci-info "^1.0.0"
 
 is-dotfile@^1.0.0:
   version "1.0.3"
@@ -1424,6 +1770,10 @@ is-my-json-valid@^2.16.0:
     jsonpointer "^4.0.0"
     xtend "^4.0.0"
 
+is-npm@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/i/is-npm/_attachments/is-npm-1.0.0.tgz#f2fb63a65e4905b406c86072765a1a4dc793b9f4"
+
 is-number@^2.1.0:
   version "2.1.0"
   resolved "https://npm.exaptive.com/i/is-number/_attachments/is-number-2.1.0.tgz#01fcbbb393463a548f2f466cce16dece49db908f"
@@ -1435,6 +1785,10 @@ is-number@^3.0.0:
   resolved "https://npm.exaptive.com/i/is-number/_attachments/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"
   dependencies:
     kind-of "^3.0.2"
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://npm.exaptive.com/i/is-obj/_attachments/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
 
 is-path-cwd@^1.0.0:
   version "1.0.0"
@@ -1452,6 +1806,12 @@ is-path-inside@^1.0.0:
   dependencies:
     path-is-inside "^1.0.1"
 
+is-plain-object@^2.0.3:
+  version "2.0.3"
+  resolved "https://npm.exaptive.com/i/is-plain-object/_attachments/is-plain-object-2.0.3.tgz#c15bf3e4b66b62d72efaf2925848663ecbc619b6"
+  dependencies:
+    isobject "^3.0.0"
+
 is-posix-bracket@^0.1.0:
   version "0.1.1"
   resolved "https://npm.exaptive.com/i/is-posix-bracket/_attachments/is-posix-bracket-0.1.1.tgz#3334dc79774368e92f016e6fbc0a88f5cd6e6bc4"
@@ -1468,6 +1828,10 @@ is-property@^1.0.0:
   version "1.0.2"
   resolved "https://npm.exaptive.com/i/is-property/_attachments/is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84"
 
+is-redirect@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/i/is-redirect/_attachments/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
+
 is-relative@^0.2.1:
   version "0.2.1"
   resolved "https://npm.exaptive.com/i/is-relative/_attachments/is-relative-0.2.1.tgz#d27f4c7d516d175fb610db84bbeef23c3bc97aa5"
@@ -1480,7 +1844,11 @@ is-resolvable@^1.0.0:
   dependencies:
     tryit "^1.0.1"
 
-is-stream@^1.1.0:
+is-retry-allowed@^1.0.0:
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/i/is-retry-allowed/_attachments/is-retry-allowed-1.1.0.tgz#11a060568b67339444033d0125a61a20d564fb34"
+
+is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
   resolved "https://npm.exaptive.com/i/is-stream/_attachments/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
 
@@ -1510,15 +1878,23 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/i/isarray/_attachments/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+isbinaryfile@^3.0.2:
+  version "3.0.2"
+  resolved "https://npm.exaptive.com/i/isbinaryfile/_attachments/isbinaryfile-3.0.2.tgz#4a3e974ec0cba9004d3fc6cde7209ea69368a621"
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://npm.exaptive.com/i/isexe/_attachments/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
-isobject@^2.0.0:
+isobject@^2.0.0, isobject@^2.1.0:
   version "2.1.0"
   resolved "https://npm.exaptive.com/i/isobject/_attachments/isobject-2.1.0.tgz#f065561096a3f1da2ef46272f815c840d87e0c89"
   dependencies:
     isarray "1.0.0"
+
+isobject@^3.0.0:
+  version "3.0.0"
+  resolved "https://npm.exaptive.com/i/isobject/_attachments/isobject-3.0.0.tgz#39565217f3661789e8a0a0c080d5f7e6bc46e1a0"
 
 isstream@~0.1.2:
   version "0.1.2"
@@ -1551,6 +1927,10 @@ jsesc@2.2.0:
   version "2.2.0"
   resolved "https://npm.exaptive.com/j/jsesc/_attachments/jsesc-2.2.0.tgz#c35a8613a3806c8ec3bafc0b0e196f020f7aab01"
 
+json-schema-traverse@^0.3.0:
+  version "0.3.0"
+  resolved "https://npm.exaptive.com/j/json-schema-traverse/_attachments/json-schema-traverse-0.3.0.tgz#0016c0b1ca1efe46d44d37541bcdfc19dcfae0db"
+
 json-schema@0.2.3:
   version "0.2.3"
   resolved "https://npm.exaptive.com/j/json-schema/_attachments/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
@@ -1565,9 +1945,19 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://npm.exaptive.com/j/json-stringify-safe/_attachments/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
+json5@^0.5.1:
+  version "0.5.1"
+  resolved "https://npm.exaptive.com/j/json5/_attachments/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+
 jsonfile@^2.1.0:
   version "2.4.0"
   resolved "https://npm.exaptive.com/j/jsonfile/_attachments/jsonfile-2.4.0.tgz#3736a2b428b87bbda0cc83b53fa3d633a35c2ae8"
+  optionalDependencies:
+    graceful-fs "^4.1.6"
+
+jsonfile@^3.0.0:
+  version "3.0.0"
+  resolved "https://npm.exaptive.com/j/jsonfile/_attachments/jsonfile-3.0.0.tgz#92e7c7444e5ffd5fa32e6a9ae8b85034df8347d0"
   optionalDependencies:
     graceful-fs "^4.1.6"
 
@@ -1605,6 +1995,12 @@ klaw@^1.0.0:
   resolved "https://npm.exaptive.com/k/klaw/_attachments/klaw-1.3.1.tgz#4088433b46b3b1ba259d78785d8e96f73ba02439"
   optionalDependencies:
     graceful-fs "^4.1.9"
+
+latest-version@^3.0.0:
+  version "3.1.0"
+  resolved "https://npm.exaptive.com/l/latest-version/_attachments/latest-version-3.1.0.tgz#a205383fea322b33b5ae3b18abee0dc2f356ee15"
+  dependencies:
+    package-json "^4.0.0"
 
 lcid@^1.0.0:
   version "1.0.0"
@@ -1699,10 +2095,6 @@ lodash.assign@*, lodash.assign@^4.2.0:
   version "4.2.0"
   resolved "https://npm.exaptive.com/l/lodash.assign/_attachments/lodash.assign-4.2.0.tgz#0d99f3ccd7a6d261d19bdaeb9245005d285808e7"
 
-lodash.assignwith@^4.0.7:
-  version "4.2.0"
-  resolved "https://npm.exaptive.com/l/lodash.assignwith/_attachments/lodash.assignwith-4.2.0.tgz#127a97f02adc41751a954d24b0de17e100e038eb"
-
 lodash.clonedeep@^4.3.2:
   version "4.5.0"
   resolved "https://npm.exaptive.com/l/lodash.clonedeep/_attachments/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
@@ -1724,10 +2116,6 @@ lodash.isarguments@^3.0.0:
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "https://npm.exaptive.com/l/lodash.isarray/_attachments/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
-
-lodash.isempty@^4.2.1:
-  version "4.4.0"
-  resolved "https://npm.exaptive.com/l/lodash.isempty/_attachments/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
 
 lodash.isplainobject@^4.0.4:
   version "4.0.6"
@@ -1752,10 +2140,6 @@ lodash.mapvalues@^4.4.0:
 lodash.mergewith@^4.6.0:
   version "4.6.0"
   resolved "https://npm.exaptive.com/l/lodash.mergewith/_attachments/lodash.mergewith-4.6.0.tgz#150cf0a16791f5903b8891eab154609274bdea55"
-
-lodash.pick@^4.2.1:
-  version "4.4.0"
-  resolved "https://npm.exaptive.com/l/lodash.pick/_attachments/lodash.pick-4.4.0.tgz#52f05610fff9ded422611441ed1fc123a03001b3"
 
 lodash.restparam@^3.0.0:
   version "3.6.1"
@@ -1797,16 +2181,30 @@ loud-rejection@^1.0.0:
     currently-unhandled "^0.4.1"
     signal-exit "^3.0.0"
 
+lowercase-keys@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/l/lowercase-keys/_attachments/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
+
 lru-cache@2:
   version "2.7.3"
   resolved "https://npm.exaptive.com/l/lru-cache/_attachments/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
 
-lru-cache@^4.0.1:
+lru-cache@^4.0.0, lru-cache@^4.0.1:
   version "4.1.1"
   resolved "https://npm.exaptive.com/l/lru-cache/_attachments/lru-cache-4.1.1.tgz#622e32e82488b49279114a4f9ecf45e7cd6bba55"
   dependencies:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
+
+macaddress@^0.2.7:
+  version "0.2.8"
+  resolved "https://npm.exaptive.com/m/macaddress/_attachments/macaddress-0.2.8.tgz#5904dc537c39ec6dbefeae902327135fa8511f12"
+
+make-dir@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/m/make-dir/_attachments/make-dir-1.0.0.tgz#97a011751e91dd87cfadef58832ebb04936de978"
+  dependencies:
+    pify "^2.3.0"
 
 map-cache@^0.2.0:
   version "0.2.2"
@@ -1819,6 +2217,12 @@ map-obj@^1.0.0, map-obj@^1.0.1:
 map-stream@~0.1.0:
   version "0.1.0"
   resolved "https://npm.exaptive.com/m/map-stream/_attachments/map-stream-0.1.0.tgz#e56aa94c4c8055a16404a0674b78f215f7c8e194"
+
+mem@^1.1.0:
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/m/mem/_attachments/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
+  dependencies:
+    mimic-fn "^1.0.0"
 
 meow@^3.1.0, meow@^3.3.0, meow@^3.7.0:
   version "3.7.0"
@@ -1866,6 +2270,10 @@ mime-types@^2.1.12, mime-types@~2.1.7:
   resolved "https://npm.exaptive.com/m/mime-types/_attachments/mime-types-2.1.15.tgz#a4ebf5064094569237b8cf70046776d09fc92aed"
   dependencies:
     mime-db "~1.27.0"
+
+mime@^1.3.6:
+  version "1.3.6"
+  resolved "https://npm.exaptive.com/m/mime/_attachments/mime-1.3.6.tgz#591d84d3653a6b0b4a3b9df8de5aa8108e72e5e0"
 
 mimic-fn@^1.0.0:
   version "1.1.0"
@@ -1957,6 +2365,12 @@ ng-annotate@^1.2.1:
     stringset "~0.2.1"
     tryor "~0.1.2"
 
+node-emoji@^1.5.1:
+  version "1.5.1"
+  resolved "https://npm.exaptive.com/n/node-emoji/_attachments/node-emoji-1.5.1.tgz#fd918e412769bf8c448051238233840b2aff16a1"
+  dependencies:
+    string.prototype.codepointat "^0.2.0"
+
 node-gyp@^3.3.1:
   version "3.6.2"
   resolved "https://npm.exaptive.com/n/node-gyp/_attachments/node-gyp-3.6.2.tgz#9bfbe54562286284838e750eac05295853fa1c60"
@@ -2004,7 +2418,7 @@ node-sass@^4.2.0:
   dependencies:
     abbrev "1"
 
-normalize-package-data@^2.3.2, normalize-package-data@^2.3.4:
+normalize-package-data@^2.3.2, normalize-package-data@^2.3.4, normalize-package-data@^2.3.8:
   version "2.3.8"
   resolved "https://npm.exaptive.com/n/normalize-package-data/_attachments/normalize-package-data-2.3.8.tgz#d819eda2a9dedbd1ffa563ea4071d936782295bb"
   dependencies:
@@ -2019,6 +2433,18 @@ normalize-path@^2.0.1:
   dependencies:
     remove-trailing-separator "^1.0.1"
 
+npm-run-path@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/n/npm-run-path/_attachments/npm-run-path-1.0.0.tgz#f5c32bf595fe81ae927daec52e82f8b000ac3c8f"
+  dependencies:
+    path-key "^1.0.0"
+
+npm-run-path@^2.0.0:
+  version "2.0.2"
+  resolved "https://npm.exaptive.com/n/npm-run-path/_attachments/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
+  dependencies:
+    path-key "^2.0.0"
+
 "npmlog@0 || 1 || 2 || 3 || 4", npmlog@^4.0.0:
   version "4.1.0"
   resolved "https://npm.exaptive.com/n/npmlog/_attachments/npmlog-4.1.0.tgz#dc59bee85f64f00ed424efb2af0783df25d1c0b5"
@@ -2028,7 +2454,7 @@ normalize-path@^2.0.1:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
-nugget@^2.0.0:
+nugget@^2.0.0, nugget@^2.0.1:
   version "2.0.1"
   resolved "https://npm.exaptive.com/n/nugget/_attachments/nugget-2.0.1.tgz#201095a487e1ad36081b3432fa3cada4f8d071b0"
   dependencies:
@@ -2060,6 +2486,15 @@ object-keys@~0.4.0:
   version "0.4.0"
   resolved "https://npm.exaptive.com/o/object-keys/_attachments/object-keys-0.4.0.tgz#28a6aae7428dd2c3a92f3d95f21335dd204e0336"
 
+object.defaults@^1.1.0:
+  version "1.1.0"
+  resolved "https://npm.exaptive.com/o/object.defaults/_attachments/object.defaults-1.1.0.tgz#3a7f868334b407dea06da16d88d5cd29e435fecf"
+  dependencies:
+    array-each "^1.0.1"
+    array-slice "^1.0.0"
+    for-own "^1.0.0"
+    isobject "^3.0.0"
+
 object.omit@^2.0.0:
   version "2.0.1"
   resolved "https://npm.exaptive.com/o/object.omit/_attachments/object.omit-2.0.1.tgz#1a9c744829f39dbb858c76ca3579ae2a54ebd1fa"
@@ -2067,13 +2502,13 @@ object.omit@^2.0.0:
     for-own "^0.1.4"
     is-extendable "^0.1.1"
 
-once@^1.3.0:
-  version "1.4.0"
-  resolved "https://npm.exaptive.com/o/once/_attachments/once-1.4.0.tgz#583b1aa775961d4b113ac17d9c50baef9dd76bd1"
+object.pick@^1.2.0:
+  version "1.2.0"
+  resolved "https://npm.exaptive.com/o/object.pick/_attachments/object.pick-1.2.0.tgz#b5392bee9782da6d9fb7d6afaf539779f1234c2b"
   dependencies:
-    wrappy "1"
+    isobject "^2.1.0"
 
-once@~1.3.0:
+once@^1.3.0, once@~1.3.0:
   version "1.3.3"
   resolved "https://npm.exaptive.com/o/once/_attachments/once-1.3.3.tgz#b2e261557ce4c314ec8304f3fa82663e4297ca20"
   dependencies:
@@ -2135,6 +2570,14 @@ os-locale@^1.4.0:
   dependencies:
     lcid "^1.0.0"
 
+os-locale@^2.0.0:
+  version "2.0.0"
+  resolved "https://npm.exaptive.com/o/os-locale/_attachments/os-locale-2.0.0.tgz#15918ded510522b81ee7ae5a309d54f639fc39a4"
+  dependencies:
+    execa "^0.5.0"
+    lcid "^1.0.0"
+    mem "^1.1.0"
+
 os-tmpdir@^1.0.0, os-tmpdir@~1.0.1:
   version "1.0.2"
   resolved "https://npm.exaptive.com/o/os-tmpdir/_attachments/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
@@ -2146,6 +2589,10 @@ osenv@0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
+p-finally@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/p/p-finally/_attachments/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
+
 p-limit@^1.1.0:
   version "1.1.0"
   resolved "https://npm.exaptive.com/p/p-limit/_attachments/p-limit-1.1.0.tgz#b07ff2d9a5d88bec806035895a2bab66a27988bc"
@@ -2155,6 +2602,21 @@ p-locate@^2.0.0:
   resolved "https://npm.exaptive.com/p/p-locate/_attachments/p-locate-2.0.0.tgz#20a0103b222a70c8fd39cc2e580680f3dde5ec43"
   dependencies:
     p-limit "^1.1.0"
+
+package-json@^4.0.0:
+  version "4.0.1"
+  resolved "https://npm.exaptive.com/p/package-json/_attachments/package-json-4.0.1.tgz#8869a0401253661c4c4ca3da6c2121ed555f5eed"
+  dependencies:
+    got "^6.7.1"
+    registry-auth-token "^3.0.1"
+    registry-url "^3.0.3"
+    semver "^5.1.0"
+
+parse-color@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/p/parse-color/_attachments/parse-color-1.0.0.tgz#7b748b95a83f03f16a94f535e52d7f3d94658619"
+  dependencies:
+    color-convert "~0.5.0"
 
 parse-filepath@^1.0.1:
   version "1.0.1"
@@ -2201,6 +2663,14 @@ path-is-inside@^1.0.1, path-is-inside@^1.0.2:
   version "1.0.2"
   resolved "https://npm.exaptive.com/p/path-is-inside/_attachments/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
+path-key@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/p/path-key/_attachments/path-key-1.0.0.tgz#5d53d578019646c0d68800db4e146e6bdc2ac7af"
+
+path-key@^2.0.0:
+  version "2.0.1"
+  resolved "https://npm.exaptive.com/p/path-key/_attachments/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
+
 path-parse@^1.0.5:
   version "1.0.5"
   resolved "https://npm.exaptive.com/p/path-parse/_attachments/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
@@ -2243,7 +2713,7 @@ performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://npm.exaptive.com/p/performance-now/_attachments/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
 
-pify@^2.0.0:
+pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://npm.exaptive.com/p/pify/_attachments/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
 
@@ -2263,6 +2733,14 @@ pkg-dir@^1.0.0:
   dependencies:
     find-up "^1.0.0"
 
+plist@^2.0.1, plist@^2.1.0:
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/p/plist/_attachments/plist-2.1.0.tgz#57ccdb7a0821df21831217a3cad54e3e146a1025"
+  dependencies:
+    base64-js "1.2.0"
+    xmlbuilder "8.2.2"
+    xmldom "0.1.x"
+
 pluralize@^4.0.0:
   version "4.0.0"
   resolved "https://npm.exaptive.com/p/pluralize/_attachments/pluralize-4.0.0.tgz#59b708c1c0190a2f692f1c7618c446b052fd1762"
@@ -2270,6 +2748,10 @@ pluralize@^4.0.0:
 prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://npm.exaptive.com/p/prelude-ls/_attachments/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
+
+prepend-http@^1.0.1:
+  version "1.0.4"
+  resolved "https://npm.exaptive.com/p/prepend-http/_attachments/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
 preserve@^0.2.0:
   version "0.2.0"
@@ -2320,7 +2802,7 @@ randomatic@^1.1.3:
     is-number "^3.0.0"
     kind-of "^4.0.0"
 
-rc@^1.1.2:
+rc@^1.0.1, rc@^1.1.2, rc@^1.1.6, rc@^1.2.1:
   version "1.2.1"
   resolved "https://npm.exaptive.com/r/rc/_attachments/rc-1.2.1.tgz#2e03e8e42ee450b8cb3dce65be1bf8974e1dfd95"
   dependencies:
@@ -2369,14 +2851,14 @@ read-pkg@^2.0.0:
     string_decoder "~0.10.x"
 
 readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2:
-  version "2.2.11"
-  resolved "https://npm.exaptive.com/r/readable-stream/_attachments/readable-stream-2.2.11.tgz#0796b31f8d7688007ff0b93a8088d34aa17c0f72"
+  version "2.3.2"
+  resolved "https://npm.exaptive.com/r/readable-stream/_attachments/readable-stream-2.3.2.tgz#5a04df05e4f57fe3f0dc68fdd11dc5c97c7e6f4d"
   dependencies:
     core-util-is "~1.0.0"
-    inherits "~2.0.1"
+    inherits "~2.0.3"
     isarray "~1.0.0"
     process-nextick-args "~1.0.6"
-    safe-buffer "~5.0.1"
+    safe-buffer "~5.1.0"
     string_decoder "~1.0.0"
     util-deprecate "~1.0.1"
 
@@ -2408,6 +2890,19 @@ regex-cache@^0.4.2:
   dependencies:
     is-equal-shallow "^0.1.3"
     is-primitive "^2.0.0"
+
+registry-auth-token@^3.0.1:
+  version "3.3.1"
+  resolved "https://npm.exaptive.com/r/registry-auth-token/_attachments/registry-auth-token-3.3.1.tgz#fb0d3289ee0d9ada2cbb52af5dfe66cb070d3006"
+  dependencies:
+    rc "^1.1.6"
+    safe-buffer "^5.0.1"
+
+registry-url@^3.0.3:
+  version "3.1.0"
+  resolved "https://npm.exaptive.com/r/registry-url/_attachments/registry-url-3.1.0.tgz#3d4ef870f73dde1d77f0cf9a381432444e174942"
+  dependencies:
+    rc "^1.0.1"
 
 remove-trailing-separator@^1.0.1:
   version "1.0.2"
@@ -2537,9 +3032,15 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://npm.exaptive.com/r/rx-lite/_attachments/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
 
-safe-buffer@^5.0.1, safe-buffer@~5.0.1:
-  version "5.0.1"
-  resolved "https://npm.exaptive.com/s/safe-buffer/_attachments/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
+safe-buffer@^5.0.1, safe-buffer@~5.1.0:
+  version "5.1.1"
+  resolved "https://npm.exaptive.com/s/safe-buffer/_attachments/safe-buffer-5.1.1.tgz#893312af69b2123def71f57889001671eeb2c853"
+
+sanitize-filename@^1.6.1:
+  version "1.6.1"
+  resolved "https://npm.exaptive.com/s/sanitize-filename/_attachments/sanitize-filename-1.6.1.tgz#612da1c96473fa02dccda92dcd5b4ab164a6772a"
+  dependencies:
+    truncate-utf8-bytes "^1.0.0"
 
 sass-graph@^2.1.1:
   version "2.2.4"
@@ -2557,7 +3058,13 @@ scss-tokenizer@^0.2.3:
     js-base64 "^2.1.8"
     source-map "^0.4.2"
 
-"semver@2 || 3 || 4 || 5", semver@^5.3.0, semver@~5.3.0:
+semver-diff@^2.0.0:
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/s/semver-diff/_attachments/semver-diff-2.1.0.tgz#4bbb8437c8d37e4b0cf1a68fd726ec6d645d6d36"
+  dependencies:
+    semver "^5.0.3"
+
+"semver@2 || 3 || 4 || 5", semver@^5.0.3, semver@^5.1.0, semver@^5.3.0, semver@~5.3.0:
   version "5.3.0"
   resolved "https://npm.exaptive.com/s/semver/_attachments/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
@@ -2599,13 +3106,23 @@ slice-ansi@0.0.4:
   version "0.0.4"
   resolved "https://npm.exaptive.com/s/slice-ansi/_attachments/slice-ansi-0.0.4.tgz#edbf8903f66f7ce2f8eafd6ceed65e264c831b35"
 
+slide@^1.1.5:
+  version "1.1.6"
+  resolved "https://npm.exaptive.com/s/slide/_attachments/slide-1.1.6.tgz#56eb027d65b4d2dce6cb2e2d32c4d4afc9e1d707"
+
 sntp@1.x.x:
   version "1.0.9"
   resolved "https://npm.exaptive.com/s/sntp/_attachments/sntp-1.0.9.tgz#6541184cc90aeea6c6e7b35e2659082443c66198"
   dependencies:
     hoek "2.x.x"
 
-source-map@0.5.x, source-map@^0.5.1, source-map@~0.5.3:
+source-map-support@^0.4.15:
+  version "0.4.15"
+  resolved "https://npm.exaptive.com/s/source-map-support/_attachments/source-map-support-0.4.15.tgz#03202df65c06d2bd8c7ec2362a193056fef8d3b1"
+  dependencies:
+    source-map "^0.5.6"
+
+source-map@0.5.x, source-map@^0.5.1, source-map@^0.5.6, source-map@~0.5.3:
   version "0.5.6"
   resolved "https://npm.exaptive.com/s/source-map/_attachments/source-map-0.5.6.tgz#75ce38f52bf0733c5a7f0c118d81334a2bb5f412"
 
@@ -2665,6 +3182,10 @@ stable@~0.1.3, stable@~0.1.5:
   version "0.1.6"
   resolved "https://npm.exaptive.com/s/stable/_attachments/stable-0.1.6.tgz#910f5d2aed7b520c6e777499c1f32e139fdecb10"
 
+stat-mode@^0.2.2:
+  version "0.2.2"
+  resolved "https://npm.exaptive.com/s/stat-mode/_attachments/stat-mode-0.2.2.tgz#e6c80b623123d7d80cf132ce538f346289072502"
+
 stdout-stream@^1.4.0:
   version "1.4.0"
   resolved "https://npm.exaptive.com/s/stdout-stream/_attachments/stdout-stream-1.4.0.tgz#a2c7c8587e54d9427ea9edb3ac3f2cd522df378b"
@@ -2700,15 +3221,19 @@ string-width@^2.0.0:
     is-fullwidth-code-point "^2.0.0"
     strip-ansi "^3.0.0"
 
+string.prototype.codepointat@^0.2.0:
+  version "0.2.0"
+  resolved "https://npm.exaptive.com/s/string.prototype.codepointat/_attachments/string.prototype.codepointat-0.2.0.tgz#6b26e9bd3afcaa7be3b4269b526de1b82000ac78"
+
 string_decoder@~0.10.x:
   version "0.10.31"
   resolved "https://npm.exaptive.com/s/string_decoder/_attachments/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
 string_decoder@~1.0.0:
-  version "1.0.2"
-  resolved "https://npm.exaptive.com/s/string_decoder/_attachments/string_decoder-1.0.2.tgz#b29e1f4e1125fa97a10382b8a533737b7491e179"
+  version "1.0.3"
+  resolved "https://npm.exaptive.com/s/string_decoder/_attachments/string_decoder-1.0.3.tgz#0fc67d7c141825de94282dd536bec6b9bce860ab"
   dependencies:
-    safe-buffer "~5.0.1"
+    safe-buffer "~5.1.0"
 
 stringmap@~0.2.2:
   version "0.2.2"
@@ -2745,6 +3270,10 @@ strip-bom@^3.0.0:
   version "3.0.0"
   resolved "https://npm.exaptive.com/s/strip-bom/_attachments/strip-bom-3.0.0.tgz#2334c18e9c759f7bdd56fdef7e9ae3d588e68ed3"
 
+strip-eof@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/s/strip-eof/_attachments/strip-eof-1.0.0.tgz#bb43ff5598a6eb05d89b59fcd129c983313606bf"
+
 strip-indent@^1.0.1:
   version "1.0.1"
   resolved "https://npm.exaptive.com/s/strip-indent/_attachments/strip-indent-1.0.1.tgz#0c7962a6adefa7bbd4ac366460a638552ae1a0a2"
@@ -2761,6 +3290,12 @@ sumchecker@^1.2.0:
   dependencies:
     debug "^2.2.0"
     es6-promise "^4.0.5"
+
+sumchecker@^2.0.2:
+  version "2.0.2"
+  resolved "https://npm.exaptive.com/s/sumchecker/_attachments/sumchecker-2.0.2.tgz#0f42c10e5d05da5d42eea3e56c3399a37d6c5b3e"
+  dependencies:
+    debug "^2.2.0"
 
 supports-color@^2.0.0:
   version "2.0.0"
@@ -2784,6 +3319,19 @@ tar@^2.0.0:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+tempfile@^1.1.1:
+  version "1.1.1"
+  resolved "https://npm.exaptive.com/t/tempfile/_attachments/tempfile-1.1.1.tgz#5bcc4eaecc4ab2c707d8bc11d99ccc9a2cb287f2"
+  dependencies:
+    os-tmpdir "^1.0.0"
+    uuid "^2.0.1"
+
+term-size@^0.1.0:
+  version "0.1.1"
+  resolved "https://npm.exaptive.com/t/term-size/_attachments/term-size-0.1.1.tgz#87360b96396cab5760963714cda0d0cbeecad9ca"
+  dependencies:
+    execa "^0.4.0"
 
 text-table@~0.2.0:
   version "0.2.0"
@@ -2828,6 +3376,10 @@ time-stamp@^1.0.0:
   version "1.1.0"
   resolved "https://npm.exaptive.com/t/time-stamp/_attachments/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
 
+timed-out@^4.0.0:
+  version "4.0.1"
+  resolved "https://npm.exaptive.com/t/timed-out/_attachments/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
+
 tmp@^0.0.31:
   version "0.0.31"
   resolved "https://npm.exaptive.com/t/tmp/_attachments/tmp-0.0.31.tgz#8f38ab9438e17315e5dbd8b3657e8bfb277ae4a7"
@@ -2843,6 +3395,12 @@ tough-cookie@>=2.3.0, tough-cookie@~2.3.0:
 trim-newlines@^1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/t/trim-newlines/_attachments/trim-newlines-1.0.0.tgz#5887966bb582a4503a41eb524f7d35011815a613"
+
+truncate-utf8-bytes@^1.0.0:
+  version "1.0.2"
+  resolved "https://npm.exaptive.com/t/truncate-utf8-bytes/_attachments/truncate-utf8-bytes-1.0.2.tgz#405923909592d56f78a5818434b0b78489ca5f2b"
+  dependencies:
+    utf8-byte-length "^1.0.1"
 
 tryit@^1.0.1:
   version "1.0.3"
@@ -2880,17 +3438,64 @@ unique-stream@^1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/u/unique-stream/_attachments/unique-stream-1.0.0.tgz#d59a4a75427447d9aa6c91e70263f8d26a4b104b"
 
+unique-string@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/u/unique-string/_attachments/unique-string-1.0.0.tgz#9e1057cca851abb93398f8b33ae187b99caec11a"
+  dependencies:
+    crypto-random-string "^1.0.0"
+
+universalify@^0.1.0:
+  version "0.1.0"
+  resolved "https://npm.exaptive.com/u/universalify/_attachments/universalify-0.1.0.tgz#9eb1c4651debcc670cc94f1a75762332bb967778"
+
+unzip-response@^2.0.1:
+  version "2.0.1"
+  resolved "https://npm.exaptive.com/u/unzip-response/_attachments/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
+
+update-notifier@^2.2.0:
+  version "2.2.0"
+  resolved "https://npm.exaptive.com/u/update-notifier/_attachments/update-notifier-2.2.0.tgz#1b5837cf90c0736d88627732b661c138f86de72f"
+  dependencies:
+    boxen "^1.0.0"
+    chalk "^1.0.0"
+    configstore "^3.0.0"
+    import-lazy "^2.1.0"
+    is-npm "^1.0.0"
+    latest-version "^3.0.0"
+    semver-diff "^2.0.0"
+    xdg-basedir "^3.0.0"
+
+url-parse-lax@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/u/url-parse-lax/_attachments/url-parse-lax-1.0.0.tgz#7af8f303645e9bd79a272e7a14ac68bc0609da73"
+  dependencies:
+    prepend-http "^1.0.1"
+
 user-home@^1.1.1:
   version "1.1.1"
   resolved "https://npm.exaptive.com/u/user-home/_attachments/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
+
+utf8-byte-length@^1.0.1:
+  version "1.0.4"
+  resolved "https://npm.exaptive.com/u/utf8-byte-length/_attachments/utf8-byte-length-1.0.4.tgz#f45f150c4c66eee968186505ab93fcbb8ad6bf61"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://npm.exaptive.com/u/util-deprecate/_attachments/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
 
+uuid-1345@^0.99.6:
+  version "0.99.6"
+  resolved "https://npm.exaptive.com/u/uuid-1345/_attachments/uuid-1345-0.99.6.tgz#b1270ae015a7721c7adec6c46ec169c6098aed40"
+  dependencies:
+    macaddress "^0.2.7"
+
+uuid@^2.0.1:
+  version "2.0.3"
+  resolved "https://npm.exaptive.com/u/uuid/_attachments/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
+
 uuid@^3.0.0:
-  version "3.0.1"
-  resolved "https://npm.exaptive.com/u/uuid/_attachments/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
+  version "3.1.0"
+  resolved "https://npm.exaptive.com/u/uuid/_attachments/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 
 v8flags@^2.0.2:
   version "2.1.1"
@@ -2961,7 +3566,11 @@ which-module@^1.0.0:
   version "1.0.0"
   resolved "https://npm.exaptive.com/w/which-module/_attachments/which-module-1.0.0.tgz#bba63ca861948994ff307736089e3b96026c2a4f"
 
-which@1, which@^1.2.12, which@^1.2.9:
+which-module@^2.0.0:
+  version "2.0.0"
+  resolved "https://npm.exaptive.com/w/which-module/_attachments/which-module-2.0.0.tgz#d9ef07dce77b9902b8a3a8fa4b31c3e3f7e6e87a"
+
+which@1, which@^1.2.12, which@^1.2.8, which@^1.2.9:
   version "1.2.14"
   resolved "https://npm.exaptive.com/w/which/_attachments/which-1.2.14.tgz#9a87c4378f03e827cecaf1acdf56c736c01c14e5"
   dependencies:
@@ -2972,6 +3581,12 @@ wide-align@^1.1.0:
   resolved "https://npm.exaptive.com/w/wide-align/_attachments/wide-align-1.1.2.tgz#571e0f1b0604636ebc0dfc21b0339bbe31341710"
   dependencies:
     string-width "^1.0.2"
+
+widest-line@^1.0.0:
+  version "1.0.0"
+  resolved "https://npm.exaptive.com/w/widest-line/_attachments/widest-line-1.0.0.tgz#0c09c85c2a94683d0d7eaf8ee097d564bf0e105c"
+  dependencies:
+    string-width "^1.0.1"
 
 wordwrap@~0.0.2:
   version "0.0.3"
@@ -2992,11 +3607,31 @@ wrappy@1:
   version "1.0.2"
   resolved "https://npm.exaptive.com/w/wrappy/_attachments/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
 
+write-file-atomic@^2.0.0:
+  version "2.1.0"
+  resolved "https://npm.exaptive.com/w/write-file-atomic/_attachments/write-file-atomic-2.1.0.tgz#1769f4b551eedce419f0505deae2e26763542d37"
+  dependencies:
+    graceful-fs "^4.1.11"
+    imurmurhash "^0.1.4"
+    slide "^1.1.5"
+
 write@^0.2.1:
   version "0.2.1"
   resolved "https://npm.exaptive.com/w/write/_attachments/write-0.2.1.tgz#5fc03828e264cea3fe91455476f7a3c566cb0757"
   dependencies:
     mkdirp "^0.5.1"
+
+xdg-basedir@^3.0.0:
+  version "3.0.0"
+  resolved "https://npm.exaptive.com/x/xdg-basedir/_attachments/xdg-basedir-3.0.0.tgz#496b2cc109eca8dbacfe2dc72b603c17c5870ad4"
+
+xmlbuilder@8.2.2:
+  version "8.2.2"
+  resolved "https://npm.exaptive.com/x/xmlbuilder/_attachments/xmlbuilder-8.2.2.tgz#69248673410b4ba42e1a6136551d2922335aa773"
+
+xmldom@0.1.x:
+  version "0.1.27"
+  resolved "https://npm.exaptive.com/x/xmldom/_attachments/xmldom-0.1.27.tgz#d501f97b3bdb403af8ef9ecc20573187aadac0e9"
 
 "xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.1"
@@ -3022,6 +3657,12 @@ yargs-parser@^5.0.0:
   dependencies:
     camelcase "^3.0.0"
 
+yargs-parser@^7.0.0:
+  version "7.0.0"
+  resolved "https://npm.exaptive.com/y/yargs-parser/_attachments/yargs-parser-7.0.0.tgz#8d0ac42f16ea55debd332caf4c4038b3e3f5dfd9"
+  dependencies:
+    camelcase "^4.1.0"
+
 yargs@^7.0.0:
   version "7.1.0"
   resolved "https://npm.exaptive.com/y/yargs/_attachments/yargs-7.1.0.tgz#6ba318eb16961727f5d284f8ea003e8d6154d0c8"
@@ -3039,6 +3680,24 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+yargs@^8.0.2:
+  version "8.0.2"
+  resolved "https://npm.exaptive.com/y/yargs/_attachments/yargs-8.0.2.tgz#6299a9055b1cefc969ff7e79c1d918dceb22c360"
+  dependencies:
+    camelcase "^4.1.0"
+    cliui "^3.2.0"
+    decamelize "^1.1.1"
+    get-caller-file "^1.0.1"
+    os-locale "^2.0.0"
+    read-pkg-up "^2.0.0"
+    require-directory "^2.1.1"
+    require-main-filename "^1.0.1"
+    set-blocking "^2.0.0"
+    string-width "^2.0.0"
+    which-module "^2.0.0"
+    y18n "^3.2.1"
+    yargs-parser "^7.0.0"
 
 yauzl@2.4.1:
   version "2.4.1"

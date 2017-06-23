@@ -3,7 +3,7 @@ const gulp = require('gulp');
 const stream = require('add-stream');
 const pl = require('gulp-load-plugins')();
 
-gulp.task('dev', ['src'], () => {
+gulp.task('watch', ['src'], () => {
   gulp.watch(['src/**/*.js', 'src/**/*.html'], ['src:js']);
   gulp.watch(['src/**/*.scss'], ['src:css']);
 });
