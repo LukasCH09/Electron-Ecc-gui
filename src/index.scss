@@ -18,7 +18,6 @@ body {
 ui-navbar {
   @extend .row;
   flex: 0 0 2.5rem;
-  border-bottom: 1px solid #EEE;
   -webkit-app-region: drag;
 }
 

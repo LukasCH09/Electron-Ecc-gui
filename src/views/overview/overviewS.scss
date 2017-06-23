@@ -1,43 +1,42 @@
 .overviewV {
   @extend .f1;
-  @extend .row;
+  @extend .col;
   flex-wrap: wrap;
+  background: #EEE;
+  padding: 1rem;
 
-  .heading {
-    font-size: 1.3rem;
-    padding: 0.5rem;
-    margin: 1rem;
-    border-bottom: 1px solid #CCC;
-  }
+  .card {
+    @extend .f1;
+    background: #FFF;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,.3);
+    margin: 0.5rem;
+    padding: 0.5rem 0;
+    padding-bottom: 1rem;
 
-  .section {
-    @extend .row;
-    margin: 0.25rem 1rem;
-    color: #666;
-
-    .value {
-      @extend .f1;
-      text-align: right;
-      color: #111;
+    .header {
+      font-size: 1.3rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      border-bottom: 1px solid #DDD;
     }
-  }
 
-  .balance {
-    @extend .col;
-    flex: 0 0 50%;
+    .section {
+      @extend .row;
+      margin: 0.25rem 1rem;
 
-    .section.total {
-      border-top: 1px solid #EEE;
-      padding-top: 0.5rem;
+      &.total {
+        border-top: 1px solid #EEE;
+        padding-top: 0.5rem;
+      }
+
+      .name {
+        color: #666;
+      }
+
+      .value {
+        @extend .f1;
+        text-align: right;
+      }
     }
-  }
-
-  .value {
-    flex: 0 0 50%;
-  }
-
-  .transactions {
-    flex: 0 0 100%;
-    height: 100%;
   }
 }
