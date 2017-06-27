@@ -6,7 +6,7 @@ const client = new Client({
     network:"testnet",
 
     username: 'yourusername'
-    // password: 'default'
+    // password: 'defaul'
 
 });
 
