@@ -7,7 +7,7 @@
   function Config($locationProvider, $urlRouterProvider, $stateProvider) {
     $locationProvider.hashPrefix('');
     $urlRouterProvider.otherwise('/#');
-
+    console.log("Pooling all state providers")
     $stateProvider
       .state('overview', {
         url: '/',

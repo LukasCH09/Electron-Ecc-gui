@@ -9,8 +9,8 @@
     const client = new bitcoin.Client({
       host: 'localhost',
       port: 19119,
-      user: 'yourusername',
-      pass: 'yourpassword',
+      user: 'sample1',
+      pass: 'sample2',
     });
 
     return client;

@@ -7,6 +7,9 @@ const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
 let mainWindow;
 
+console.log("Loading the main window")
+
+
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 800,
