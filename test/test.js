@@ -5,8 +5,8 @@ const client = new Client({
     port: 19119,
     network:"testnet",
 
-    username: 'yourusername'
-    // password: 'defaul'
+    username: 'yourusername',
+    password: 'yourpassword'
 
 });
 
@@ -14,8 +14,8 @@ const client = new Client({
 const client2 = new BTCPromise.Client({
 	host: 'localhost',
     port: 19119,
-    user: 'sample1',
-    pass: 'sample2',
+    user: 'yourusername',
+    pass: 'yourpassword',
 });
 
 client2.getInfo().then(info => console.log(info.balance));
