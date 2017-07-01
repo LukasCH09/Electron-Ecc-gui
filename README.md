@@ -1,16 +1,47 @@
-# Electron-Ecc-gui
-This is the electron GUI alternative to the traditional in wallet gui for E-Currency Coin
+# ECC-GUI
 
-## Installation
 
-  1. Clone this repo into your development environment.
-  1. Run `yarn` or `npm install` within the cloned directory to install the dependencies.
-  1. Run `yarn build` or `npm run build` to compile the source.
 
-## Running the application
+## Install
 
-  Run `yarn start` or `npm start` within the cloned directory to start the application.
+* **Note: requires a node version >= 6 and an npm version >= 3.**
+* **If you have installation or compilation issues with this project, please see [our debugging guide](https://github.com/chentsulin/electron-react-boilerplate/issues/400)**
 
-## development
 
-  Running `yarn dev` or `npm run dev` will start the application, compile the files under `src/`, as well as watch them for changes and rebuild them automatically. When the dev tools are open in the application `CMD + R` can be used to reload it.
+
+
+**Note**: If you can't use [yarn](https://github.com/yarnpkg/yarn) for some reason, try `npm install`.
+
+## Run
+
+Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a server sends hot updates to the renderer process:
+
+```bash
+$ npm run dev
+```
+
+You Run these two commands __simultaneously__ in different console tabs:
+
+```bash
+$ npm run hot-updates-server
+$ npm run start-hot-renderer
+```
+
+
+
+## Further commands
+
+To run the application without packaging run
+
+```bash
+$ npm run build
+$ npm start
+```
+
+To run End-to-End Test
+
+```bash
+$ npm run build
+$ npm run test-e2e
+```
+
