@@ -71,15 +71,8 @@
       "output": "release"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chentsulin/electron-react-boilerplate.git"
-  },
-  "author": {
-    "name": "C. T. Lin",
-    "email": "chentsulin@gmail.com",
-    "url": "https://github.com/chentsulin"
-  },
+  "repository": "git+https://github.com/chentsulin/electron-react-boilerplate.git",
+  "author": "C. T. Lin <chentsulin@gmail.com> (https://github.com/chentsulin)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
@@ -212,5 +205,6 @@
     "node": ">=6.x",
     "npm": ">=3.x",
     "yarn": ">=0.21.3"
-  }
+  },
+  "main": "index.js"
 }

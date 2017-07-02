@@ -18,7 +18,8 @@ class Menu extends Component {
         send: '',
         receive: '',
         transactions: '',
-        about: ''
+        about: '',
+	wallet: ''
       }
     }
 
@@ -34,6 +35,7 @@ class Menu extends Component {
       aLinks['receive'] = '';
       aLinks['transactions'] = '';
       aLinks['about'] = '';
+      aLinks['wallet'] = '';
       this.setState({ active: aLinks });
     }
 
@@ -44,6 +46,7 @@ class Menu extends Component {
       aLinks['receive'] = '';
       aLinks['transactions'] = '';
       aLinks['about'] = '';
+      aLinks['wallet'] = '';
       this.setState({ active: aLinks });
     }
 
@@ -54,6 +57,7 @@ class Menu extends Component {
       aLinks['receive'] = 'active';
       aLinks['transactions'] = '';
       aLinks['about'] = '';
+      aLinks['wallet'] = '';
       this.setState({ active: aLinks });
     }
 
@@ -64,6 +68,7 @@ class Menu extends Component {
       aLinks['receive'] = '';
       aLinks['transactions'] = 'active';
       aLinks['about'] = '';
+      aLinks['wallet'] = '';
       this.setState({ active: aLinks });
     }
 
@@ -74,8 +79,20 @@ class Menu extends Component {
       aLinks['receive'] = '';
       aLinks['transactions'] = '';
       aLinks['about'] = 'active';
+      aLinks['wallet'] = '';
       this.setState({ active: aLinks });
     }
+    if (pathName == '/wallet') {
+      aLinks = this.state.active;
+      aLinks['default'] = '';
+      aLinks['send'] = '';
+      aLinks['receive'] = '';
+      aLinks['transactions'] = '';
+      aLinks['about'] = 'active';
+      aLinks['wallet'] = 'ative';
+      this.setState({ active: aLinks });
+    }
+
   }
 
   componentWillReceiveProps(props){
@@ -132,6 +149,15 @@ class Menu extends Component {
                    </Link>
 
                 </li>
+	
+                <li className={this.state.active.about}>
+
+                  <Link to="/wallet" className={style.whiteNav}>
+                    Wallet
+                   </Link>
+
+                </li>
+
 
               </ul>
             </div>

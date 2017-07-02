@@ -88,4 +88,14 @@ export default class Wallet {
 
     return result;
   }
+
+  async walletpassphrase(passphrase, time){
+    try{
+      const result = await client.walletPassphrase(passphrase, time);
+      return result;
+    }
+    catch(err){
+      return err;
+    }
+  }
 }
