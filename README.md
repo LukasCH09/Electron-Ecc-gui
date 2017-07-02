@@ -12,6 +12,14 @@
 
 **Note**: If you can't use [yarn](https://github.com/yarnpkg/yarn) for some reason, try `npm install`.
 
+## Yarn Install (Debian/Ubuntu example)
+
+```bash
+$ sudo apt-get install yarn
+$ npm yarn init
+$ npm yarn install
+```
+
 ## Run
 
 Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a server sends hot updates to the renderer process:

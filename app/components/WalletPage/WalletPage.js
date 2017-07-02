@@ -18,10 +18,10 @@ class WalletModel extends Component {
     };
     this._handleUnlockClick = this._handleUnlockClick.bind(this);
     this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
-    this._infoUpdateInterval();
+    this.infoUpdateInterval();
   }
   
-  _infoUpdateInterval() {
+  infoUpdateInterval() {
     const self = this;
     wallet.getblockcount().then((height) =>{
         //console.log(height);
@@ -29,8 +29,8 @@ class WalletModel extends Component {
         wallet.getblockhash(height).then((hash) =>{
           //console.log(hash);
           self.state.currentHash = hash;
-        });
-      });
+        }).catch((error) => { alert(error); });
+      }).catch((error) => {alert(error); });
     setInterval(() => {
       wallet.getblockcount().then((height) =>{
       //console.log(height);
@@ -38,9 +38,9 @@ class WalletModel extends Component {
         wallet.getblockhash(height).then((hash) =>{
           //console.log(hash);
           self.state.currentHash = hash;
-        });
-      });
-    }, 1000);
+        }).catch((error) => {alert(error); });
+      }).catch((error) => {alert(error); });
+    }, 3000);
   }
 
   _handleUnlockClick() {
