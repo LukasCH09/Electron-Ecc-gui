@@ -12,10 +12,35 @@ class WalletModel extends Component {
     super(props);
     this.state = {
       passphrase: '',
-      time: ''
+      time: '',
+      currentHeight: 0,
+      currentHash: 0
     };
     this._handleUnlockClick = this._handleUnlockClick.bind(this);
     this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
+    this._infoUpdateInterval();
+  }
+  
+  _infoUpdateInterval() {
+    const self = this;
+    wallet.getblockcount().then((height) =>{
+        //console.log(height);
+        self.state.currentHeight = height;
+        wallet.getblockhash(height).then((hash) =>{
+          //console.log(hash);
+          self.state.currentHash = hash;
+        });
+      });
+    setInterval(() => {
+      wallet.getblockcount().then((height) =>{
+      //console.log(height);
+        self.state.currentHeight = height;
+        wallet.getblockhash(height).then((hash) =>{
+          //console.log(hash);
+          self.state.currentHash = hash;
+        });
+      });
+    }, 1000);
   }
 
   _handleUnlockClick() {
@@ -37,8 +62,6 @@ class WalletModel extends Component {
       }
       return;
     });
-
-
   }
 
   _handleGenericFormChange(event) {
@@ -76,6 +99,29 @@ class WalletModel extends Component {
                       </span>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-12 col-lg-12 col-xs-12">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <h3>Block Info</h3>
+                <hr />
+                <div className="col-lg-4 col-xs-4 col-md-4">
+                  <span>Best Block Height:</span>
+                </div>
+                <div className="col-lg-8 col-md-8 col-xs-8  text-right">
+                  {this.state.currentHeight}
+                </div>
+
+                <div className="col-lg-4 col-xs-4 col-md-4">
+                  <span>Best Block Hash:</span>
+                </div>
+                <div className="col-lg-8 col-md-8 col-xs-8 text-right">
+                  {this.state.currentHash}
                 </div>
               </div>
             </div>

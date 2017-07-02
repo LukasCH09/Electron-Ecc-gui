@@ -98,4 +98,14 @@ export default class Wallet {
       return err;
     }
   }
+
+  async getblockcount(){
+    const result = await client.getBlockCount();
+    return result;
+  }
+
+  async getblockhash(hash){
+    const result = await client.getBlockHash(hash);
+    return result;
+  }
 }
