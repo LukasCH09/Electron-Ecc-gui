@@ -179,7 +179,7 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
-    "bitcoin-core": "^1.2.0",
+    "bitcoin-core": "git://github.com/Greg-Griffith/bitcoin-core",
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
     "electron-debug": "^1.1.0",

@@ -1433,6 +1433,10 @@ big.js@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.1.3.tgz#4cada2193652eb3ca9ec8e55c9015669c9806978"
 
+bignumber.js@^4.0.0:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-4.0.2.tgz#2d1dc37ee5968867ecea90b6da4d16e68608d21d"
+
 binary-extensions@^1.0.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.8.0.tgz#48ec8d16df4377eae5fa5884682480af4d95c774"
@@ -1448,13 +1452,14 @@ bindings@1.2.x:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/bindings/-/bindings-1.2.1.tgz#14ad6113812d2d37d72e67b4cacb4bb726505f11"
 
-bitcoin-core@^1.2.0:
+"bitcoin-core@git://github.com/Greg-Griffith/bitcoin-core":
   version "1.2.0"
-  resolved "https://registry.yarnpkg.com/bitcoin-core/-/bitcoin-core-1.2.0.tgz#5c4d01e813582ea70f9d891c2e429bf429b5add6"
+  resolved "git://github.com/Greg-Griffith/bitcoin-core#d9510b6020922861b32e3759ffeabbe603edb650"
   dependencies:
     "@uphold/request-logger" "^1.2.0"
     bluebird "^3.4.1"
     debugnyan "^1.0.0"
+    json-bigint "^0.2.0"
     lodash "^4.0.0"
     request "^2.53.0"
     semver "^5.1.0"
@@ -5030,6 +5035,12 @@ jsesc@^1.3.0:
 jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
+
+json-bigint@^0.2.0:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/json-bigint/-/json-bigint-0.2.3.tgz#118d7f6ff1d38659f19f94cf73e64a75a3f988a8"
+  dependencies:
+    bignumber.js "^4.0.0"
 
 json-loader@^0.5.4:
   version "0.5.4"
