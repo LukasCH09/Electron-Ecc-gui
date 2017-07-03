@@ -118,4 +118,8 @@ export default class Wallet {
       return err;
     }
   }
+  async getpeerinfo(){
+    const result = await client.getPeerInfo();
+    return result;
+  }
 }

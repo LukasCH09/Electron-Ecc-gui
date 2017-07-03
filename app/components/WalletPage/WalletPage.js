@@ -14,14 +14,15 @@ class WalletModel extends Component {
       passphrase: '',
       time: '',
       currentHeight: 0,
-      currentHash: 0
+      currentHash: 0,
+      numpeers: 0,
+      networkbestblock: 0
     };
     this.infoUpdate();
   }
   
   infoUpdate() {
     const self = this;
-    setInterval(() => {
     wallet.getblockcount().then((height) =>{
         let newHeight = self.state.currentHeight;
         newHeight = height;
@@ -36,7 +37,24 @@ class WalletModel extends Component {
           });
         }).catch((error) => { alert(error); });
       }).catch((error) => {alert(error); });
-    }, 3000);
+    wallet.getpeerinfo().then((peers) =>{
+      let peercount = self.state.numpeers;
+      peercount = peers.length;
+      self.setState({
+        numpeers : peercount
+      });
+      var i = 0;
+      var bestHeight = 0
+      for(i = 0; i < peers.length; i++)
+      {
+        if(peers[i]['startingheight'] > bestHeight){
+          bestHeight = peers[i]['startingheight'];
+        }
+      }
+      self.setState({
+        networkbestblock : bestHeight
+      });
+    });
   }
 
   _handleLockClick(){
@@ -140,6 +158,18 @@ class WalletModel extends Component {
                 </div>
                 <div className="col-lg-8 col-md-8 col-xs-8 text-right">
                   {this.state.currentHash}
+                </div>
+                <div className="col-lg-4 col-xs-4 col-md-4">
+                  <span>Peer Count:</span>
+                </div>
+                <div className="col-lg-8 col-md-8 col-xs-8 text-right">
+                  {this.state.numpeers}
+                </div>
+                <div className="col-lg-4 col-xs-4 col-md-4">
+                  <span>Network Best Block:</span>
+                </div>
+                <div className="col-lg-8 col-md-8 col-xs-8 text-right">
+                  {this.state.networkbestblock}
                 </div>
               </div>
             </div>
