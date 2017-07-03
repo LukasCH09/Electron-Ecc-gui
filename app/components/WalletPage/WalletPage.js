@@ -16,43 +16,52 @@ class WalletModel extends Component {
       currentHeight: 0,
       currentHash: 0
     };
-    this._handleUnlockClick = this._handleUnlockClick.bind(this);
-    this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
-    this.infoUpdateInterval();
+    this.infoUpdate();
   }
   
-  infoUpdateInterval() {
+  infoUpdate() {
     const self = this;
+    setInterval(() => {
     wallet.getblockcount().then((height) =>{
-        //console.log(height);
-        self.state.currentHeight = height;
+        let newHeight = self.state.currentHeight;
+        newHeight = height;
+        self.setState({
+           currentHeight : newHeight
+        });
         wallet.getblockhash(height).then((hash) =>{
-          //console.log(hash);
-          self.state.currentHash = hash;
+          let newHash = self.state.currentHash;
+          newHash = hash;
+          self.setState({
+            currentHash : newHash
+          });
         }).catch((error) => { alert(error); });
       }).catch((error) => {alert(error); });
-    setInterval(() => {
-      wallet.getblockcount().then((height) =>{
-      //console.log(height);
-        self.state.currentHeight = height;
-        wallet.getblockhash(height).then((hash) =>{
-          //console.log(hash);
-          self.state.currentHash = hash;
-        }).catch((error) => {alert(error); });
-      }).catch((error) => {alert(error); });
     }, 3000);
+  }
+
+  _handleLockClick(){
+    const self = this;
+    wallet.walletlock().then((result)=>{
+      if(result == null){
+        alert("wallet locked");
+      }
+      else{
+	alert(result);
+      }
+      return;
+    });
   }
 
   _handleUnlockClick() {
     const self = this;
     var unlockTime;
-    console.log(self.state.passphrase);
+    //console.log(self.state.passphrase);
     if (self.state.time == '')
       unlockTime = 10000;
     else
       unlockTime = self.state.time;
 
-    console.log(unlockTime);
+    //console.log(unlockTime);
     wallet.walletpassphrase(self.state.passphrase, unlockTime).then((resultUnlocked)=>{
       if(resultUnlocked == null){
         alert("wallet unlocked for " + unlockTime + " seconds");
@@ -100,6 +109,15 @@ class WalletModel extends Component {
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <button className="btn btn-success btn-raised" type="button" onClick={this._handleLockClick}>Lock Wallet </button>
               </div>
             </div>
           </div>

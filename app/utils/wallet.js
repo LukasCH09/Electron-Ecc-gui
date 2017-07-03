@@ -108,4 +108,14 @@ export default class Wallet {
     const result = await client.getBlockHash(hash);
     return result;
   }
+
+  async walletlock(){
+    try {
+      const result = await client.walletLock();
+      return result;
+    }
+    catch(err){
+      return err;
+    }
+  }
 }

@@ -33,7 +33,7 @@ function createTableData() {
 class TransactionTable extends Component {
   constructor(props) {
     super(props);
-    console.log();
+    //console.log();
     this.state = {
       sample:createTableData(),
       transactions: []
@@ -80,8 +80,8 @@ class TransactionTable extends Component {
     return (
       <div>
         <BootstrapTable data={this.state.transactions} selectRow={ this.state.rowSettings } height='200' striped hover>
-          <TableHeaderColumn width='25%' isKey dataField='date'>Date</TableHeaderColumn>
-          <TableHeaderColumn width='25%' dataField='transactions'>Transactions</TableHeaderColumn>
+          <TableHeaderColumn width='25%' isKey dataField='time'>Date</TableHeaderColumn>
+          <TableHeaderColumn width='25%' dataField='txid'>Transactions</TableHeaderColumn>
           <TableHeaderColumn width='25%' dataField='amount'>Amount</TableHeaderColumn>
           <TableHeaderColumn width='25%' dataField='confirmations'>Confirmations</TableHeaderColumn>
         </BootstrapTable>

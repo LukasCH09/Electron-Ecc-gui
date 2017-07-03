@@ -52,14 +52,10 @@ export default class Home extends Component {
       }
     };
 
-    // const wall = new Wallet();
-
     const self = this;
     wallet.balanceCurrentBalance().then((data) =>{
-      console.log(data);
       self.state.currentECC = data;
     }).catch((err) => {
-      console.log(err);
       alert(err.message);
     });
     this.exchangeInterval();
