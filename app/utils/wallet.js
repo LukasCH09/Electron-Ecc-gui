@@ -91,7 +91,8 @@ export default class Wallet {
 
   async walletpassphrase(passphrase, time){
     try{
-      const result = await client.walletPassphrase(passphrase, time);
+      const ntime = parseInt(time)
+      const result = await client.walletPassphrase(passphrase, ntime);
       return result;
     }
     catch(err){
