@@ -19,6 +19,8 @@ class WalletModel extends Component {
       networkbestblock: 0
     };
     this.infoUpdate();
+    this._handleUnlockClick = this._handleUnlockClick.bind(this);
+    this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
   }
   
   infoUpdate() {
