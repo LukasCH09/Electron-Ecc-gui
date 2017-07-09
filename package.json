@@ -44,8 +44,8 @@
     ],
     "publish": [{
       "provider": "github",
-      "owner": "greg-griffith",
-      "repo": "electron-ecc-gui"
+      "owner": "Greg-Griffith",
+      "repo": "Electron-Ecc-gui"
     }],
     "dmg": {
       "contents": [
@@ -69,8 +69,7 @@
     "linux": {
       "target": [
         "deb",
-        "AppImage",
-	"zip"
+        "AppImage"
       ]
     },
     "directories": {
