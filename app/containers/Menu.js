@@ -88,7 +88,7 @@ class Menu extends Component {
       aLinks['send'] = '';
       aLinks['receive'] = '';
       aLinks['transactions'] = '';
-      aLinks['about'] = 'active';
+      aLinks['about'] = '';
       aLinks['wallet'] = 'ative';
       this.setState({ active: aLinks });
     }

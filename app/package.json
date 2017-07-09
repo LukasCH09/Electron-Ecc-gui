@@ -1,7 +1,7 @@
 {
   "name": "ECC-Gui",
   "productName": "Ecc-Wallet",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Electron application providing the graphical user interface for the E-Currency Coin Wallet",
   "main": "./main.prod.js",
   "author": {
