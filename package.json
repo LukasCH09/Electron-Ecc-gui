@@ -42,11 +42,13 @@
       "main.prod.js.map",
       "package.json"
     ],
-    "publish": [{
-      "provider": "github",
-      "owner": "Greg-Griffith",
-      "repo": "Electron-Ecc-gui"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "Greg-Griffith",
+        "repo": "Electron-Ecc-gui"
+      }
+    ],
     "dmg": {
       "contents": [
         {
@@ -130,7 +132,7 @@
     "css-loader": "^0.28.3",
     "devtron": "^1.4.0",
     "electron": "^1.6.10",
-    "electron-builder": "^18.0.1",
+    "electron-builder": "^19.13.0",
     "electron-devtools-installer": "^2.2.0",
     "enzyme": "^2.8.2",
     "enzyme-to-json": "^1.5.1",
@@ -181,7 +183,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
     "electron-debug": "^1.1.0",
-    "electron-updater": "^2.4.4",
+    "electron-updater": "^2.4.5",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "history": "^4.6.1",

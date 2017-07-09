@@ -89,7 +89,7 @@ class Menu extends Component {
       aLinks['receive'] = '';
       aLinks['transactions'] = '';
       aLinks['about'] = '';
-      aLinks['wallet'] = 'ative';
+      aLinks['wallet'] = 'active';
       this.setState({ active: aLinks });
     }
 
@@ -128,7 +128,7 @@ class Menu extends Component {
                 <li className={this.state.active.receive}>
 
                   <Link to="/receive" className={style.whiteNav}>
-                    Recieve
+                    Receive
 
                    </Link>
 
