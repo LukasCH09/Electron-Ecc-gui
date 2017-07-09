@@ -1,8 +1,8 @@
 {
-  "name": "electron-react-boilerplate",
-  "productName": "ElectronReact",
-  "version": "0.12.0",
-  "description": "Electron application boilerplate based on React, React Router, Webpack, React Hot Loader for rapid application development",
+  "name": "Ecc-Gui",
+  "productName": "Ecc-Wallet",
+  "version": "0.1.0",
+  "description": "Electron application providing the graphical user interface for the E-Currency Coin Wallet",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
     "test-all": "npm run lint && npm run flow && npm run test && npm run build && npm run test-e2e",
@@ -24,7 +24,7 @@
     "start-hot-renderer": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./app/main.dev",
     "postinstall": "concurrently \"npm run flow-typed\" \"npm run build\" \"npm run build-dll\" \"install-app-deps\" \"node node_modules/fbjs-scripts/node/check-dev-engines.js package.json\"",
     "dev": "cross-env START_HOT=1 npm run hot-updates-server",
-    "package": "npm run build && build --publish never",
+    "package": "npm run build && build --publish always",
     "package-win": "npm run build && build --win --x64",
     "package-win-32": "npm run build && build --win --ia32",
     "package-linux": "npm run build && build --linux",
@@ -32,8 +32,8 @@
   },
   "browserslist": "electron 1.6",
   "build": {
-    "productName": "ElectronReact",
-    "appId": "org.develar.ElectronReact",
+    "productName": "E-CurrencyCoin",
+    "appId": "org.develar.ECCoin",
     "files": [
       "dist/",
       "node_modules/",
@@ -42,6 +42,11 @@
       "main.prod.js.map",
       "package.json"
     ],
+    "publish": [{
+      "provider": "github",
+      "owner": "greg-griffith",
+      "repo": "electron-ecc-gui"
+    }],
     "dmg": {
       "contents": [
         {
@@ -69,27 +74,19 @@
     },
     "directories": {
       "buildResources": "resources",
-      "output": "release"
+      "output": "build/release"
     }
   },
-  "repository": "git+https://github.com/chentsulin/electron-react-boilerplate.git",
-  "author": "C. T. Lin <chentsulin@gmail.com> (https://github.com/chentsulin)",
+  "repository": "git+https://github.com/greg-griffith/electron-ecc-gui.git",
+  "author": "Greg Griffith <griffith@cryptounited.com> (https://github.com/greg-griffith)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chentsulin/electron-react-boilerplate/issues"
+    "url": "https://github.com/greg-griffith/electron-ecc-gui/issues"
   },
   "keywords": [
-    "electron",
-    "boilerplate",
-    "react",
-    "redux",
-    "flow",
-    "sass",
-    "webpack",
-    "hot",
-    "reload"
+    "electron"
   ],
-  "homepage": "https://github.com/chentsulin/electron-react-boilerplate#readme",
+  "homepage": "https://github.com/greg-griffith/electron-ecc-gui",
   "jest": {
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/fileMock.js",
@@ -184,6 +181,7 @@
     "bootstrap": "^3.3.7",
     "bootstrap-material-design": "^0.5.10",
     "electron-debug": "^1.1.0",
+    "electron-updater": "^2.4.4",
     "faker": "^4.1.0",
     "font-awesome": "^4.7.0",
     "history": "^4.6.1",

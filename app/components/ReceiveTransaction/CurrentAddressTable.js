@@ -78,9 +78,9 @@ class CurrentAddresses extends Component {
       <div>
         <BootstrapTable data={this.state.existingAddresses} selectRow={ this.state.rowSettings } height='200' striped hover>
           <TableHeaderColumn width='25%' isKey dataField='account'>Account</TableHeaderColumn>
-          <TableHeaderColumn width='25%' dataField='address'>Address</TableHeaderColumn>
+          <TableHeaderColumn width='40%' dataField='address'>Address</TableHeaderColumn>
           <TableHeaderColumn width='25%' dataField='amount'>Amount</TableHeaderColumn>
-          <TableHeaderColumn width='25%' dataField='confirmations'>Confirmations</TableHeaderColumn>
+          <TableHeaderColumn width='15%' dataField='confirmations'>Confirmations</TableHeaderColumn>
         </BootstrapTable>
       </div>
     );
