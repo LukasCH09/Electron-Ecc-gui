@@ -5,9 +5,13 @@ import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
 
-import autoUpdater from 'electron-updater';
+let remote = require('electron').remote
+const app = remote.app
+const autoUpdater = remote.autoUpdater
 
 console.log(autoUpdater);
+
+
 
 //-------------------------------------------------------------------
 // Auto updates
@@ -30,11 +34,11 @@ console.log(autoUpdater);
 // })
 // autoUpdater.on('download-progress', (progressObj) => {
 // })
-autoUpdater.on('update-downloaded', (info) => {
-  setTimeout(function() {
-    autoUpdater.quitAndInstall();
-  }, 2000)
-})
+// autoUpdater.on('update-downloaded', (info) => {
+//   setTimeout(function () {
+//     autoUpdater.quitAndInstall();
+//   }, 2000);
+// })
 
 app.on('ready', function()  {
   autoUpdater.checkForUpdates();
