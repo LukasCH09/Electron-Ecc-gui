@@ -80,9 +80,9 @@ class TransactionTable extends Component {
     return (
       <div>
         <BootstrapTable data={this.state.transactions} selectRow={ this.state.rowSettings } height='200' striped hover>
-          <TableHeaderColumn width='13%' isKey={ true } dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } dataField='time'>Date</TableHeaderColumn>
-          <TableHeaderColumn width='62%' dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } dataField='txid'>Transactions</TableHeaderColumn>
-          <TableHeaderColumn width='12%' dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } dataField='amount'>Amount</TableHeaderColumn>
+          <TableHeaderColumn width='13%' isKey={ true } dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } } dataField='time'>Date</TableHeaderColumn>
+          <TableHeaderColumn width='62%' dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } } dataField='txid'>Transactions</TableHeaderColumn>
+          <TableHeaderColumn width='12%' dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } } dataField='amount'>Amount</TableHeaderColumn>
           <TableHeaderColumn width='13%' dataSort={ true } dataField='confirmations'>Confirmations</TableHeaderColumn>
         </BootstrapTable>
       </div>
