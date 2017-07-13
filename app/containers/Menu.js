@@ -150,7 +150,7 @@ class Menu extends Component {
 
                 </li>
 	
-                <li className={this.state.active.about}>
+                <li className={this.state.active.wallet}>
 
                   <Link to="/wallet" className={style.whiteNav}>
                     Wallet
