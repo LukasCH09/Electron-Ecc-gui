@@ -80,10 +80,10 @@ class TransactionTable extends Component {
     return (
       <div>
         <BootstrapTable data={this.state.transactions} selectRow={ this.state.rowSettings } height='200' striped hover>
-          <TableHeaderColumn width='13%' isKey dataField='time'>Date</TableHeaderColumn>
-          <TableHeaderColumn width='62%' dataField='txid'>Transactions</TableHeaderColumn>
-          <TableHeaderColumn width='12%' dataField='amount'>Amount</TableHeaderColumn>
-          <TableHeaderColumn width='13%' dataField='confirmations'>Confirmations</TableHeaderColumn>
+          <TableHeaderColumn width='13%' isKey={ true } dataSort={ true } dataField='time'>Date</TableHeaderColumn>
+          <TableHeaderColumn width='62%' dataSort={ true } dataField='txid'>Transactions</TableHeaderColumn>
+          <TableHeaderColumn width='12%' dataSort={ true } dataField='amount'>Amount</TableHeaderColumn>
+          <TableHeaderColumn width='13%' dataSort={ true } dataField='confirmations'>Confirmations</TableHeaderColumn>
         </BootstrapTable>
       </div>
     );
