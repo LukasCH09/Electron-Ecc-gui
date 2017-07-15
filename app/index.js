@@ -4,45 +4,33 @@ import { AppContainer } from 'react-hot-loader';
 import Root from './containers/Root';
 import { configureStore, history } from './store/configureStore';
 import './app.global.css';
+const GhReleases = require('./updater.js')
+var pjson = require('./package.json');
 
-let remote = require('electron').remote
-const app = remote.app
-const autoUpdater = remote.autoUpdater
+let options = {
+  repo: 'jenslind/electron-gh-releases',
+  currentVersion: pjson.version
+}
 
-console.log(autoUpdater);
+const updater = new GhReleases(options)
 
+// Check for updates
+// `status` returns true if there is a new update available
+updater.check((err, status) => {
+  if (!err && status) {
+    // Download the update
+    updater.download()
+  }
+})
 
+// When an update has been downloaded
+updater.on('update-downloaded', (info) => {
+  // Restart the app and install the update
+  updater.install()
+})
 
-//-------------------------------------------------------------------
-// Auto updates
-//
-// For details about these events, see the Wiki:
-// https://github.com/electron-userland/electron-builder/wiki/Auto-Update#events
-//
-// The app doesn't need to listen to any events except `update-downloaded`
-//
-// Uncomment any of the below events to listen for them.  Also,
-// look in the previous section to see them being used.
-//-------------------------------------------------------------------
-// autoUpdater.on('checking-for-update', () => {
-// })
-// autoUpdater.on('update-available', (info) => {
-// })
-// autoUpdater.on('update-not-available', (info) => {
-// })
-// autoUpdater.on('error', (err) => {
-// })
-// autoUpdater.on('download-progress', (progressObj) => {
-// })
-// autoUpdater.on('update-downloaded', (info) => {
-//   setTimeout(function () {
-//     autoUpdater.quitAndInstall();
-//   }, 2000);
-// })
-
-app.on('ready', function()  {
-  autoUpdater.checkForUpdates();
-});
+// Access electrons autoUpdater
+updater.autoUpdater
 
 
 
