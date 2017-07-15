@@ -8,7 +8,7 @@ const GhReleases = require('./updater.js')
 var pjson = require('./package.json');
 
 let options = {
-  repo: 'jenslind/electron-gh-releases',
+  repo: 'greg-griffith/electron-ecc-gui',
   currentVersion: pjson.version
 }
 
