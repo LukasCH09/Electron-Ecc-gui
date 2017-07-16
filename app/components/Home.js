@@ -4,6 +4,7 @@ import Wallet  from '../utils/wallet';
 import {exchanges, Interval} from '../utils/exchange';
 import {traduction} from '../lang/lang';
 
+var log = require('../utils/log');
 var event = require('../utils/eventhandler');
 
 const lang = traduction();
@@ -73,7 +74,7 @@ export default class Home extends Component {
       }
       event.emit("hide");
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       if(self.state.requesting1 && err.message != "Method not found"){
         event.emit("show",lang.notificationDaemonDownOrSyncing);
         self.setState({locked: true, currentECC: 0, unconfirmedECC: 0, stakeECC: 0, stakeEarnedEcc: 0, requesting1:false});
@@ -91,7 +92,7 @@ export default class Home extends Component {
       self.setState({currentExchangePrice: currentExchangePrice});
       event.emit("hide");
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       event.emit("show",lang.notificationExchangeInfo);
     });
 
@@ -104,7 +105,7 @@ export default class Home extends Component {
           event.emit("hide");
         }
       }).catch((err) => {
-        console.log(err);
+        log.error(err.message);
         event.emit("show",lang.notificationExchangeInfo);
       });
     }, 5000);
@@ -206,7 +207,7 @@ export default class Home extends Component {
             self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
           }
         }).catch((err) => {
-          console.log(err);
+          log.error(err.message);
           self.setState({passPhraseError: lang.walletUnlockError});
         });
       }
@@ -218,7 +219,7 @@ export default class Home extends Component {
           event.emit("animate",lang.walletLockedError);
         }
       }).catch((err) => {
-        console.log(err);
+        log.error(err.message);
         event.emit("animate",lang.walletLockedError);
       });
       self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});

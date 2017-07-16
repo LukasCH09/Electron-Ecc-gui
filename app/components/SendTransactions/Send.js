@@ -6,6 +6,7 @@ import {traduction} from '../../lang/lang';
 import ReactLoading from 'react-loading';
 
 var event = require('../../utils/eventhandler');
+var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -60,7 +61,7 @@ class Send extends Component {
           }
         }
       }).catch((err) => {
-        console.log(err);
+        log.error(err.message);
         event.emit("animate", lang.addressValidadeError);
       });
     } else {
@@ -116,7 +117,7 @@ class Send extends Component {
       self.setState({utl: utl});
       self.wlock();
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       self.setState({dialog: false, eccAddress: "", amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -132,12 +133,12 @@ class Send extends Component {
       if (data == null) {
         self.wunlock(true, 5);
       } else {
-        console.log(data);
+        log.debug(data);
         self.setState({dialog: false, eccAddress: "",amount: ""});
         event.emit("animate", lang.moneySendError);
       }
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       self.setState({dialog: false, eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -163,12 +164,12 @@ class Send extends Component {
         self.setState({dialog: false,eccAddress: "",amount: ""});
         event.emit("animate", lang.moneySent);
       } else if (!keepGoing) { // error
-        console.log(data);
+        log.debug(data);
         event.emit("animate", lang.moneySendError);
         self.setState({dialog: false,eccAddress: "",amount: ""});
       }
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       if (!keepGoing){
         self.setState({dialog: false,eccAddress: "",amount: ""});
         event.emit("animate", lang.moneySendError);
@@ -189,7 +190,7 @@ class Send extends Component {
         event.emit("animate", lang.moneySent);
       }
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       self.setState({dialog: false,eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });

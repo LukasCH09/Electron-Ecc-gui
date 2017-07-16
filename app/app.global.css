@@ -20,7 +20,7 @@ html{
 
 *:focus {
     outline: none !important;
-    border-color: inherit !important;
+    border-color: inherit;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }

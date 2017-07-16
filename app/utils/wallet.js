@@ -23,6 +23,17 @@ export default class Wallet {
     });
   }
 
+  command(batch){
+    return new Promise((resolve, reject) => {
+      client.command(batch).then((responses) => {
+        resolve(responses);
+        return '';
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
+
   getInfo() {
     return new Promise((resolve, reject) => {
       client.getInfo().then((data) => {
@@ -42,7 +53,7 @@ export default class Wallet {
       }
       client.listTransactions(a, count, skip).then((transactions) => {
         resolve(transactions);
-        return transactions;
+        return '';
       }).catch((err) => {
         reject(err);
       });
@@ -53,7 +64,7 @@ export default class Wallet {
     return new Promise((resolve, reject) => {
       client.listReceivedByAddress(0, true).then((addresses) => {
         resolve(addresses);
-        return addresses;
+        return '';
       }).catch((err) => {
         reject(err);
       });

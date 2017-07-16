@@ -178,4 +178,13 @@ module.exports = {
 	orphaned: "Orphaned",
 	overviewTotal: "Total",
 	transactionsLoadPrevious: "Previous",
+	settingsDebugTestNet: "On test net",
+	console: "Console",
+	console1: "Welcome to the ECC RPC console.",
+    console2: "Use up and down arrows to navigate history, and",
+    console3: "Ctrl-L",
+    console4: "to clear screen.",
+    console5: "Type",
+    console6: "help",
+    console7: "for an overview of available commands.",
 }

@@ -130,36 +130,35 @@ class SettingsNet extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="row tab_wrapp">
         <div className="col-md-12 tab_body">
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="row">
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="map_upnp" checked={this.state.map_upnp} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworkMapPort}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="allow_connections" checked={this.state.allow_connections} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworkAllowConnections}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="socks5_proxy" checked={this.state.socks5_proxy} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworkConnectProxy}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="proxy_ip" checked={this.state.proxy_ip} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworkProxyIp}</span>
                   <input className={"text_fields " + this.state.disableInputs} type="text" name="ip" placeholder="127.0.0.1" value={this.state.ip} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworProxyPort}</span>
                   <input className={"text_fields " + this.state.disableInputs} type="text" name="port" placeholder="19119" value={this.state.port} onChange={this.handleInputChange.bind(this)}/>
-                  <div className="col-md-12 rule">
+                  <div className="col-md-12 rule disable">
                     <span className="desc">{lang.settingsNetworReachPeersVia}</span>
-                    <span className="desc">IPv4</span>
+                    <span className="desc" style={{marginRight:"10px"}}>IPv4</span>
                     <input className={"radios " + this.state.disableInputs} type="radio" name="ipv4" checked={this.state.ipv4} onChange={this.handleInputChange.bind(this)}/>
-                    <span className="desc">IPv6</span>
+                    <span className="desc" style={{marginRight:"10px"}}>IPv6</span>
                     <input className={"radios " + this.state.disableInputs} type="radio" name="ipv6" checked={this.state.ipv6} onChange={this.handleInputChange.bind(this)}/>
                   </div>
                 </div>

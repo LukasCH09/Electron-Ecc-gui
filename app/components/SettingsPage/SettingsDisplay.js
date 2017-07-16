@@ -115,7 +115,6 @@ class SettingsDisplay extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className="row tab_wrapp">
         <div className="col-md-12 tab_body">

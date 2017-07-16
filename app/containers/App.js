@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Sidebar from './Sidebar';
 var event = require('../utils/eventhandler');
+var log = require('../utils/log');
 
 var lasttype = "hide";
 
@@ -39,7 +40,7 @@ event.on("animate", function(message) {
 });
 
 process.on('uncaughtException', function (error) {
-    console.log(error);
+    log.error(error.message);
 });
 
 export default class App extends Component {

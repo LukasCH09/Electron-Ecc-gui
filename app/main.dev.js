@@ -13,6 +13,7 @@
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
+var log = require('electron-log');
 
 function sendStatusToWindow(text) {
   console.log(text);
@@ -94,6 +95,9 @@ app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
     await installExtensions();
   }
+
+  global.log = log;
+
 
   mainWindow = new BrowserWindow({
     show: false,

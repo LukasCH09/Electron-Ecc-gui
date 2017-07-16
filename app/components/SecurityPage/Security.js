@@ -3,12 +3,13 @@ import Wallet  from '../../utils/wallet';
 import $ from 'jquery';
 import {traduction} from '../../lang/lang';
 var event = require('../../utils/eventhandler');
+var log = require('../../utils/log');
 import fs from 'fs';
 import os from 'os';
 
 var remote = require('electron').remote;
 var dialog = remote.require('electron').dialog;
-var app = remote.app
+var app = remote.app;
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -38,7 +39,7 @@ class Security extends Component {
         self.setState({step:3})
       }
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       event.emit("animate",lang.notificationDaemonDownOrSyncing);
     });
   }
@@ -111,7 +112,7 @@ class Security extends Component {
             event.emit("animate",lang.walletEncrypted);
           }
         }).catch((err) => {
-          console.log(err);
+          log.error(err.message);
           event.emit("animate",err.message);
         });
       }
@@ -142,14 +143,14 @@ class Security extends Component {
 
             fs.readFile(walletpath, (err, data) => {
                 if(err){
-                    console.log(err);
+                    log.error(err.message);
                     event.emit("animate",lang.readingFileError);
                     return;
                 }
 
                 fs.writeFile(folderPaths+"/walletBackup.dat", data, (err) => {
                     if(err){
-                        console.log(err);
+                        log.error(err.message);
                         event.emit("animate",lang.writtingFileError);
                     }
                     event.emit("animate",lang.backupOk);

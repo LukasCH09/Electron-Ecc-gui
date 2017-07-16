@@ -6,6 +6,7 @@ import $ from 'jquery';
 import {traduction} from '../../lang/lang';
 const settings = require('electron-settings');
 var event = require('../../utils/eventhandler');
+var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -54,7 +55,7 @@ class TransactionTable extends Component {
           event.emit("hide");
         }
       }).catch((err) => {
-        console.log(err);
+        log.error(err.message);
         if(this.state.requesting){
           event.emit("show",lang.notificationDaemonDownOrSyncing);
           self.setState({requesting: false });
@@ -120,11 +121,10 @@ class TransactionTable extends Component {
         self.setState({requesting:false, canAutoUpdate:false});
       }
     }).catch((err) => {
-      console.log(err);
+      log.error(err.message);
       if(this.state.requesting){
         event.emit("animate",lang.notificationDaemonDownOrSyncing);
         self.setState({requesting: false });
-        console.log("getTransactions "+err.message);
       }
     });  
   }
@@ -149,11 +149,10 @@ class TransactionTable extends Component {
           }
         }
       }).catch((err) => {
-        console.log(err);
+        log.error(err.message);
         if(this.state.requesting){
           event.emit("animate",lang.notificationDaemonDownOrSyncing);
           self.setState({requesting: false });
-          console.log("getTransactions "+err.message);
         }
       });
     } else{
