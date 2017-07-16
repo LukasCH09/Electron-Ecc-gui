@@ -21,7 +21,7 @@ class Security extends Component {
       step: 1,
       pass1: '',
       pass2: '',
-      passStrengh: '',
+      passStrengh: lang.backup1PasswordWeak,
       passEqual: '',
     }
   }
