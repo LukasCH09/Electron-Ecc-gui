@@ -1,8 +1,7 @@
 import Client from 'bitcoin-core';
 const client = new Client({
+  host: "127.0.0.1",
   port: 19119,
-  // network:"testnet",
-
   username: 'yourusername',
   password: 'yourpassword'
 
@@ -11,24 +10,12 @@ const client = new Client({
 
 export default class Wallet {
 
-  constructor() {
+  constructor() {}
 
-  }
-
-  /**
-   * @param {Object} accountObject - the current account we'll use with other files
-   */
-  setCurrentAccount(accountObject) {
-    return accountObject;
-  }
-
-  /**
-   * Allow the user to get balance
-   */
-  balanceCurrentBalance() {
+  help() {
     return new Promise((resolve, reject) => {
-      client.getBalance().then((balance) => {
-        resolve(balance);
+      client.help().then((data) => {
+        resolve(data);
         return '';
       }).catch((err) => {
         reject(err);
@@ -36,40 +23,49 @@ export default class Wallet {
     });
   }
 
-  pendingBalance() {
+  getInfo() {
     return new Promise((resolve, reject) => {
-      client.getBalance().then((balance) => {
-        resolve(balance);
-        return balance;
+      client.getInfo().then((data) => {
+        resolve(data);
+        return '';
       }).catch((err) => {
         reject(err);
       });
     });
   }
 
-  async getTransactions(account) {
-    let transactions;
-    if (account == null) {
-      transactions = await client.listTransactions();
-    } else {
-      transactions = await client.listTransactions(account);
-    }
-    return transactions;
+  getTransactions(account, count, skip) {
+    return new Promise((resolve, reject) => {
+      var a = account;
+      if (a == null) {
+        a = "*";
+      }
+      client.listTransactions(a, count, skip).then((transactions) => {
+        resolve(transactions);
+        return transactions;
+      }).catch((err) => {
+        reject(err);
+      });
+    });
   }
 
-  async listAllAccounts() {
-    const addresses = await client.listReceivedByAddress(0, true);
-    return addresses;
+  listAllAccounts() {
+    return new Promise((resolve, reject) => {
+      client.listReceivedByAddress(0, true).then((addresses) => {
+        resolve(addresses);
+        return addresses;
+      }).catch((err) => {
+        reject(err);
+      });
+    });
   }
 
   async createNewAddress(nameOpt) {
     let name = nameOpt || null;
     let newAddress;
-    if(name===null){
-      // Create address without name
+    if (name === null) {
       newAddress = await client.getNewAddress();
-    }else{
-      // Create the new address with the name
+    } else {
       newAddress = await client.getNewAddress(name);
     }
     return newAddress;
@@ -79,48 +75,53 @@ export default class Wallet {
     const amountNum = parseFloat(amount);
     const sendAddressStr = '' + sendAddress;
     await client.sendToAddress(sendAddressStr, amountNum);
-
-
   }
 
   async validate(address) {
     const result = await client.validateAddress(address);
-
     return result;
   }
 
-  async walletpassphrase(passphrase, time){
-    try{
-      const ntime = parseInt(time)
-      const result = await client.walletPassphrase(passphrase, ntime);
-      return result;
-    }
-    catch(err){
-      return err;
-    }
-  }
-
-  async getblockcount(){
+  async getblockcount() {
     const result = await client.getBlockCount();
     return result;
   }
 
-  async getblockhash(hash){
+  async getblockhash(hash) {
     const result = await client.getBlockHash(hash);
     return result;
   }
 
-  async walletlock(){
+  async getpeerinfo() {
+    const result = await client.getPeerInfo();
+    return result;
+  }
+
+  async encryptWallet(passphrase) {
     try {
-      const result = await client.walletLock();
+      const result = await client.encryptWallet(passphrase);
       return result;
-    }
-    catch(err){
+    } catch (err) {
       return err;
     }
   }
-  async getpeerinfo(){
-    const result = await client.getPeerInfo();
-    return result;
+
+  async walletlock() {
+    try {
+      const result = await client.walletLock();
+      return result;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async walletpassphrase(passphrase, time) {
+    try {
+      const ntime = parseInt(time)
+      const result = await client.walletPassphrase(passphrase, ntime);
+      return result;
+    } catch (err) {
+      return err;
+    }
   }
 }

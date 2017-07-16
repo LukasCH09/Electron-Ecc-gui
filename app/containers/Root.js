@@ -4,9 +4,9 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import Routes from '../routes';
 require('jquery');
+import {traduction} from '../lang/lang';
+const lang = traduction();
 
-// import "bootstrap-material-design/dist/css/bootstrap-material-design.css";
-// import "bootstrap-material-design/dist/css/ripples.css";
 type RootType = {
   store: {},
   history: {}
@@ -16,7 +16,7 @@ export default function Root({ store, history }: RootType) {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Routes />
+        <Routes route={history}/>
       </ConnectedRouter>
     </Provider>
   );

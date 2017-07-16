@@ -1,84 +1,148 @@
 import React, { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-
 import low from '../../utils/low';
 import Wallet from '../../utils/wallet';
+import {traduction} from '../../lang/lang';
+var event = require('../../utils/eventhandler');
 
+const lang = traduction();
 const wallet = new Wallet();
 
 class AddressBook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      friendList: low.get('friends').value(),
-      isAdding: false,
-      buttonSign: 'Add Address'
+      friendList: [],
+      update: false
     };
-
-
     this._handleInput = this._handleInput.bind(this);
     this._handleToggleAddAddress = this._handleToggleAddAddress.bind(this);
-
-
+    this.rowClicked = this.rowClicked.bind(this);
   }
 
+  componentDidMount(){
+    var flist = low.get('friends').value();
+    this.setState({friendList: flist});
+  }
 
-  _init_() {
-    // Initialize friendlist
-    const friendListArray =  low.get('friends').value();
-    console.log(friendListArray);
-    this.setState({friendList: friendListArray });
+  componentDidUpdate(){
+    if(this.state.update){
+      var flist = low.get('friends').value();
+      this.setState({friendList: flist, update: false});
+    }
+  }
+
+  componentWillUnmount(){
+    this.state.requesting = false;
   }
 
   _handleInput(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
-
     this.setState({ [name]: value });
   }
 
-  async _handleToggleAddAddress() {
-    if (this.state.isAdding === false){
-      this.setState({ isAdding: true, buttonSign: 'Complete Add' });
-    } else {
-      let friendArray = this.state.friendList;
-      // Need to validate first. Very possible to use async
-      const isAddressValid = await wallet.validate(this.state.address);
-      if (isAddressValid.isvalid === false) {
-        // Put a toastr function here
+  _handleToggleAddAddress() {
+    var self = this;
+
+    self.setState({requesting: true});
+
+    wallet.validate(this.state.address).then((isAddressValid) => {
+        if (isAddressValid.isvalid) {
+        var tt = low.get('friends').find({ address: this.state.address }).value();
+        if(tt != null){
+          event.emit("animate",lang.addressExists);
+        }else{
+          var name = this.state.name;
+          var address = this.state.address;
+
+          if(address != ''){
+            low.get('friends').push({ name: name, address: address }).write();
+            self.setState({address:'', name:'', update: true});
+          }
+          
+        }
       } else {
-        low.get('friends').push({ label: this.state.label, address: this.state.address }).write();
-        friendArray.push({ label: this.state.label, address: this.state.address });
-        this.setState({ isAdding: false, buttonSign: 'Add Address', friendList: friendArray });
+        event.emit("animate","Error: Invalid address");
       }
+      self.setState({requesting: false});
+    }).catch((err) => {
+      console.log(err);
+      if(this.state.requesting){
+        self.setState({requesting: false});
+        event.emit("animate",lang.addressValidadeError);
+      }
+    });  
+  }
 
-
+  rowClicked(friend,opt){
+    var self = this;
+    if(opt == "add"){
+      event.emit("animate",lang.notificationAddressCopiedBelow);
+      this.props.friendClicked(friend);
+    }
+    else{
+      let friendArray = this.state.friendList;
+      low.get('friends').remove({ address: friend.address }).write();
+      this.setState({friendList: friendArray });
+      event.emit("animate",lang.notificationAddressRemoved);
     }
   }
 
+
   render() {
+    var self = this;
+    var data = [];
+    if(this.state.friendList != null){
+      data = this.state.friendList;
+    }
     return (
       <div>
-        <div className="input-group">
-          <span className="input-group-btn">
-            <button className="btn btn-success btn-raised" type="button" onClick={this._handleToggleAddAddress}> {this.state.buttonSign} </button>
-          </span>
-          {this.state.isAdding &&
+        <div>
+          <div className="input-group">
+            <span className="input-group-btn" style={{verticalAlign: "middle"}}>
+              <button className="greenBtn btn btn-success btn-raised" type="button" onClick={this._handleToggleAddAddress}>{lang.sendAddAddress}</button>
+            </span>
             <div>
-              <input className="form-control" onChange={this._handleInput} name='label' placeholder="Label" type="text"/>
-              <input className="form-control" onChange={this._handleInput} name='address' placeholder="ECC Address" type="text"/>
+              <input className="inpuText form-control" onChange={this._handleInput} value={this.state.name} name='name' placeholder={lang.sendNameOptional} type="text"/>
+              <input className="inpuText form-control" onChange={this._handleInput} value={this.state.address} name='address' placeholder={lang.address} type="text"/>
             </div>
-
-          }
-
+          </div>
         </div>
-
-        <BootstrapTable data={this.state.friendList}  height='400' striped hover>
-          <TableHeaderColumn width='50%' isKey dataField='label'>Label</TableHeaderColumn>
-          <TableHeaderColumn width='50%' dataField='address'>Address</TableHeaderColumn>
-
-        </BootstrapTable>
+        <div className="friends_table">
+          <div className="row" style={{marginLeft:"0",marginRight:"0"}}>
+            <div className="col-md-5 trans_col">
+              <p className="header">{lang.sendName}</p>
+            </div>
+            <div className="col-md-6 trans_col">
+              <p className="header">{lang.address}</p>
+            </div>
+            <div className="col-md-1 trans_col">
+              
+            </div>
+          </div>
+          {data.map(function(friend, index){
+            var cr = "";
+            if(index % 2 == 0){
+              cr = "stripped";
+            }
+            return(
+              <div key={"friend_"+index}>
+                <div className={"row trans_row" + " " + cr}>
+                  <div className="col-md-5 trans_col" onClick={self.rowClicked.bind(this,friend,"add")}>
+                    <p style={{margin:"0px"}}><span className="desc1">{friend.name}</span></p>
+                  </div>
+                  <div className="col-md-6 trans_col" onClick={self.rowClicked.bind(this,friend,"add")}>
+                    <p style={{margin:"0px"}}><span className="desc1">{friend.address}</span></p>
+                  </div>
+                  <div className="col-md-1 trans_col">
+                    <p style={{margin:"0px"}}><span><i onClick={self.rowClicked.bind(this,friend,"remove")} className="delete_icon fa fa-trash-o" aria-hidden="true"></i></span></p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

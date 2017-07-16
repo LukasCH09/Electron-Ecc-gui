@@ -97,8 +97,10 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 1280,
+    height: 670,
+    minWidth: 1200,
+    minHeight: 620
   });
 
   mainWindow.loadURL(`file://${__dirname}/version.html#v${app.getVersion()}`);

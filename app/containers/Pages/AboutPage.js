@@ -1,16 +1,11 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import About from '../../components/AboutPage/About';
-import * as CounterActions from '../../actions/counter';
+import React, { Component } from 'react';
 
-function mapStateToProps(state) {
-  return {
-    counter: state.copy
-  };
+export default class AboutPage extends Component {
+  render() {
+    return (
+      <About />
+    );
+  }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(About);

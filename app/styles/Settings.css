@@ -1,0 +1,120 @@
+.settings{
+	padding-top: 15px;
+}
+
+.settings_tab{
+	text-align: center;
+	background-color: #124572;
+	padding: 5px;
+	cursor: pointer;
+	border-left: 1px solid #efefef;
+}
+
+.settings_tab_active{
+	border-bottom: solid 5px #a1be5a;
+}
+
+.settings_tab p{
+	color: #fff;
+	margin: 0px;
+	font-size: 1.1em;
+}
+
+.tab_wrapp{
+	margin-top: 15px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.tab_body{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.settings .tab_body .panel{
+	height: 80vh;
+}
+
+.rule{
+	margin: 10px 0px 10px 0px;
+}
+
+.radios{
+	display: inline-block;
+    cursor: pointer;
+    margin-top: -1px !important;
+ 	vertical-align: middle !important;
+ 	margin-left: 5px !important;
+}
+
+.text_fields{
+	margin-left: 10px;
+}
+
+.text_fields::-webkit-input-placeholder{
+	text-align: center;
+	font-size: 0.9em;
+}
+
+.subtitle{
+	font-weight: 700;
+	font-size: 1em;
+}
+
+.desc{
+	margin-left: 10px;
+	font-size: 0.9em;
+}
+
+.btn_unlock{
+	display: inline-block;
+	margin-left: 10px;
+	background-color: #a1be5a;
+	padding: 5px 10px 5px 10px;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.buttons{
+	position: absolute;
+	bottom: 25px;
+	right: 25px;
+}
+
+.buttons .greenButton{
+	background-color: #a1be5a;
+	border: 2px solid #8DA557;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 15px;
+	padding: 10px 20px 10px 20px;
+	width: 100px;
+	font-weight: 300;
+	text-align: center;
+}
+
+.btn_files_open{
+	background-color: #efefef;
+	color: #000;
+	cursor: pointer;
+	padding: 5px 5px 5px 5px;
+	text-align: center;
+	font-size: 0.9em;
+	border-radius: 10px;
+	width: 120px;
+}
+
+.settings .selectfield{
+	padding-left: 10px;
+}
+
+.settings .selectfield select{
+	font-size: 0.9em;
+}
+
+.disable{
+	opacity: 0.6;
+	pointer-events: none;
+}

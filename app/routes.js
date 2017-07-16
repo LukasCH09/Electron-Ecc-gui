@@ -4,20 +4,24 @@ import { Switch, Route } from 'react-router';
 import App from './containers/App';
 import HomePage from './containers/Pages/HomePage';
 import AboutPage from './containers/Pages/AboutPage';
+import SecurityPage from './containers/Pages/SecurityPage';
 import ReceivePage from './containers/Pages/ReceivePage';
 import TransactionPage from './containers/Pages/TransactionPage';
 import SendPage from './containers/Pages/SendPage';
-import WalletPage from './containers/Pages/WalletPage';
+import SettingsPage from './containers/Pages/SettingsPage';
 
-export default () => (
-  <App>
-    <Switch>
-      <Route path="/wallet" component={WalletPage} />
-      <Route path="/transaction" component={TransactionPage} />
-      <Route path="/about" component={AboutPage} />
-      <Route path="/receive" component={ReceivePage} />
-      <Route path="/send" component={SendPage} />
-      <Route path="/" component={HomePage} />
-    </Switch>
-  </App>
-);
+export default function Routes({route}){
+  return (
+    <App route={route}>
+      <Switch>
+        <Route path="/settings" component={SettingsPage} />
+        <Route path="/transaction" component={TransactionPage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/receive" component={ReceivePage} />
+        <Route path="/send" component={SendPage} />
+        <Route path="/security" component={SecurityPage} />
+        <Route path="/" component={HomePage} />
+      </Switch>
+    </App>
+  );
+}

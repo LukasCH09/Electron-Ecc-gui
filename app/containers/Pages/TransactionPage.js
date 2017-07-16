@@ -1,16 +1,14 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Transaction from '../../components/Transactions/Transaction';
-import * as CounterActions from '../../actions/counter';
+import React, { Component } from 'react';
+import $ from 'jquery';
 
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
+export default class TransactionPage extends Component {
+
+	render() {
+		return (
+		  	<Transaction/>
+		);
+	}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transaction);
