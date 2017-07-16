@@ -135,15 +135,15 @@ class SettingsMain extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="row">
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="start_login" checked={this.state.start_login} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainStartSystemLogin}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="include_tx_fee" checked={this.state.include_tx_fee} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainIncludeTransferFee}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="optimal_tx_fee" checked={this.state.optimal_tx_fee} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainOptionalTransactionFee}</span>
                   <div className="col-md-12 rule">
@@ -151,7 +151,7 @@ class SettingsMain extends Component {
                     <input className={"text_fields " + this.state.disableInputs1} type="text" name="tx_fee" placeholder="0.000000 ecc" value={this.state.tx_fee} onChange={this.handleInputChange.bind(this)}/>
                   </div>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="active_reserved_amount" checked={this.state.active_reserved_amount} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainReserverAmount}</span>
                   <div className="col-md-12 rule">

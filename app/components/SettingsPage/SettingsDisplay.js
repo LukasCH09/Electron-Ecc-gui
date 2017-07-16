@@ -121,15 +121,15 @@ class SettingsDisplay extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="row">
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="tray_icon" checked={this.state.tray_icon} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayHideTrayIcon}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="minimise_to_tray" checked={this.state.minimise_to_tray} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayMinimizeToTray}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="minimise_on_close" checked={this.state.minimise_on_close} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayMinimizeOnClose}</span>
                 </div>

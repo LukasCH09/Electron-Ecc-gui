@@ -356,26 +356,42 @@ class SettingsDebug extends Component {
               {this.renderHelpMsg()}
               {this.state.commandList.map(function(cmd,index){
                 var res = cmd.res;
-                if(res instanceof Object){
+                if(res instanceof Object && cmd.desc != "help"){
                   if(res.length > 0 && res[0] != undefined){
                     res = JSON.stringify(res[0], null, 2);
                   }else{
                     res = JSON.stringify(res, null, 2);
                   }
+                  return(
+                    <div key={"command_key_"+index}>
+                      <div className="hours_list col-md-1">
+                        <p>{cmd.time}</p>
+                      </div>
+                      <div className="commands_list col-md-11">
+                        <p><span style={{fontWeight: "400"}}>{cmd.desc}</span>: <span style={{fontWeight: "300", fontSize: "0.9em"}}>{res}</span></p>
+                      </div>
+                    </div>
+                  );
                 }else if (cmd.desc == "help"){
                   var res = cmd.res.toString();
-                  res = target.replace(/(\r\n|\n|\r)/gm,"</br>");
+                  res = res.split("\n");
+
+                  return(
+                    <div key={"command_key_"+index}>
+                      <div className="hours_list col-md-1">
+                        <p>{cmd.time}</p>
+                      </div>
+                      <div className="commands_list col-md-11">
+                        <p><span style={{fontWeight: "400"}}>{cmd.desc}</span>:</p>
+                        {res.map(function(el,index){
+                          return(
+                            <p key={"help_command_"+index}><span style={{fontWeight: "300", fontSize: "0.9em"}}>{el}</span></p>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
                 }
-                return(
-                  <div key={"command_key_"+index}>
-                    <div className="hours_list col-md-1">
-                      <p>{cmd.time}</p>
-                    </div>
-                    <div className="commands_list col-md-11">
-                      <p><span style={{fontWeight: "400"}}>{cmd.desc}</span>: <span style={{fontWeight: "300", fontSize: "0.9em"}}>{res}</span></p>
-                    </div>
-                  </div>
-                );
               })}
             </div>
             <div className="col-md-12 console_buttons">
