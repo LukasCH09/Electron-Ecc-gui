@@ -13,6 +13,7 @@
 import { app, BrowserWindow } from 'electron';
 import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
+var log = require('electron-log');
 
 function sendStatusToWindow(text) {
   console.log(text);
@@ -95,10 +96,15 @@ app.on('ready', async () => {
     await installExtensions();
   }
 
+  global.log = log;
+
+
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728
+    width: 1280,
+    height: 670,
+    minWidth: 1200,
+    minHeight: 620
   });
 
   mainWindow.loadURL(`file://${__dirname}/version.html#v${app.getVersion()}`);

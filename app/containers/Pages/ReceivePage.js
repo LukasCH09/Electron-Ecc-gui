@@ -1,16 +1,14 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Receive from '../../components/ReceiveTransaction/Receive';
-import * as CounterActions from '../../actions/counter';
+import React, { Component } from 'react';
 
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
+export default class ReceivePage extends Component {
+
+	render() {
+		return (
+	  		<Receive/>
+		);
+	}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Receive);
+

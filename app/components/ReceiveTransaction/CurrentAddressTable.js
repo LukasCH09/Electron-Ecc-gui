@@ -1,87 +1,102 @@
 import React, { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import faker from 'faker';
-const {clipboard} = require('electron');
-
 import Wallet from '../../utils/wallet';
-import low from '../../utils/low';
+import {traduction} from '../../lang/lang';
+var event = require('../../utils/eventhandler');
+var log = require('../../utils/log');
 
+const lang = traduction();
 const wallet = new Wallet();
-
-function createTableData() {
-  const arrayOfTransactions = [];
-
-  for (let i = 0; i < 3; i++) {
-    const newDate = faker.date.past().toISOString('YYYY-MM-DDTHH:mm:ss');
-    const fakeNumber = 2;
-    const trans = faker.finance.bitcoinAddress();
-    const amountSent = 3;
-    // newDate = newDate.parse('YYYY-MM-DDTHH:mm:ss')
-
-    const transaction = {
-      date: newDate,
-      confirmations: fakeNumber,
-      transactionId: trans,
-      amount: amountSent
-    };
-    arrayOfTransactions.push(transaction);
-  }
-
-  return arrayOfTransactions;
-  // faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}');
-}
+const {clipboard} = require('electron');
 
 class CurrentAddresses extends Component {
   constructor(props) {
     super(props);
-    console.log();
     this.state = {
-      sample:createTableData(),
       existingAddresses: []
     }
+    this.rowClick = this.rowClick.bind(this);
+  }
 
-    const selectRowProp = {
-      mode: 'radio',
-      clickToSelect: true,
-      onSelect: this.onRowSelect
-    };
+  componentDidMount(){
+    if(!this.state.requesting){
+      this.getAllAddresses();
+    }
+  }
 
-    this.state['rowSettings'] = selectRowProp;
-
-
-    this.getAllAddresses();
+  componentWillUnmount(){
+    this.state.requesting = false;
   }
 
 
-  onRowSelect(row, isSelected, e) {
-    low.get('address').push({name: row['account'], address: row['address']}).write();
-    clipboard.writeText(row['address']);
-  }
-/**
- * account
- * address
- * amount
- * confirmations
- */
-
-
-  async getAllAddresses(){
-    let accounts = await wallet.listAllAccounts();
-    // console.log(accounts);
-    this.setState({existingAddresses: accounts})
+  rowClick(address) {
+    event.emit("animate",lang.notificationAddressCopiedToClipboard);
+    clipboard.writeText(address);
   }
 
+
+  getAllAddresses(){
+    var self = this;
+    self.setState({requesting:true});
+    wallet.listAllAccounts().then((data) => {
+      this.setState({existingAddresses: data, requesting:false});
+    }).catch((err) => {
+      log.error(err.message);
+      if(this.state.requesting){
+        self.setState({requesting:false});
+        event.emit("animate",lang.notificationDaemonDownOrSyncing);
+      }
+    });
+  }
 
 
   render() {
+    var self = this;
+    var data = [];
+    if(this.state.existingAddresses != null){
+      data = this.state.existingAddresses;
+    }
     return (
       <div>
-        <BootstrapTable data={this.state.existingAddresses} selectRow={ this.state.rowSettings } height='200' striped hover>
-          <TableHeaderColumn width='25%' isKey={ true } filter={ { type: 'TextFilter', delay: 1000 } } dataSort={ true } dataField='account'>Account</TableHeaderColumn>
-          <TableHeaderColumn width='40%' dataSort={ true } filter={ { type: 'TextFilter', delay: 1000 } } dataField='address'>Address</TableHeaderColumn>
-          <TableHeaderColumn width='25%' dataSort={ true } filter={ { type: 'NumberFilter', delay: 1000, numberComparators: [ '=', '>', '<=' ] } } dataField='amount'>Amount</TableHeaderColumn>
-          <TableHeaderColumn width='15%' dataSort={ true } dataField='confirmations'>Confirmations</TableHeaderColumn>
-        </BootstrapTable>
+        <div className="addresses_table">
+          <div className="row" style={{marginLeft:"0",marginRight:"0"}}>
+            <div className="col-md-2 trans_col">
+              <p className="header">{lang.account}</p>
+            </div>
+            <div className="col-md-5 trans_col">
+              <p className="header">{lang.address}</p>
+            </div>
+            <div className="col-md-3 trans_col">
+              <p className="header">{lang.amount}</p>
+            </div>
+            <div className="col-md-2 trans_col">
+              <p className="header">{lang.confirmations}</p>
+            </div>
+          </div>
+          {data.map(function(address, index){
+            var cr = "";
+            if(index % 2 == 0){
+              cr = "stripped";
+            }
+            return(
+              <div key={"address_"+index} onClick={self.rowClick.bind(self,address.address)}>
+                <div className={"row trans_row" + " " + cr}>
+                  <div className="col-md-2 trans_col">
+                    <p style={{margin:"0px"}}><span className="desc1">{address.account}</span></p>
+                  </div>
+                  <div className="col-md-5 trans_col">
+                    <p style={{margin:"0px"}}><span className="desc1">{address.address}</span></p>
+                  </div>
+                  <div className="col-md-3 trans_col">
+                    <p style={{margin:"0px"}}><span className="desc1">{address.amount}</span></p>
+                  </div>
+                  <div className="col-md-2 trans_col">
+                    <p style={{margin:"0px"}}><span className="desc1">{address.confirmations}</span></p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -1,16 +1,17 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import Send from '../../components/SendTransactions/Send';
-import * as CounterActions from '../../actions/counter';
+import React, { Component } from 'react';
+import $ from 'jquery';
 
-function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
+export default class SendPage extends Component {
+
+	render() {
+		return (
+	  		<Send/>
+		);
+	}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Send);
+
+
+

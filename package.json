@@ -47,8 +47,8 @@
         "provider": "github",
         "owner": "Greg-Griffith",
         "repo": "Electron-Ecc-gui",
-        "vPrefixedTagName" : "true",
-        "protocol" : "https"
+        "vPrefixedTagName": "true",
+        "protocol": "https"
       }
     ],
     "dmg": {
@@ -185,16 +185,20 @@
   },
   "dependencies": {
     "bitcoin-core": "git://github.com/Greg-Griffith/bitcoin-core.git",
+    "child_process": "^1.0.2",
     "devtron": "^1.4.0",
     "electron-debug": "^1.2.0",
     "electron-log": "^2.2.7",
+    "electron-settings": "^3.1.1",
     "electron-updater": "^2.7.1",
+    "events": "^1.1.1",
     "font-awesome": "^4.7.0",
     "history": "^4.6.3",
+    "jquery": "^3.2.1",
     "react": "^15.6.1",
-    "react-bootstrap-table": "^3.4.5",
     "react-dom": "^15.6.1",
     "react-hot-loader": "3.0.0-beta.6",
+    "react-loading": "^0.1.4",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",

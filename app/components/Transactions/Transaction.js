@@ -1,76 +1,57 @@
 import React, { Component } from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import faker from 'faker';
-
-import Wallet from '../../utils/wallet';
-import CurrentAddresses from '../ReceiveTransaction/CurrentAddressTable';
 import TransTable from './TransactionTable';
+import {traduction} from '../../lang/lang';
 
-const wallet = new Wallet();
-require('./Transactions.css');
-
-function createTableData() {
-  const arrayOfTransactions = [];
-
-  for (let i = 0; i < 3; i++) {
-    const newDate = faker.date.past().toISOString('YYYY-MM-DDTHH:mm:ss');
-    const fakeNumber = 2;
-    const trans = faker.finance.bitcoinAddress();
-    const amountSent = 3;
-    // newDate = newDate.parse('YYYY-MM-DDTHH:mm:ss')
-
-    const transaction = {
-      date: newDate,
-      confirmations: fakeNumber,
-      transactionId: trans,
-      amount: amountSent
-    };
-    arrayOfTransactions.push(transaction);
-  }
-
-  return arrayOfTransactions;
-  // faker.fake('{{name.lastName}}, {{name.firstName}} {{name.suffix}}');
-}
-
-
+const lang = traduction();
 
 
 class Transaction extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      sample: createTableData()
-    };
+      select: "all"
+    }
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-    console.log(this.state);
+  handleChange(event){
+    this.setState({select: event.target.value});
+  }
+
+  loadmore(){
+    this.refs.child_load_more.loadmore();
+  }
+
+  loadless(){
+    this.refs.child_load_more.loadless();
   }
 
   render() {
     return (
-      <div>
-        <div className="col-md-12">
-          <h1>Transaction</h1>
-
-        </div>
-
-        <div className="col-md-12">
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <TransTable />
+      <div className="transactions">
+        <div className="row">
+          <div className="col-md-12">
+            <div className="panel panel-default">
+              <div className="panel-body">
+                <p className="title">{lang.transactionsLatestTransactions}</p>
+                <div className="selectfield">
+                  <select className="form-control" value={this.state.select} onChange={this.handleChange}>
+                    <option value="all">{lang.all}</option>
+                    <option value="send">{lang.send}</option>
+                    <option value="receive">{lang.received}</option>
+                    <option value="generate">{lang.staked}</option>
+                    <option value={0}>{lang.pending}</option>
+                    <option value={1}>{lang.confirmed}</option>
+                    <option value={-1}>{lang.orphaned}</option>
+                  </select>
+                </div>
+                <TransTable h={"90%"} option={this.state.select} countTras={100} ref="child_load_more"/>
+                <p className="btn_load_more" onClick={this.loadmore.bind(this)}>{lang.transactionsLoadMore}</p>
+                <p className="btn_load_less" onClick={this.loadless.bind(this)}>{lang.transactionsLoadPrevious}</p>
+              </div>
             </div>
-          </div>
         </div>
-
-        <div className="col-md-12">
-          <div className="panel panel-default">
-            <div className="panel-body">
-              <h3>Current Accounts</h3>
-              <CurrentAddresses />
-            </div>
-          </div>
         </div>
-
       </div>
     );
   }
