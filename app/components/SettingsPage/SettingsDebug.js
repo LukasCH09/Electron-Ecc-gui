@@ -93,7 +93,14 @@ class SettingsDebug extends Component {
   }
 
   openDebugFile(){
-    var debugFile = app.getPath('appData') + "/" + app.getName() + "/log.log";
+    var platform = os.platform();
+    var debugFile;
+
+    if(platform.indexOf("win") > -1){
+      debugFile = app.getPath('appData') + "/eccoin/debug.log";
+    }else{
+      debugFile = app.getPath('home') + "/.eccoin/debug.log";
+    }
     shell.openItem(debugFile);
   }
 

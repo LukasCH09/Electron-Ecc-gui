@@ -4,7 +4,6 @@ import low  from '../../utils/low';
 import Wallet  from '../../utils/wallet';
 import {traduction} from '../../lang/lang';
 var event = require('../../utils/eventhandler');
-var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -47,7 +46,7 @@ class Receive extends Component {
       clipboard.writeText(newAddress);
       self.refs.child_current_addresses.getAllAddresses();
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if(this.state.requesting){
         self.setState({requesting:false,nameOfNewAddress: ""});
         event.emit("animate",lang.notificationErrorCreatingAdrress);

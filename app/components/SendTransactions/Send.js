@@ -6,7 +6,6 @@ import {traduction} from '../../lang/lang';
 import ReactLoading from 'react-loading';
 
 var event = require('../../utils/eventhandler');
-var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -61,7 +60,7 @@ class Send extends Component {
           }
         }
       }).catch((err) => {
-        log.error(err.message);
+        console.log(err);
         event.emit("animate", lang.addressValidadeError);
       });
     } else {
@@ -117,7 +116,7 @@ class Send extends Component {
       self.setState({utl: utl});
       self.wlock();
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       self.setState({dialog: false, eccAddress: "", amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -138,7 +137,7 @@ class Send extends Component {
         event.emit("animate", lang.moneySendError);
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       self.setState({dialog: false, eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -169,7 +168,7 @@ class Send extends Component {
         self.setState({dialog: false,eccAddress: "",amount: ""});
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if (!keepGoing){
         self.setState({dialog: false,eccAddress: "",amount: ""});
         event.emit("animate", lang.moneySendError);
@@ -190,7 +189,7 @@ class Send extends Component {
         event.emit("animate", lang.moneySent);
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       self.setState({dialog: false,eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });

@@ -89,7 +89,8 @@ class SettingsDisplay extends Component {
   }
 
   btnConfirmRestart(){
-   app.quit();
+    app.relaunch();
+    app.exit(0);
   }
 
   renderDialog(){
@@ -121,15 +122,15 @@ class SettingsDisplay extends Component {
           <div className="panel panel-default">
             <div className="panel-body">
               <div className="row">
-                <div className="col-md-12 rule disable">
+                <div className="col-md-12 rule">
                   <input className="radios" type="checkbox" name="tray_icon" checked={this.state.tray_icon} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayHideTrayIcon}</span>
                 </div>
-                <div className="col-md-12 rule disable">
+                <div className="col-md-12 rule">
                   <input className="radios" type="checkbox" name="minimise_to_tray" checked={this.state.minimise_to_tray} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayMinimizeToTray}</span>
                 </div>
-                <div className="col-md-12 rule disable">
+                <div className="col-md-12 rule">
                   <input className="radios" type="checkbox" name="minimise_on_close" checked={this.state.minimise_on_close} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsDisplayMinimizeOnClose}</span>
                 </div>
@@ -152,7 +153,7 @@ class SettingsDisplay extends Component {
               </div>
               <div className="buttons">
                 <p className="greenButton left" onClick={this.btnConfirm.bind(this)}>{lang.confirm}</p>
-                <p className="greenButton left" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
+                <p className="greenButton right" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
               </div>
             </div>
           </div>

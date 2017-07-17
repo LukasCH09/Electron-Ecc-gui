@@ -34,7 +34,7 @@ class About extends Component {
                 </a>
               </div>
               <div className="col-md-4 col-lg-4 col-xs-4" style={{cursor:"pointer"}}>
-                <a onClick={this.openLink.bind(this,"https://join.slack.com/cryptounited-public/shared_invite/MTk2ODEyMTUxODQ2LTE0OTcyMDg2NTQtNmJjNmZjZGFjMw")} className="section">
+                <a onClick={this.openLink.bind(this,"https://join.slack.com/t/cryptounited-public/shared_invite/MjAzMjE5NTA0MTQ3LTE0OTg0NDYyOTItN2M5YjJkY2I3Nw")} className="section">
                   <img src={slackImage} alt="" style={{ width: '50%' }} className="slack" />
                   <br />
                   <span className="sub">{lang.aboutJoinUsOnSlack}</span>

@@ -11,8 +11,6 @@ class SettingsNet extends Component {
     this.state = {
       dialog: false,
       disableInputs: "",
-      map_upnp: false,
-      allow_connections: false,
       socks5_proxy: false,
       proxy_ip: false,
       ip: "",
@@ -42,8 +40,6 @@ class SettingsNet extends Component {
       }
     } else {
       var s = {
-        map_upnp: false,
-        allow_connections: false,
         socks5_proxy: false,
         proxy_ip: false,
         ip: "127.0.0.1",
@@ -84,8 +80,6 @@ class SettingsNet extends Component {
 
   btnConfirm(){
     settings.set('settings.net', {
-      map_upnp: this.state.map_upnp,
-      allow_connections: this.state.allow_connections,
       socks5_proxy: this.state.socks5_proxy,
       proxy_ip: this.state.proxy_ip,
       ip: this.state.ip,
@@ -104,7 +98,8 @@ class SettingsNet extends Component {
   }
 
   btnConfirmRestart(){
-   app.quit();
+    app.relaunch();
+    app.exit(0);
   }
 
   renderDialog(){
@@ -137,14 +132,6 @@ class SettingsNet extends Component {
             <div className="panel-body">
               <div className="row">
                 <div className="col-md-12 rule disable">
-                  <input className="radios" type="checkbox" name="map_upnp" checked={this.state.map_upnp} onChange={this.handleInputChange.bind(this)}/>
-                  <span className="desc">{lang.settingsNetworkMapPort}</span>
-                </div>
-                <div className="col-md-12 rule disable">
-                  <input className="radios" type="checkbox" name="allow_connections" checked={this.state.allow_connections} onChange={this.handleInputChange.bind(this)}/>
-                  <span className="desc">{lang.settingsNetworkAllowConnections}</span>
-                </div>
-                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="socks5_proxy" checked={this.state.socks5_proxy} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsNetworkConnectProxy}</span>
                 </div>
@@ -164,8 +151,8 @@ class SettingsNet extends Component {
                 </div>
               </div>
               <div className="buttons">
-                <p className="greenButton left" onClick={this.btnConfirm.bind(this)}>{lang.confirm}</p>
-                <p className="greenButton left" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
+                <p className="greenButton left disable" onClick={this.btnConfirm.bind(this)}>{lang.confirm}</p>
+                <p className="greenButton right disable" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
               </div>
             </div>
           </div>

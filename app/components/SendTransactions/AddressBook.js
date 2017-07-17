@@ -3,7 +3,6 @@ import low from '../../utils/low';
 import Wallet from '../../utils/wallet';
 import {traduction} from '../../lang/lang';
 var event = require('../../utils/eventhandler');
-var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -68,7 +67,7 @@ class AddressBook extends Component {
       }
       self.setState({requesting: false});
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if(this.state.requesting){
         self.setState({requesting: false});
         event.emit("animate",lang.addressValidadeError);

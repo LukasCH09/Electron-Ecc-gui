@@ -50,7 +50,7 @@ module.exports = {
 	moneySent: "Envoi d'argent réussi",
 	nabBarNetworkInfoActiveConnections: "Connexions actives",
 	nabBarNetworkInfoBlock: "Bloc",
-	nabBarNetworkInfoSyncing: "Snchronisation",
+	nabBarNetworkInfoSyncing: "Synchronisation",
 	navBarAboutButton: "À propos",
 	navBarOverviewButton: "Aperçu",
 	navBarReceiveButton: "Recevoir",
