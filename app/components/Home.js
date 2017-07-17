@@ -64,6 +64,7 @@ export default class Home extends Component {
     this.setState({requesting1:true});
 
     wallet.getInfo().then((data) =>{
+      console.log(data);
       if(self.state.requesting1){
         var locked = true;
         if(data.unlocked_until != 0){
@@ -189,7 +190,7 @@ export default class Home extends Component {
       var passPhrase = this.state.passPhrase;
       var timeL = this.state.timeL;
 
-      if(passPhrase.length == 0 || timeL.length == 0){
+      if(passPhrase.length == 0 || timeL.length == 0 || timeL < 0){
         self.setState({passPhraseError: lang.invalidFields});
       }else{
         wallet.walletpassphrase(passPhrase,timeL).then((data) =>{

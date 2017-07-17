@@ -82,13 +82,12 @@ const installExtensions = async () => {
  * Add event listeners...
  */
 
-app.on('window-all-closed', () => {
-  Respect the OSX convention of having the application in memory even
-  after all windows have been closed
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
-});
+// app.on('window-all-closed', () => {
+//   //Respect the OSX convention of having the application in memory even after all windows have been closed
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
 
 
 app.on('ready', async () => {
@@ -117,9 +116,23 @@ app.on('ready', async () => {
     mainWindow.focus();
   });
 
-  mainWindow.on('closed', () => {
-    console.log("mw on cllose");
-    mainWindow = null;
+  // mainWindow.on('closed', () => {
+  //   console.log("mw on cllose");
+  //   mainWindow = null;
+  // });
+
+   mainWindow.on('minimize',function(event){
+        event.preventDefault()
+        mainWindow.hide();
+    });
+
+
+  mainWindow.on('close', function (event) {
+      if( !app.isQuiting){
+          event.preventDefault()
+          mainWindow.hide();
+      }
+      return false;
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);

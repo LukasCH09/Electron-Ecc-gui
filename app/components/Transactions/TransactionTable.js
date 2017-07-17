@@ -237,6 +237,9 @@ class TransactionTable extends Component {
               else if (category == "receive") {
                 category = lang.received;
               }
+              else if (category == "immature") {
+                category = lang.immature;
+              }
               
               return(
                 <div key={"transaction_"+index+"_"+t.txid}>

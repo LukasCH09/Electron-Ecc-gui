@@ -187,4 +187,6 @@ module.exports = {
     console5: "Type",
     console6: "help",
     console7: "for an overview of available commands.",
+
+    immature: "Immature",
 }
