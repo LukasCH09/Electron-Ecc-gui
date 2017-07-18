@@ -10,10 +10,15 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, Tray, Menu} from 'electron';
+import path from 'path';
 import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
 const settings = require('electron-settings');
+
+var tray = null;
+var ds = settings.get('settings.display');
+
 
 function sendStatusToWindow(text) {
   console.log(text);
@@ -78,17 +83,6 @@ const installExtensions = async () => {
 };
 
 
-/**
- * Add event listeners...
- */
-
-// app.on('window-all-closed', () => {
-//   //Respect the OSX convention of having the application in memory even after all windows have been closed
-//   if (process.platform !== 'darwin') {
-//     app.quit();
-//   }
-// });
-
 
 app.on('ready', async () => {
   if (process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true') {
@@ -101,6 +95,8 @@ app.on('ready', async () => {
     height: 670,
     minWidth: 1200,
     minHeight: 620,
+    icon: path.join(__dirname, 'icon.png'),
+    title: "Ecc-Wallet"
   });
 
   mainWindow.loadURL(`file://${__dirname}/version.html#v${app.getVersion()}`);
@@ -116,27 +112,50 @@ app.on('ready', async () => {
     mainWindow.focus();
   });
 
-  // mainWindow.on('closed', () => {
-  //   console.log("mw on cllose");
-  //   mainWindow = null;
-  // });
-
-   mainWindow.on('minimize',function(event){
-        event.preventDefault()
-        mainWindow.hide();
-    });
+  mainWindow.on('minimize',function(event){
+    if(ds.minimise_to_tray){
+      event.preventDefault()
+      mainWindow.close();
+    }
+    return false;
+  });
 
 
   mainWindow.on('close', function (event) {
-      if( !app.isQuiting){
-          event.preventDefault()
-          mainWindow.hide();
-      }
-      return false;
+    if(ds.minimise_on_close){
+      event.preventDefault()
+      mainWindow.hide();
+    }else{
+      app.exit(0);
+    }
+    return false;
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
+
+  if(ds == undefined || ds.tray_icon == undefined || !ds.tray_icon){
+    const iconPath = path.join(__dirname, 'icon.png');
+    const defaultMenu = [
+      {
+        label: 'Quit',
+        accelerator: 'Command+Q',
+        click: function() {
+          app.exit(0);
+        }
+      },
+    ];
+
+    tray = new Tray(iconPath);
+    const contextMenu = Menu.buildFromTemplate(defaultMenu);
+    tray.setToolTip('Ecc-Wallet');
+    tray.setContextMenu(contextMenu);
+
+    tray.on('click', () => {
+      mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
+    });
+
+  }
 
   autoUpdater.checkForUpdates();
 });

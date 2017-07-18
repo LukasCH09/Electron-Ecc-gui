@@ -139,9 +139,9 @@ class SettingsMain extends Component {
       console.log(error);
     });
 
-    // self.setState({
-    //   dialog: true
-    // });
+    self.setState({
+      dialog: true
+    });
     
   }
 

@@ -64,7 +64,6 @@ export default class Home extends Component {
     this.setState({requesting1:true});
 
     wallet.getInfo().then((data) =>{
-      console.log(data);
       if(self.state.requesting1){
         var locked = true;
         if(data.unlocked_until != 0){
@@ -227,9 +226,9 @@ export default class Home extends Component {
   }
 
   render() {
-    var pad = require("../media/icons/padclose.png")
+    var pad = require("../../resources/images/padclose.png")
     if(!this.state.locked){
-      pad = require("../media/icons/padopen.png");
+      pad = require("../../resources/images/padopen.png");
     }
     return (
       <div className="home">

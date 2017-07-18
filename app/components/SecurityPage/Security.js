@@ -27,10 +27,10 @@ class Security extends Component {
   }
 
   componentDidMount(){
-    this.checkIfWalletLocked();
+    this.checkIfWalletEncrypted();
   }
 
-  checkIfWalletLocked(){
+  checkIfWalletEncrypted(){
     var self = this;
     wallet.help().then((data) =>{
       //console.log(data);

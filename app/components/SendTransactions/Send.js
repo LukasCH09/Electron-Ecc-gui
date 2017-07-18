@@ -19,6 +19,8 @@ class Send extends Component {
       dialog: false,
       passPhrase: "",
       passPhraseError: "",
+      utl: 0,
+      encrypted: false,
     };
 
     this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
@@ -28,6 +30,23 @@ class Send extends Component {
     this.cancelSend = this.cancelSend.bind(this);
     this.confirmSend = this.confirmSend.bind(this);
     this.onPassPhraseChange = this.onPassPhraseChange.bind(this);
+  }
+
+  componentDidMount(){
+    this.checkIfWalletEncrypted();
+  }
+
+  checkIfWalletEncrypted(){
+    var self = this;
+    wallet.help().then((data) =>{
+      if(data.indexOf("walletlock") > -1) {
+        self.setState({encrypted: true});
+      }else{
+        self.setState({encrypted: false});
+      }
+    }).catch((err) => {
+      event.emit("animate",lang.notificationDaemonDownOrSyncing);
+    });
   }
 
   _handleGenericFormChange(event) {
@@ -92,7 +111,11 @@ class Send extends Component {
         passPhraseError: lang.invalidFields
       });
     } else {
-      self.winfo();
+      if(self.state.encrypted){
+        self.winfo();
+      }else{
+        self.wsend();
+      }
     }
   }
 
@@ -111,13 +134,21 @@ class Send extends Component {
         var secondsFromtT1toT2 = dif / 1000;
         var diffSeconds = Math.abs(secondsFromtT1toT2);
         utl = parseInt(diffSeconds);
-        if (!utl) {utl = 0;}
+        if (!utl) {
+          utl = 0;
+        }
       }
-      self.setState({utl: utl});
+      self.setState({
+        utl: utl
+      });
       self.wlock();
     }).catch((err) => {
       console.log(err);
-      self.setState({dialog: false, eccAddress: "", amount: ""});
+      self.setState({
+        dialog: false,
+        eccAddress: "",
+        amount: ""
+      });
       event.emit("animate", lang.moneySendError);
     });
   }
@@ -199,6 +230,10 @@ class Send extends Component {
     if(!this.state.dialog){
       return null;
     }else{
+      var passStyle = {display: "block"};
+      if(!this.state.encrypted){
+        passStyle = {display: "none"};
+      }
       return (
         <div className="mancha">
           <div className="dialog">
@@ -208,7 +243,7 @@ class Send extends Component {
             </div>
             <div className="body">
               <p className="desc">{lang.popupMessageSendConfirmation1} <span className="desc2">{this.state.amount}</span> {lang.popupMessageSendConfirmation2} <span className="desc2">{this.state.eccAddress}</span> ?</p>
-              <div className="row">
+              <div className="row" style={passStyle}>
                 <div className="col-md-10 col-md-offset-1 input-group">
                   <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase}/>
                 </div>
