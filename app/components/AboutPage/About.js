@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import bitcoinImage from '.../../../resources/images/bitcoin.png';
-import slackImage from '.../../../resources/images/slack.png';
-import githubImage from '.../../../resources/images/github.png';
+import bitcoinImage from '../../../resources/images/bitcoin.png';
+import slackImage from '../../../resources/images/slack.png';
+import githubImage from '../../../resources/images/github.png';
 import {traduction} from '../../lang/lang'
 
 var shell = require('electron').shell;
