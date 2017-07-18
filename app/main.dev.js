@@ -10,14 +10,14 @@
  *
  * @flow
  */
-import { app, BrowserWindow, Tray, Menu} from 'electron';
+import { app, Tray, Menu, BrowserWindow} from 'electron';
 import path from 'path';
 import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
 const settings = require('electron-settings');
 
-var tray = null;
 var ds = settings.get('settings.display');
+let tray = null;
 
 
 function sendStatusToWindow(text) {
@@ -113,20 +113,29 @@ app.on('ready', async () => {
   });
 
   mainWindow.on('minimize',function(event){
-    if(ds.minimise_to_tray){
-      event.preventDefault()
-      mainWindow.close();
+    if(ds != undefined && ds.minimise_to_tray != undefined && ds.minimise_to_tray){
+      event.preventDefault();
+      mainWindow.setSkipTaskbar(true);
+      mainWindow.hide();
+      return false;
     }
-    return false;
+  });
+
+  mainWindow.on('show',function(event){
+    mainWindow.setSkipTaskbar(false);
   });
 
 
   mainWindow.on('close', function (event) {
-    if(ds.minimise_on_close){
-      event.preventDefault()
-      mainWindow.hide();
+    if(ds != undefined && ds.minimise_on_close != undefined && ds.minimise_on_close){
+      event.preventDefault();
+      if(!ds.minimise_to_tray){
+        mainWindow.minimize();
+      }else{
+        mainWindow.hide();
+      }
     }else{
-      app.exit(0);
+      app.quit();
     }
     return false;
   });
@@ -154,7 +163,6 @@ app.on('ready', async () => {
     tray.on('click', () => {
       mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
     });
-
   }
 
   autoUpdater.checkForUpdates();

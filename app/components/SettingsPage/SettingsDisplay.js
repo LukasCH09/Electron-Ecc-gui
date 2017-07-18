@@ -65,6 +65,17 @@ class SettingsDisplay extends Component {
     this.setState({
       [name]: value
     });
+
+    if(name == "tray_icon" && value == true){
+      this.setState({
+        minimise_to_tray: false
+      });
+    }else if(name == "minimise_to_tray" && value == true && this.state.tray_icon){
+      this.setState({
+        minimise_to_tray: false
+      });
+    }
+
   }
 
   handleChange(event){

@@ -133,7 +133,7 @@ class SettingsMain extends Component {
       txfee = self.state.tx_fee
     }
 
-    wallet.setTxFee(0.0000023).then((response) =>{
+    wallet.setTxFee(txfee).then((response) =>{
       console.log(response);
     }).catch((error) => {
       console.log(error);

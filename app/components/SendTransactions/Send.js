@@ -106,16 +106,15 @@ class Send extends Component {
   confirmSend() {
     var self = this;
     var passPhrase = this.state.passPhrase;
-    if (passPhrase.length == 0) {
+    
+    if(self.state.encrypted && passPhrase.length > 0){
+      self.winfo();
+    }else if(!self.state.encrypted){
+      self.wsend();
+    }else{
       self.setState({
         passPhraseError: lang.invalidFields
       });
-    } else {
-      if(self.state.encrypted){
-        self.winfo();
-      }else{
-        self.wsend();
-      }
     }
   }
 
