@@ -10,7 +10,7 @@
  *
  * @flow
  */
-import { app, Tray, Menu, BrowserWindow} from 'electron';
+import { app, Tray, Menu, BrowserWindow, nativeImage} from 'electron';
 import path from 'path';
 import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
@@ -95,7 +95,7 @@ app.on('ready', async () => {
     height: 670,
     minWidth: 1200,
     minHeight: 620,
-    icon: path.join(__dirname, 'icon.png'),
+    icon: path.join(__dirname, '/../resources/icon.png'),
     title: "Ecc-Wallet"
   });
 
@@ -144,7 +144,14 @@ app.on('ready', async () => {
   menuBuilder.buildMenu();
 
   if(ds == undefined || ds.tray_icon == undefined || !ds.tray_icon){
-    const iconPath = path.join(__dirname, 'icon.png');
+    var iconP = nativeImage.createFromPath(path.join(__dirname, '/../resources/icon.ico'));
+    
+    if(process.platform.indexOf("darwin") > -1){
+      iconP = nativeImage.createFromPath(path.join(__dirname, '/../resources/icon.icns'));
+    }else if(process.platform.indexOf("linux") > -1){
+      iconP = nativeImage.createFromPath(path.join(__dirname, '/../resources/icon.png'));
+    }
+
     const defaultMenu = [
       {
         label: 'Quit',
@@ -155,7 +162,7 @@ app.on('ready', async () => {
       },
     ];
 
-    tray = new Tray(iconPath);
+    tray = new Tray(iconP);
     const contextMenu = Menu.buildFromTemplate(defaultMenu);
     tray.setToolTip('Ecc-Wallet');
     tray.setContextMenu(contextMenu);
