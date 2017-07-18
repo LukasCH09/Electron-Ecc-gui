@@ -16,7 +16,6 @@ import MenuBuilder from './menu';
 const autoUpdater = require("electron-updater").autoUpdater;
 const settings = require('electron-settings');
 
-var ds = settings.get('settings.display');
 let tray = null;
 
 
@@ -89,6 +88,8 @@ app.on('ready', async () => {
     await installExtensions();
   }
 
+  var ds = settings.get('settings.display');
+
   mainWindow = new BrowserWindow({
     show: false,
     width: 1280,
@@ -144,14 +145,9 @@ app.on('ready', async () => {
   menuBuilder.buildMenu();
 
   if(ds == undefined || ds.tray_icon == undefined || !ds.tray_icon){
-    var iconPath = path.join(__dirname, 'icon.ico');
-    
-    if(process.platform.indexOf("darwin") > -1){
-      iconPath = path.join(__dirname, 'icon.icns');
-    }else if(process.platform.indexOf("linux") > -1){
-      iconPath = path.join(__dirname, 'icon.png');
-    }
 
+    var iconPath = path.join(__dirname, 'icon.png');
+    
     const defaultMenu = [
       {
         label: 'Quit',
@@ -162,10 +158,20 @@ app.on('ready', async () => {
       },
     ];
 
+    
+
     tray = new Tray(iconPath);
     const contextMenu = Menu.buildFromTemplate(defaultMenu);
     tray.setToolTip('Ecc-Wallet');
     tray.setContextMenu(contextMenu);
+  
+    if(process.platform == "darwin"){
+      tray.setImage(path.join(__dirname, 'icon.png'));  
+    }else if(process.platform == "linux"){
+      tray.setImage(path.join(__dirname, 'icon.png'));  
+    }else if(process.platform.indexOf("win") > -1){
+      tray.setImage(path.join(__dirname, 'icon.ico'));  
+    }
 
     tray.on('click', () => {
       mainWindow.isVisible() ? mainWindow.hide() : mainWindow.show()
