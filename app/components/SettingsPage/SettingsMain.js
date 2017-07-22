@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+var remote = require('electron').remote;
 import {traduction} from '../../lang/lang';
+import Wallet  from '../../utils/wallet';
 const settings = require('electron-settings');
+var AutoLaunch = require('auto-launch');
 
+var app = remote.app
+const wallet = new Wallet();
 const lang = traduction();
 
 class SettingsMain extends Component {
@@ -28,6 +33,17 @@ class SettingsMain extends Component {
 
   componentDidMount(){
     this.loadSettings();
+    this.getWalletInfo();
+  }
+
+  getWalletInfo(){
+    const self = this;
+
+    wallet.getInfo().then((data) =>{
+      self.setState({tx_fee: data.paytxfee});
+    }).catch((err) => {
+      
+    });
   }
 
   loadSettings(){
@@ -50,10 +66,14 @@ class SettingsMain extends Component {
         start_login: false,
         include_tx_fee: false,
         optimal_tx_fee: false,
-        tx_fee: "",
         active_reserved_amount: false,
         reserve_amount: ""
       };
+      if(s.optimal_tx_fee == true){
+        this.setState({disableInputs1: ""});
+      }else{
+        this.setState({disableInputs1: "disable"});
+      }
       settings.set('settings.main', s);
       this.setState(s);
     }
@@ -68,7 +88,7 @@ class SettingsMain extends Component {
       if(value == true){
         this.setState({disableInputs1: ""});
       }else{
-        this.setState({disableInputs1: "disable", tx_fee: ""});
+        this.setState({disableInputs1: "disable"});
       }
     } else if(name == "active_reserved_amount"){
       if(value == true){
@@ -84,26 +104,55 @@ class SettingsMain extends Component {
   }
 
   btnConfirm(){
+    var self = this;
     settings.set('settings.main', {
-      start_login: this.state.start_login,
-      include_tx_fee: this.state.include_tx_fee,
-      optimal_tx_fee: this.state.optimal_tx_fee,
-      tx_fee: this.state.tx_fee,
-      active_reserved_amount: this.state.active_reserved_amount,
-      reserve_amount: this.state.reserve_amount,
+      start_login: self.state.start_login,
+      include_tx_fee: self.state.include_tx_fee,
+      optimal_tx_fee: self.state.optimal_tx_fee,
+      tx_fee: self.state.tx_fee,
+      active_reserved_amount: self.state.active_reserved_amount,
+      reserve_amount: self.state.reserve_amount,
     });
 
-    this.setState({
+    var eccAutoLauncher = new AutoLaunch({name: "Ecc-Wallet"}); 
+
+    eccAutoLauncher.isEnabled().then(function(isEnabled) {
+      if(self.state.start_login && !isEnabled){
+        eccAutoLauncher.enable();
+      }else{
+        eccAutoLauncher.disable();
+      }
+      return isEnabled
+    }).catch(function(err) {
+      return false
+    });
+
+    var txfee = 0;
+    
+    if(self.state.optimal_tx_fee){
+      txfee = self.state.tx_fee
+    }
+
+    wallet.setTxFee(txfee).then((response) =>{
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+
+    self.setState({
       dialog: true
     });
+    
   }
 
   btnCancel(){
     this.loadSettings();
+    this.getWalletInfo();
   }
 
   btnConfirmRestart(){
-   app.quit();
+    app.relaunch();
+    app.exit(0);
   }
 
   renderDialog(){
@@ -139,7 +188,7 @@ class SettingsMain extends Component {
                   <input className="radios" type="checkbox" name="start_login" checked={this.state.start_login} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainStartSystemLogin}</span>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="include_tx_fee" checked={this.state.include_tx_fee} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainIncludeTransferFee}</span>
                 </div>
@@ -148,10 +197,10 @@ class SettingsMain extends Component {
                   <span className="desc">{lang.settingsMainOptionalTransactionFee}</span>
                   <div className="col-md-12 rule">
                     <span className="desc">{lang.transactionFee}</span>
-                    <input className={"text_fields " + this.state.disableInputs1} type="text" name="tx_fee" placeholder="0.000000 ecc" value={this.state.tx_fee} onChange={this.handleInputChange.bind(this)}/>
+                    <input className={"text_fields " + this.state.disableInputs1} type="number" name="tx_fee" placeholder="0.000000 ecc" value={this.state.tx_fee} onChange={this.handleInputChange.bind(this)}/>
                   </div>
                 </div>
-                <div className="col-md-12 rule">
+                <div className="col-md-12 rule disable">
                   <input className="radios" type="checkbox" name="active_reserved_amount" checked={this.state.active_reserved_amount} onChange={this.handleInputChange.bind(this)}/>
                   <span className="desc">{lang.settingsMainReserverAmount}</span>
                   <div className="col-md-12 rule">
@@ -162,7 +211,7 @@ class SettingsMain extends Component {
               </div>
               <div className="buttons">
                 <p className="greenButton left" onClick={this.btnConfirm.bind(this)}>{lang.confirm}</p>
-                <p className="greenButton left" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
+                <p className="greenButton right" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
               </div>
             </div>
           </div>

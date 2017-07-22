@@ -65,6 +65,17 @@ class SettingsDisplay extends Component {
     this.setState({
       [name]: value
     });
+
+    if(name == "tray_icon" && value == true){
+      this.setState({
+        minimise_to_tray: false
+      });
+    }else if(name == "minimise_to_tray" && value == true && this.state.tray_icon){
+      this.setState({
+        minimise_to_tray: false
+      });
+    }
+
   }
 
   handleChange(event){
@@ -89,7 +100,8 @@ class SettingsDisplay extends Component {
   }
 
   btnConfirmRestart(){
-   app.quit();
+    app.relaunch();
+    app.exit(0);
   }
 
   renderDialog(){
@@ -152,7 +164,7 @@ class SettingsDisplay extends Component {
               </div>
               <div className="buttons">
                 <p className="greenButton left" onClick={this.btnConfirm.bind(this)}>{lang.confirm}</p>
-                <p className="greenButton left" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
+                <p className="greenButton right" onClick={this.btnCancel.bind(this)}>{lang.cancel}</p>
               </div>
             </div>
           </div>

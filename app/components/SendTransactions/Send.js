@@ -6,7 +6,6 @@ import {traduction} from '../../lang/lang';
 import ReactLoading from 'react-loading';
 
 var event = require('../../utils/eventhandler');
-var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -20,6 +19,8 @@ class Send extends Component {
       dialog: false,
       passPhrase: "",
       passPhraseError: "",
+      utl: 0,
+      encrypted: false,
     };
 
     this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
@@ -29,6 +30,23 @@ class Send extends Component {
     this.cancelSend = this.cancelSend.bind(this);
     this.confirmSend = this.confirmSend.bind(this);
     this.onPassPhraseChange = this.onPassPhraseChange.bind(this);
+  }
+
+  componentDidMount(){
+    this.checkIfWalletEncrypted();
+  }
+
+  checkIfWalletEncrypted(){
+    var self = this;
+    wallet.help().then((data) =>{
+      if(data.indexOf("walletlock") > -1) {
+        self.setState({encrypted: true});
+      }else{
+        self.setState({encrypted: false});
+      }
+    }).catch((err) => {
+      event.emit("animate",lang.notificationDaemonDownOrSyncing);
+    });
   }
 
   _handleGenericFormChange(event) {
@@ -61,7 +79,7 @@ class Send extends Component {
           }
         }
       }).catch((err) => {
-        log.error(err.message);
+        console.log(err);
         event.emit("animate", lang.addressValidadeError);
       });
     } else {
@@ -88,12 +106,15 @@ class Send extends Component {
   confirmSend() {
     var self = this;
     var passPhrase = this.state.passPhrase;
-    if (passPhrase.length == 0) {
+    
+    if(self.state.encrypted && passPhrase.length > 0){
+      self.winfo();
+    }else if(!self.state.encrypted){
+      self.wsend();
+    }else{
       self.setState({
         passPhraseError: lang.invalidFields
       });
-    } else {
-      self.winfo();
     }
   }
 
@@ -112,13 +133,21 @@ class Send extends Component {
         var secondsFromtT1toT2 = dif / 1000;
         var diffSeconds = Math.abs(secondsFromtT1toT2);
         utl = parseInt(diffSeconds);
-        if (!utl) {utl = 0;}
+        if (!utl) {
+          utl = 0;
+        }
       }
-      self.setState({utl: utl});
+      self.setState({
+        utl: utl
+      });
       self.wlock();
     }).catch((err) => {
-      log.error(err.message);
-      self.setState({dialog: false, eccAddress: "", amount: ""});
+      console.log(err);
+      self.setState({
+        dialog: false,
+        eccAddress: "",
+        amount: ""
+      });
       event.emit("animate", lang.moneySendError);
     });
   }
@@ -138,7 +167,7 @@ class Send extends Component {
         event.emit("animate", lang.moneySendError);
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       self.setState({dialog: false, eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -169,7 +198,7 @@ class Send extends Component {
         self.setState({dialog: false,eccAddress: "",amount: ""});
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if (!keepGoing){
         self.setState({dialog: false,eccAddress: "",amount: ""});
         event.emit("animate", lang.moneySendError);
@@ -190,7 +219,7 @@ class Send extends Component {
         event.emit("animate", lang.moneySent);
       }
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       self.setState({dialog: false,eccAddress: "",amount: ""});
       event.emit("animate", lang.moneySendError);
     });
@@ -200,6 +229,10 @@ class Send extends Component {
     if(!this.state.dialog){
       return null;
     }else{
+      var passStyle = {display: "block"};
+      if(!this.state.encrypted){
+        passStyle = {display: "none"};
+      }
       return (
         <div className="mancha">
           <div className="dialog">
@@ -209,7 +242,7 @@ class Send extends Component {
             </div>
             <div className="body">
               <p className="desc">{lang.popupMessageSendConfirmation1} <span className="desc2">{this.state.amount}</span> {lang.popupMessageSendConfirmation2} <span className="desc2">{this.state.eccAddress}</span> ?</p>
-              <div className="row">
+              <div className="row" style={passStyle}>
                 <div className="col-md-10 col-md-offset-1 input-group">
                   <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase}/>
                 </div>

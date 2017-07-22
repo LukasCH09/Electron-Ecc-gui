@@ -4,7 +4,6 @@ import Wallet  from '../utils/wallet';
 import {exchanges, Interval} from '../utils/exchange';
 import {traduction} from '../lang/lang';
 
-var log = require('../utils/log');
 var event = require('../utils/eventhandler');
 
 const lang = traduction();
@@ -74,7 +73,7 @@ export default class Home extends Component {
       }
       event.emit("hide");
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if(self.state.requesting1 && err.message != "Method not found"){
         event.emit("show",lang.notificationDaemonDownOrSyncing);
         self.setState({locked: true, currentECC: 0, unconfirmedECC: 0, stakeECC: 0, stakeEarnedEcc: 0, requesting1:false});
@@ -92,7 +91,7 @@ export default class Home extends Component {
       self.setState({currentExchangePrice: currentExchangePrice});
       event.emit("hide");
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       event.emit("show",lang.notificationExchangeInfo);
     });
 
@@ -105,7 +104,7 @@ export default class Home extends Component {
           event.emit("hide");
         }
       }).catch((err) => {
-        log.error(err.message);
+        console.log(err);
         event.emit("show",lang.notificationExchangeInfo);
       });
     }, 5000);
@@ -190,7 +189,7 @@ export default class Home extends Component {
       var passPhrase = this.state.passPhrase;
       var timeL = this.state.timeL;
 
-      if(passPhrase.length == 0 || timeL.length == 0){
+      if(passPhrase.length == 0 || timeL.length == 0 || timeL < 0){
         self.setState({passPhraseError: lang.invalidFields});
       }else{
         wallet.walletpassphrase(passPhrase,timeL).then((data) =>{
@@ -207,7 +206,7 @@ export default class Home extends Component {
             self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
           }
         }).catch((err) => {
-          log.error(err.message);
+          console.log(err);
           self.setState({passPhraseError: lang.walletUnlockError});
         });
       }
@@ -219,7 +218,7 @@ export default class Home extends Component {
           event.emit("animate",lang.walletLockedError);
         }
       }).catch((err) => {
-        log.error(err.message);
+        console.log(err);
         event.emit("animate",lang.walletLockedError);
       });
       self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
@@ -227,9 +226,9 @@ export default class Home extends Component {
   }
 
   render() {
-    var pad = require("../media/icons/padclose.png")
+    var pad = require("../../resources/images/padclose.png")
     if(!this.state.locked){
-      pad = require("../media/icons/padopen.png");
+      pad = require("../../resources/images/padopen.png");
     }
     return (
       <div className="home">

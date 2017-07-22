@@ -80,35 +80,35 @@ export default class Sidebar extends Component {
     aLinks['about'] = '';
     aLinks['settings'] = '';
 
-    aIcons['default'] = require("../media/icons/overview1.ico");
-    aIcons['send'] = require('../media/icons/send1.ico');
-    aIcons['receive'] = require('../media/icons/receive1.ico');
-    aIcons['transactions'] = require('../media/icons/trans1.ico');
-    aIcons['security'] = require('../media/icons/backup1.ico');
-    aIcons['about'] = require('../media/icons/about1.ico');
-    aIcons['settings'] = require('../media/icons/settings1.ico');
+    aIcons['default'] = require("../../resources/images/overview1.ico");
+    aIcons['send'] = require('../../resources/images/send1.ico');
+    aIcons['receive'] = require('../../resources/images/receive1.ico');
+    aIcons['transactions'] = require('../../resources/images/trans1.ico');
+    aIcons['security'] = require('../../resources/images/backup1.ico');
+    aIcons['about'] = require('../../resources/images/about1.ico');
+    aIcons['settings'] = require('../../resources/images/settings1.ico');
 
     if (pathname == '/'){
       aLinks['default'] = "sidebaritem_active";
-      aIcons['default'] = require("../media/icons/overview2.ico");
+      aIcons['default'] = require("../../resources/images/overview2.ico");
     }else if (pathname == '/send'){
       aLinks['send'] = "sidebaritem_active";
-      aIcons['send'] = require("../media/icons/send2.ico");
+      aIcons['send'] = require("../../resources/images/send2.ico");
     }else if (pathname == '/receive') {
       aLinks['receive'] = "sidebaritem_active";
-      aIcons['receive'] = require("../media/icons/receive2.ico");
+      aIcons['receive'] = require("../../resources/images/receive2.ico");
     }else if (pathname == '/transaction') {
       aLinks['transactions'] = "sidebaritem_active";
-      aIcons['transactions'] = require("../media/icons/trans2.ico");
+      aIcons['transactions'] = require("../../resources/images/trans2.ico");
     }else if (pathname == '/security') {
       aLinks['security'] = "sidebaritem_active";
-      aIcons['security'] = require("../media/icons/backup2.ico");
+      aIcons['security'] = require("../../resources/images/backup2.ico");
     }else if (pathname == '/about') {
       aLinks['about'] = "sidebaritem_active";
-      aIcons['about'] = require("../media/icons/about2.ico");
+      aIcons['about'] = require("../../resources/images/about2.ico");
     }else if (pathname == '/settings') {
       aLinks['settings'] = "sidebaritem_active";
-      aIcons['settings'] = require("../media/icons/settings2.ico");
+      aIcons['settings'] = require("../../resources/images/settings2.ico");
     }
 
     this.setState({ active: aLinks, icons: aIcons});
@@ -140,7 +140,7 @@ export default class Sidebar extends Component {
     if(progressBar >= 100 && this.state.currentHeight < this.state.networkbestblock){
       progressBar = 99.99;
     }
-    var usericon = require("../media/logo1.png");
+    var usericon = require("../../resources/images/logo1.png");
     return (
         <div className="sidebar">
           <div className="userimage">

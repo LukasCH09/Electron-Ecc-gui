@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Wallet from '../../utils/wallet';
 import {traduction} from '../../lang/lang';
 var event = require('../../utils/eventhandler');
-var log = require('../../utils/log');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -40,7 +39,7 @@ class CurrentAddresses extends Component {
     wallet.listAllAccounts().then((data) => {
       this.setState({existingAddresses: data, requesting:false});
     }).catch((err) => {
-      log.error(err.message);
+      console.log(err);
       if(this.state.requesting){
         self.setState({requesting:false});
         event.emit("animate",lang.notificationDaemonDownOrSyncing);

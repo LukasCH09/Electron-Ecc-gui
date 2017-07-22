@@ -88,6 +88,11 @@ export default class Wallet {
     await client.sendToAddress(sendAddressStr, amountNum);
   }
 
+  async setTxFee(amount) {
+    const amountNum = parseFloat(amount);
+    await client.setTxFee(amountNum);
+  }
+
   async validate(address) {
     const result = await client.validateAddress(address);
     return result;
