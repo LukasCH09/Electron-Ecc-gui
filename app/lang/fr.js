@@ -1,9 +1,9 @@
-module.exports = {
-	aboutAnnouncementThread: "Fil d'annonce",
-	aboutECCSouceCode: "Code Source d'ECCCoin",
-	aboutJoinUsOnSlack: "Rejoignez-nous sur Slack !",
-	aboutTitle: "À propos",
-	aboutWalletSourceCode: "Code Source du Portefeuille",
+{
+	"aboutAnnouncementThread": "Fil d'annonce",
+	"aboutECCSouceCode": "Code Source d'ECCCoin",
+	"aboutJoinUsOnSlack": "Rejoignez-nous sur Slack !",
+	"aboutTitle": "À propos",
+	"aboutWalletSourceCode": "Code Source du Portefeuille",
 	account: "Compte",
 	address: "Adresse",
 	addressExists: "Erreur : Adresse déjà existante",
