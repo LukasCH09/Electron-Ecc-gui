@@ -10,6 +10,7 @@ import lang_es from './es';
 import lang_ko from './ko';
 import lang_pl from './pl';
 import lang_tr from './tr';
+import lang_ru from './ru';
 
 export function traduction() {
 		
@@ -47,9 +48,13 @@ export function traduction() {
                 else if(l == "tr"){
                         return lang_tr;
                 }
-
-	}else{
+		else if(l == "ru"){
+			return lang_ru;
+		}
+	else{
 		settings.set("settings.lang","en");
 		return lang_en;
 	}
 }
+}
+
