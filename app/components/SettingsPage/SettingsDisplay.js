@@ -164,6 +164,7 @@ class SettingsDisplay extends Component {
 						            <option value="de">Deutsch (German)</option>
 					                    <option value="pt">Português (Portuguese)</option>
                                                             <option value="ru">Русский язык (Russian)</option>
+                                                            <option value="vn">Tiếng việt (Vietnamese)</option>
                       </select>
                     </div>
                   </div>
