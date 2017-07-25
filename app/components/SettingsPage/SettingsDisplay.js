@@ -152,17 +152,18 @@ class SettingsDisplay extends Component {
                   <div className="col-md-4">
                     <div className="selectfield">
                       <select className="form-control" value={this.state.select} onChange={this.handleChange}>
-                                                            <option value="bg">Bulgarian</option>
-                                                            <option value="el">Greek</option>
-                                                            <option value="es">Spanish</option>
-                                                            <option value="ko">Korean</option>
-                                                            <option value="pl">Polish</option>
-						            <option value="tr">Turkish</option>
-                                                            <option value="nl">Dutch</option>
-                        <option value="en">English</option>
-						            <option value="fr">French</option>
-						            <option value="de">German</option>
-                        <option value="pt">Portuguese</option>
+                                                            <option value="bg">български (Bulgarian)</option>
+                                                            <option value="el">ελληνικά (Greek)</option>
+                                                            <option value="es">Español (Spanish)</option>
+                                                            <option value="ko">한국어(Korean)</option>
+                                                            <option value="pl">Polski (Polish)</option>
+						            <option value="tr">Türkçe (Turkish)</option>
+                                                            <option value="nl">Nederlands (Dutch)</option>
+							    <option value="en">English</option>
+						            <option value="fr">Français (French)</option>
+						            <option value="de">Deutsch (German)</option>
+					                    <option value="pt">Português (Portuguese)</option>
+                                                            <option value="ru">Русский язык (Russian)</option>
                       </select>
                     </div>
                   </div>
