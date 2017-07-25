@@ -11,6 +11,7 @@ import lang_ko from './ko';
 import lang_pl from './pl';
 import lang_tr from './tr';
 import lang_ru from './ru';
+import lang_vn from './vn';
 
 export function traduction() {
 		
@@ -51,10 +52,13 @@ export function traduction() {
 		else if(l == "ru"){
 			return lang_ru;
 		}
-	else{
-		settings.set("settings.lang","en");
-		return lang_en;
-	}
-}
+		else if(l == "vn"){
+			return lang_vn;
+		}
+		else{
+			settings.set("settings.lang","en");
+			return lang_en;
+		}
+	}	
 }
 
