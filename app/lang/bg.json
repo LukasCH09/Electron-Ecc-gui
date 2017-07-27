@@ -9,18 +9,18 @@
     "nabBarNetworkInfoSyncing": "Синхронизация",
     "nabBarNetworkInfoBlock": "Блок",
     "nabBarNetworkInfoActiveConnections": "Активни връзки",
-    "conjuctionOf": "на",
+    "conjuctionOf": "от\n",
     "overviewMyWallet": "Моят портфейл",
     "overviewMyBalance": "Баланс",
     "overviewMyStaking": "В залог",
     "overviewMyUnconfirmed": "Непотвърдено",
     "here you can see the context of this field: https://www.screencast.com/t/gP0fYED8": {
-        "overviewMyDonation": "Donation overview"
+        "overviewMyDonation": "Преглед на дарение"
     },
     "overviewMyEarnedFromStaking": "Спечелени от залог",
     "overviewMyLatest100Transactions": "Последни 100 транзакции",
     "overviewModalAuthTitle": "Необходимо оторизиране",
-    "ovweviewModalAuthDesc": "За да отключите портфейла си, трябва да въдедеш паролата и колко време да бъде отключен",
+    "ovweviewModalAuthDesc": "За да отключиш портфейла си, трябва да въдедеш паролата и колко време да бъде отключен",
     "ovweviewModalLockQuestion": "Желаеш ли да заключиш портфейла си?",
     "walletPassPhrase": "парола на портфейла",
     "secondsUnlocked": "секунди отключен",
@@ -43,7 +43,7 @@
     "backupNext": "Напред",
     "backupBack": "Назад",
     "backupTipBold": "Един малък съвет за паролата!",
-    "backupTipMessage": "Запиши паролата си ба лист хартия и го пази на сигурно място, като сейф, докато не я запомниш. Така ще предотвратиш нежелан достъп до портфейла си.",
+    "backupTipMessage": "Запиши паролата си на лист хартия и го пази на сигурно място, като сейф, докато не я запомниш. Така ще предотвратиш нежелан достъп до портфейла си.",
     "backup1Step": "Стъпка",
     "backup1CreateYourPassword": "Създай паролата си",
     "backup1Warning1": "Препоръчително е да защитиш активите си с парола.",
@@ -166,5 +166,5 @@
     "console5": "Напиши",
     "console6": "help",
     "console7": "за преглед на възможните команди.",
-    "immature": "Immature"
+    "immature": "Неотлежала"
 }
