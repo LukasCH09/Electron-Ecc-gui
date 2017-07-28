@@ -12,6 +12,10 @@ import lang_pl from './pl';
 import lang_tr from './tr';
 import lang_ru from './ru';
 import lang_vn from './vn';
+import lang_zh_hk from './zh_hk';
+import lang_zh_cn from './zh_cn';
+
+
 
 export function traduction() {
 		
@@ -54,6 +58,12 @@ export function traduction() {
 		}
 		else if(l == "vn"){
 			return lang_vn;
+		}
+		else if(l == "zh_hk"){
+			return lang_zh_hk;
+		}
+		else if(l == "zh_cn"){
+			return lang_zh_cn;
 		}
 		else{
 			settings.set("settings.lang","en");

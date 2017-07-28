@@ -153,6 +153,8 @@ class SettingsDisplay extends Component {
                     <div className="selectfield">
                       <select className="form-control" value={this.state.select} onChange={this.handleChange}>
                                                             <option value="bg">български (Bulgarian)</option>
+                                                            <option value="zh_hk">繁體中文-中華人民共和國香港特別行政區 (Chinese - HK)</option>
+                                                            <option value="zh_cn">简体中文—中国 (Chinese - simplified)</option>
                                                             <option value="el">ελληνικά (Greek)</option>
                                                             <option value="es">Español (Spanish)</option>
                                                             <option value="ko">한국어(Korean)</option>
@@ -165,6 +167,7 @@ class SettingsDisplay extends Component {
 					                    <option value="pt">Português (Portuguese)</option>
                                                             <option value="ru">Русский язык (Russian)</option>
                                                             <option value="vn">Tiếng việt (Vietnamese)</option>
+
                       </select>
                     </div>
                   </div>
