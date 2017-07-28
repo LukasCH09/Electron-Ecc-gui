@@ -18,57 +18,42 @@ import lang_zh_cn from './zh_cn';
 
 
 export function traduction() {
-		
-	if(settings.has('settings.lang')){
+
+	if (settings.has('settings.lang')) {
 		var l = settings.get('settings.lang');
-		if(l == "en"){
+		if (l == "en") {
 			return lang_en;
-		}else if(l == "pt"){
+		} else if (l == "pt") {
 			return lang_pt;
-		}
-		else if(l == "nl"){
+		} else if (l == "nl") {
 			return lang_nl;
-		}
-		else if(l == "de"){
+		} else if (l == "de") {
 			return lang_de;
-		}
-		else if(l == "fr"){
+		} else if (l == "fr") {
 			return lang_fr;
-		}
-                else if(l == "bg"){
-                        return lang_bg;
-                }
-                else if(l == "el"){
-                        return lang_el;
-                }
-                else if(l == "es"){
-                        return lang_es;
-                }
-                else if(l == "ko"){
-                        return lang_ko;
-                }
-                else if(l == "pl"){
-                        return lang_pl;
-                }
-                else if(l == "tr"){
-                        return lang_tr;
-                }
-		else if(l == "ru"){
+		} else if (l == "bg") {
+			return lang_bg;
+		} else if (l == "el") {
+			return lang_el;
+		} else if (l == "es") {
+			return lang_es;
+		} else if (l == "ko") {
+			return lang_ko;
+		} else if (l == "pl") {
+			return lang_pl;
+		} else if (l == "tr") {
+			return lang_tr;
+		} else if (l == "ru") {
 			return lang_ru;
-		}
-		else if(l == "vn"){
+		} else if (l == "vn") {
 			return lang_vn;
-		}
-		else if(l == "zh_hk"){
+		}else if(l == "zh_hk"){
 			return lang_zh_hk;
-		}
-		else if(l == "zh_cn"){
+		}else if(l == "zh_cn"){
 			return lang_zh_cn;
 		}
-		else{
-			settings.set("settings.lang","en");
-			return lang_en;
-		}
-	}	
+	} else {
+		settings.set("settings.lang", "en");
+		return lang_en;
+	}
 }
-
