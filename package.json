@@ -1,6 +1,6 @@
 {
-  "name": "Ecc-Gui",
-  "productName": "Ecc-Wallet",
+  "name": "ecc-gui",
+  "productName": "Ecc-GUI",
   "version": "0.1.0",
   "description": "Electron application providing the graphical user interface for the E-Currency Coin Wallet",
   "scripts": {
@@ -32,7 +32,7 @@
   },
   "browserslist": "electron 1.6",
   "build": {
-    "productName": "Ecc-Wallet",
+    "productName": "Ecc-GUI",
     "appId": "com.github.greg-griffith.electron-ecc-gui",
     "files": [
       "dist/",
@@ -84,7 +84,10 @@
       "output": "build/release"
     }
   },
-  "repository": "git+https://github.com/greg-griffith/electron-ecc-gui.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greg-griffith/electron-ecc-gui.git"
+  },
   "author": "Greg Griffith <griffith@cryptounited.com> (https://github.com/greg-griffith)",
   "license": "MIT",
   "bugs": {
@@ -216,5 +219,8 @@
     "npm": ">=3.x",
     "yarn": ">=0.21.3"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  }
 }
