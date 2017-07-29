@@ -52,6 +52,7 @@ export function traduction() {
 		}else if(l == "zh_cn"){
 			return lang_zh_cn;
 		}
+
 	} else {
 		settings.set("settings.lang", "en");
 		return lang_en;
