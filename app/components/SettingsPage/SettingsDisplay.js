@@ -152,11 +152,22 @@ class SettingsDisplay extends Component {
                   <div className="col-md-4">
                     <div className="selectfield">
                       <select className="form-control" value={this.state.select} onChange={this.handleChange}>
-						            <option value="nl">Dutch</option>
-                        <option value="en">English</option>
-						            <option value="fr">French</option>
-						            <option value="de">German</option>
-                        <option value="pt">Portuguese</option>
+                                                            <option value="bg">български (Bulgarian)</option>
+                                                            <option value="zh_cn">简体中文—中国 (Chinese - CN)</option>
+                                                            <option value="zh_hk">繁體中文-中華人民共和國香港特別行政區 (Chinese - HK)</option>
+                                                            <option value="el">ελληνικά (Greek)</option>
+                                                            <option value="es">Español (Spanish)</option>
+                                                            <option value="ko">한국어(Korean)</option>
+                                                            <option value="pl">Polski (Polish)</option>
+						            <option value="tr">Türkçe (Turkish)</option>
+                                                            <option value="nl">Nederlands (Dutch)</option>
+							    <option value="en">English</option>
+						            <option value="fr">Français (French)</option>
+						            <option value="de">Deutsch (German)</option>
+					                    <option value="pt">Português (Portuguese)</option>
+                                                            <option value="ru">Русский язык (Russian)</option>
+                                                            <option value="vn">Tiếng việt (Vietnamese)</option>
+
                       </select>
                     </div>
                   </div>
