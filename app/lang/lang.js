@@ -14,6 +14,7 @@ import lang_ru from './ru';
 import lang_vn from './vn';
 import lang_zh_hk from './zh_hk';
 import lang_zh_cn from './zh_cn';
+import lang_sl from './sl';
 
 
 
@@ -51,6 +52,8 @@ export function traduction() {
 			return lang_zh_hk;
 		}else if(l == "zh_cn"){
 			return lang_zh_cn;
+		}else if(l == "sl"){
+			return lang_sl;
 		}
 
 	} else {
