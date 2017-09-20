@@ -20,8 +20,8 @@ class About extends Component {
           <p className="title">{lang.aboutTitle}</p>
           <div className="panel panel-default">
             <div className="panel-body text-center larger-text">
-              <div className="col-md-12 col-lg-12 col-xs-12 " style={{marginBottom: '25px'}}>
-                Founded in 2014 by <a style={{ cursor: 'pointer' }} onClick={this.openLink.bind(this,'https://www.cryptounited.io/')}>CryptoUnited</a>
+              <div className="col-md-12 col-lg-12 col-xs-12 " style={{ marginBottom: '25px' }}>
+                Founded in 2014 by <a style={{ cursor: 'pointer' }} onClick={this.openLink.bind(this, 'https://www.cryptounited.io/')}>CryptoUnited</a>
               </div>
               <div className="col-md-4 col-lg-4 col-xs-4" style={{ cursor: 'pointer' }}>
                 <a onClick={this.openLink.bind(this, 'https://bitcointalk.org/index.php?topic=1006830.0')} className="section">

@@ -14,7 +14,7 @@ event.on('show', (message) => {
   }
 });
 
-event.on('hide', (message) => {
+event.on('hide', () => {
   if (lasttype === 'show') {
     $('#snackMsg').text('');
     $('.snack').css({ bottom: '-100px' });

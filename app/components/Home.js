@@ -9,7 +9,6 @@ const event = require('../utils/eventhandler');
 const lang = traduction();
 const wallet = new Wallet();
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -58,25 +57,37 @@ export default class Home extends Component {
     }, 5000);
   }
 
-  getWalletInfo(){
+  getWalletInfo() {
     const self = this;
 
-    this.setState({requesting1:true});
+    this.setState({ requesting1: true });
 
-    wallet.getInfo().then((data) =>{
-      if(self.state.requesting1){
+    wallet.getInfo().then((data) => {
+      if (self.state.requesting1) {
         let locked = true;
         if (data.unlocked_until !== 0) {
           locked = false;
         }
-        self.setState({ locked, currentECC: data.balance, stakeECC: data.stake, requesting1: false });
+        self.setState({
+          locked,
+          currentECC: data.balance,
+          stakeECC: data.stake,
+          requesting1: false
+        });
       }
       event.emit('hide');
     }).catch((err) => {
       console.log(err);
-      if(self.state.requesting1 && err.message !== 'Method not found'){
-        event.emit('show',lang.notificationDaemonDownOrSyncing);
-        self.setState({ locked: true, currentECC: 0, unconfirmedECC: 0, stakeECC: 0, stakeEarnedEcc: 0, requesting1:false });
+      if (self.state.requesting1 && err.message !== 'Method not found') {
+        event.emit('show', lang.notificationDaemonDownOrSyncing);
+        self.setState({
+          locked: true,
+          currentECC: 0,
+          unconfirmedECC: 0,
+          stakeECC: 0,
+          stakeEarnedEcc: 0,
+          requesting1: false
+        });
       }
     });
   }
@@ -126,7 +137,7 @@ export default class Home extends Component {
     this.setState({ dialog: true });
   }
 
-  renderDialogBody(){
+  renderDialogBody() {
     if (this.state.locked) {
       return (
         <div>
@@ -139,7 +150,7 @@ export default class Home extends Component {
               <div className="col-md-10 col-md-offset-1 input-group">
                 <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase} />
               </div>
-              <div className="col-md-10 col-md-offset-1 input-group" style={{ marginTop: "15px" }}>
+              <div className="col-md-10 col-md-offset-1 input-group" style={{ marginTop: '15px' }}>
                 <input className="form-control inpuText" type="number" value={this.state.timeL} onChange={this.onTimeLChange} placeholder={lang.secondsUnlocked} />
               </div>
               <p className="passPhraseError">{this.state.passPhraseError}</p>
