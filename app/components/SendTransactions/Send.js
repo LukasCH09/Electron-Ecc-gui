@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import React, { Component } from 'react';
-import AddressBook from './AddressBook';
-import Wallet  from '../../utils/wallet';
-import {traduction} from '../../lang/lang';
 import ReactLoading from 'react-loading';
+import AddressBook from './AddressBook';
+import Wallet from '../../utils/wallet';
+import { traduction } from '../../lang/lang';
 
-var event = require('../../utils/eventhandler');
+const event = require('../../utils/eventhandler');
 
 const lang = traduction();
 const wallet = new Wallet();
@@ -17,8 +17,8 @@ class Send extends Component {
       eccAddress: '',
       amount: '',
       dialog: false,
-      passPhrase: "",
-      passPhraseError: "",
+      passPhrase: '',
+      passPhraseError: '',
       utl: 0,
       encrypted: false,
     };
@@ -37,15 +37,15 @@ class Send extends Component {
   }
 
   checkIfWalletEncrypted(){
-    var self = this;
+    const self = this;
     wallet.help().then((data) =>{
-      if(data.indexOf("walletlock") > -1) {
-        self.setState({encrypted: true});
-      }else{
-        self.setState({encrypted: false});
+      if (data.indexOf('walletlock') > -1) {
+        self.setState({ encrypted: true });
+      } else {
+        self.setState({ encrypted: false });
       }
     }).catch((err) => {
-      event.emit("animate",lang.notificationDaemonDownOrSyncing);
+      event.emit('animate', lang.notificationDaemonDownOrSyncing);
     });
   }
 
@@ -64,26 +64,26 @@ class Send extends Component {
   }
 
   _handleSendToAddress() {
-    var self = this;
+    const self = this;
     if (this.state.eccAddress !== '') {
       wallet.validate(this.state.eccAddress).then((isAddressValid) => {
         if (!isAddressValid.isvalid) {
-          event.emit("animate", lang.addressInvalidError);
+          event.emit('animate', lang.addressInvalidError);
         } else {
           if (this.state.amount > 0) {
             $('.loading').hide();
-            $('.btn_confirm').removeClass("disable");
-            self.setState({dialog: true,passPhraseError: "", passPhrase: ""});
+            $('.btn_confirm').removeClass('disable');
+            self.setState({ dialog: true, passPhraseError: '', passPhrase: '' });
           } else {
-            event.emit("animate", lang.amountLessOrEqualTo0);
+            event.emit('animate', lang.amountLessOrEqualTo0);
           }
         }
       }).catch((err) => {
         console.log(err);
-        event.emit("animate", lang.addressValidadeError);
+        event.emit('animate', lang.addressValidadeError);
       });
     } else {
-      event.emit("animate", lang.invalidFields);
+      event.emit('animate', lang.invalidFields);
     }
   }
 
@@ -98,20 +98,26 @@ class Send extends Component {
   }
 
   cancelSend() {
-    this.setState({dialog: false,passPhraseError: "",passPhrase: "",eccAddress: "",amount: ""});
+    this.setState({
+      dialog: false,
+      passPhraseError: '',
+      passPhrase: '',
+      eccAddress: '',
+      amount: ''
+    });
     $('.loading').hide();
-    $('.btn_confirm').removeClass("disable");
+    $('.btn_confirm').removeClass('disable');
   }
 
   confirmSend() {
-    var self = this;
-    var passPhrase = this.state.passPhrase;
-    
-    if(self.state.encrypted && passPhrase.length > 0){
+    const self = this;
+    const passPhrase = this.state.passPhrase;
+
+    if (self.state.encrypted && passPhrase.length > 0) {
       self.winfo();
-    }else if(!self.state.encrypted){
+    } else if (!self.state.encrypted) {
       self.wsend();
-    }else{
+    } else {
       self.setState({
         passPhraseError: lang.invalidFields
       });
@@ -119,144 +125,143 @@ class Send extends Component {
   }
 
   winfo() {
-    var self = this;
+    const self = this;
     wallet.getInfo().then((data) => {
-      var utl = 0;
-      if (data.unlocked_until != null && data.unlocked_until != 0) {
+      let utl = 0;
+      if (data.unlocked_until !== null && data.unlocked_until !== 0) {
         utl = data.unlocked_until;
-        var t2 = new Date(utl);
+        let t2 = new Date(utl);
         if (t2.getFullYear() < 2000) {
           t2 = new Date(utl * 1000);
         }
-        var t1 = new Date();
-        var dif = t2.getTime() - t1.getTime();
-        var secondsFromtT1toT2 = dif / 1000;
-        var diffSeconds = Math.abs(secondsFromtT1toT2);
+        const t1 = new Date();
+        const dif = t2.getTime() - t1.getTime();
+        const secondsFromtT1toT2 = dif / 1000;
+        const diffSeconds = Math.abs(secondsFromtT1toT2);
         utl = parseInt(diffSeconds);
         if (!utl) {
           utl = 0;
         }
       }
       self.setState({
-        utl: utl
+        utl
       });
       self.wlock();
     }).catch((err) => {
       console.log(err);
       self.setState({
         dialog: false,
-        eccAddress: "",
-        amount: ""
+        eccAddress: '',
+        amount: ''
       });
-      event.emit("animate", lang.moneySendError);
+      event.emit('animate', lang.moneySendError);
     });
   }
 
   wlock() {
-    var self = this;
+    let self = this;
 
     $('.loading').show();
-    $('.btn_confirm').addClass("disable");
+    $('.btn_confirm').addClass('disable');
 
     wallet.walletlock().then((data) => {
-      if (data == null) {
+      if (data === null) {
         self.wunlock(true, 5);
       } else {
         log.debug(data);
-        self.setState({dialog: false, eccAddress: "",amount: ""});
-        event.emit("animate", lang.moneySendError);
+        self.setState({ dialog: false, eccAddress: '', amount: '' });
+        event.emit('animate', lang.moneySendError);
       }
     }).catch((err) => {
       console.log(err);
-      self.setState({dialog: false, eccAddress: "",amount: ""});
-      event.emit("animate", lang.moneySendError);
+      self.setState({ dialog: false, eccAddress: '', amount: '' });
+      event.emit('animate', lang.moneySendError);
     });
   }
 
   wunlock(keepGoing, newSeconds){
-    var self = this;
-    var passPhrase = this.state.passPhrase;
+    const self = this;
+    const passPhrase = this.state.passPhrase;
 
     wallet.walletpassphrase(passPhrase, newSeconds).then((data) => {
-      if (data != null && data.code == -14) { //wrond password
+      if (data !== null && data.code === -14) { // wrong password
         $('.loading').hide();
-        $('.btn_confirm').removeClass("disable");
+        $('.btn_confirm').removeClass('disable');
         self.setState({passPhraseError: lang.walletWrongPass});
-      } else if (data != null && data.code == "ECONNREFUSED") { //connection refused
-        event.emit("animate", lang.notificationDaemonDownOrSyncing);
-        self.setState({dialog: false, eccAddress: "",amount: ""});
-      } else if (data != null && data.code == -17) { // already unloked .. wait that auto locks.. and tries to unlock again
+      } else if (data !== null && data.code === 'ECONNREFUSED') { // connection refused
+        event.emit('animate', lang.notificationDaemonDownOrSyncing);
+        self.setState({ dialog: false, eccAddress: '', amount: '' });
+      } else if (data !== null && data.code === -17) { // already unlocked - auto locked - try again
         self.wunlock(false, newSeconds);
-      } else if (data == null && keepGoing) { // success unlock continue to send
+      } else if (data === null && keepGoing) { // success unlock continue to send
         self.wsend();
-      } else if (data == null && !keepGoing) { // success unlock terminate
-        self.setState({dialog: false,eccAddress: "",amount: ""});
-        event.emit("animate", lang.moneySent);
+      } else if (data === null && !keepGoing) { // success unlock terminate
+        self.setState({ dialog: false, eccAddress: '', amount: '' });
+        event.emit('animate', lang.moneySent);
       } else if (!keepGoing) { // error
         log.debug(data);
-        event.emit("animate", lang.moneySendError);
-        self.setState({dialog: false,eccAddress: "",amount: ""});
+        event.emit('animate', lang.moneySendError);
+        self.setState({ dialog: false, eccAddress: '', amount: '' });
       }
     }).catch((err) => {
       console.log(err);
-      if (!keepGoing){
-        self.setState({dialog: false,eccAddress: "",amount: ""});
-        event.emit("animate", lang.moneySendError);
+      if (!keepGoing) {
+        self.setState({ dialog: false, eccAddress: '', amount: '' });
+        event.emit('animate', lang.moneySendError);
       }
     });
   }
 
   wsend() {
-    var self = this;
+    const self = this;
 
     wallet.sendMoney(self.state.eccAddress, self.state.amount).then((res, reject) => {
-      if (self.state.utl != 0) {
-        setTimeout(function() {
+      if (self.state.utl !== 0) {
+        setTimeout(() => {
           self.wunlock(false, self.state.utl);
         }, 3000);
-      }else{
-        self.setState({dialog: false,eccAddress: "",amount: ""});
-        event.emit("animate", lang.moneySent);
+      } else {
+        self.setState({dialog: false,eccAddress: '',amount: ''});
+        event.emit('animate', lang.moneySent);
       }
     }).catch((err) => {
       console.log(err);
-      self.setState({dialog: false,eccAddress: "",amount: ""});
-      event.emit("animate", lang.moneySendError);
+      self.setState({dialog: false,eccAddress: '',amount: ''});
+      event.emit('animate', lang.moneySendError);
     });
   }
 
   renderDialog(){
-    if(!this.state.dialog){
+    if (!this.state.dialog) {
       return null;
-    }else{
-      var passStyle = {display: "block"};
-      if(!this.state.encrypted){
-        passStyle = {display: "none"};
-      }
-      return (
-        <div className="mancha">
-          <div className="dialog">
-            <div className="header">
-              <p className="title">{lang.popupMessageConfirmationRequired}</p>
-               <ReactLoading className="loading" type="bars" color="#444"/>
-            </div>
-            <div className="body">
-              <p className="desc">{lang.popupMessageSendConfirmation1} <span className="desc2">{this.state.amount}</span> {lang.popupMessageSendConfirmation2} <span className="desc2">{this.state.eccAddress}</span> ?</p>
-              <div className="row" style={passStyle}>
-                <div className="col-md-10 col-md-offset-1 input-group">
-                  <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase}/>
-                </div>
-                <p className="passPhraseError">{this.state.passPhraseError}</p>
+    }
+    let passStyle = { display: 'block' };
+    if (!this.state.encrypted) {
+      passStyle = { display: 'none' };
+    }
+    return (
+      <div className="mancha">
+        <div className="dialog">
+          <div className="header">
+            <p className="title">{lang.popupMessageConfirmationRequired}</p>
+             <ReactLoading className="loading" type="bars" color="#444"/>
+          </div>
+          <div className="body">
+            <p className="desc">{lang.popupMessageSendConfirmation1} <span className="desc2">{this.state.amount}</span> {lang.popupMessageSendConfirmation2} <span className="desc2">{this.state.eccAddress}</span> ?</p>
+            <div className="row" style={passStyle}>
+              <div className="col-md-10 col-md-offset-1 input-group">
+                <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase} />
               </div>
-            </div>
-            <div className="footer">
-              <p className="button btn_cancel" onClick={this.cancelSend}>{lang.cancel}</p>
-              <p className="button btn_confirm" onClick={this.confirmSend}>{lang.confirm}</p>
+              <p className="passPhraseError">{this.state.passPhraseError}</p>
             </div>
           </div>
+          <div className="footer">
+            <p className="button btn_cancel" onClick={this.cancelSend}>{lang.cancel}</p>
+            <p className="button btn_confirm" onClick={this.confirmSend}>{lang.confirm}</p>
+          </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 
   render() {

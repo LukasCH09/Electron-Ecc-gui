@@ -172,7 +172,7 @@ export default class Home extends Component {
     }
   }
 
-  renderDialog(){
+  renderDialog() {
     if (!this.state.dialog) {
       return null;
     } else {
@@ -203,9 +203,9 @@ export default class Home extends Component {
       if (passPhrase.length === 0 || timeL.length === 0 || timeL < 0) {
         self.setState({ passPhraseError: lang.invalidFields });
       } else {
-        wallet.walletpassphrase(passPhrase,timeL).then((data) =>{
+        wallet.walletpassphrase(passPhrase, timeL).then((data) => {
           if (data !== null && data.code === -14) {
-            self.setState({passPhraseError: lang.walletWrongPass});
+            self.setState({ passPhraseError: lang.walletWrongPass });
           } else if (data !== null && data.code === 'ECONNREFUSED') {
             event.emit('show', lang.notificationDaemonDownOrSyncing);
             self.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
@@ -218,7 +218,7 @@ export default class Home extends Component {
           }
         }).catch((err) => {
           console.log(err);
-          self.setState({passPhraseError: lang.walletUnlockError});
+          self.setState({ passPhraseError: lang.walletUnlockError });
         });
       }
     } else {
@@ -232,7 +232,7 @@ export default class Home extends Component {
         console.log(err);
         event.emit('animate', lang.walletLockedError);
       });
-      self.setState({dialog: false, passPhraseError: '', passPhrase: '', timeL: ''});
+      self.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
     }
   }
 
@@ -248,8 +248,8 @@ export default class Home extends Component {
             <div className="panel panel-default">
               <div className="panel-body">
                 <div>
-                   <p className="title">{lang.overviewMyWallet}</p>
-                   <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)}/>
+                  <p className="title">{lang.overviewMyWallet}</p>
+                  <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)}/>
                 </div>
                 <div className="col-lg-4 col-xs-6 col-md-4">
                   <p className="subtitle">{lang.overviewMyBalance}:</p>
