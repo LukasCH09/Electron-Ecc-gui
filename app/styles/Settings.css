@@ -4,14 +4,15 @@
 
 .settings_tab{
 	text-align: center;
-	background-color: #124572;
+	background-color: #474747;
 	padding: 5px;
 	cursor: pointer;
 	border-left: 1px solid #efefef;
+	font-weight: bold;
 }
 
 .settings_tab_active{
-	border-bottom: solid 5px #a1be5a;
+	border-bottom: solid 6px #FF7F00;
 }
 
 .settings_tab p{
@@ -89,8 +90,8 @@
 }
 
 .buttons .greenButton{
-	background-color: #a1be5a;
-	border: 2px solid #8DA557;
+	background-color: #474747;
+	border: 2px solid #FF7F00;
 	color: #fff;
 	cursor: pointer;
 	display: inline-block;

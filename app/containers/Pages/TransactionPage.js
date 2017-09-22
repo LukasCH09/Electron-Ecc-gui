@@ -1,14 +1,10 @@
-import Transaction from '../../components/Transactions/Transaction';
 import React, { Component } from 'react';
-import $ from 'jquery';
+import Transaction from '../../components/Transactions/Transaction';
 
 export default class TransactionPage extends Component {
-
-	render() {
-		return (
-		  	<Transaction/>
-		);
-	}
+  render() {
+    return (
+      <Transaction />
+    );
+  }
 }
-
-

@@ -13,14 +13,15 @@
 	width: 50px;
 	position: absolute;
 	border-radius: 25px;
-	background-color: #0A273F;
+	background-color: #1C1C1C;
 	line-height: 42.5px;
-	color: #fff;
+	color: #FFFFFF;
 	font-size: 1.5em;
+	font-weight: bold;
 	text-align: center;
 	z-index: 10;
 	top: 25px;
-	border: 3px solid #0A273F;
+	border: 3px solid #1C1C1C;
 	
 }
 
@@ -38,7 +39,7 @@
 }
 
 .backup .circle_active{
-	border: 3px solid #a1be5a;
+	border: 5px solid #008B45;
 }
 
 .backup .line{
@@ -66,7 +67,8 @@
 }
 
 .backup .desc_green{
-	color: #a1be5a;
+	color: red;
+	font-weight: bold;
 }
 
 .backup .desc_pass{
@@ -90,7 +92,7 @@
 
 .backup .nextButton{
 	padding: 10px 20px 10px 20px;
-	background-color: #a1be5a;
+	background-color: #008B45;
 	color: #fff;
 	font-size: 1.5em;
 	text-align: center;
@@ -100,7 +102,7 @@
 	margin: 0 auto;
 	margin-top: 35px;
 	cursor: pointer;
-	border: 2px solid #8DA557;
+	border: 2px solid #008B45;
 }
 
 .backup .left{
