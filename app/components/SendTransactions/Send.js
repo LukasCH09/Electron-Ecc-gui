@@ -94,7 +94,7 @@ class Send extends Component {
   }
 
   handleClear() {
-    this.setState({eccAddress: '',amount: ''});
+    this.setState({ eccAddress: '', amount: '' });
   }
 
   cancelSend() {
@@ -221,12 +221,12 @@ class Send extends Component {
           self.wunlock(false, self.state.utl);
         }, 3000);
       } else {
-        self.setState({dialog: false,eccAddress: '',amount: ''});
+        self.setState({ dialog: false, eccAddress: '', amount: ''});
         event.emit('animate', lang.moneySent);
       }
     }).catch((err) => {
       console.log(err);
-      self.setState({dialog: false,eccAddress: '',amount: ''});
+      self.setState({ dialog: false, eccAddress: '', amount: ''});
       event.emit('animate', lang.moneySendError);
     });
   }

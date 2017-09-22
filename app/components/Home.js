@@ -18,6 +18,7 @@ export default class Home extends Component {
       unconfirmedECC: 0,
       stakeECC: 0,
       stakeEarnedEcc: 0,
+      staking: false,
       currentExchangePrice: { coinexchange: 0 },
       select: 'all',
       locked: true,
@@ -34,7 +35,7 @@ export default class Home extends Component {
     this.onTimeLChange = this.onTimeLChange.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.exchangeInterval();
     this.getWalletInfo();
     this.setTimerFunctions();
@@ -63,14 +64,20 @@ export default class Home extends Component {
     this.setState({ requesting1: true });
 
     wallet.getInfo().then((data) => {
+      console.log(data);
       if (self.state.requesting1) {
         let locked = true;
+        let staking = false;
         if (data.unlocked_until !== 0) {
           locked = false;
+        }
+        if (data.staking) {
+          staking = true;
         }
         self.setState({
           locked,
           currentECC: data.balance,
+          staking,
           stakeECC: data.stake,
           requesting1: false
         });

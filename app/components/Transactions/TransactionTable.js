@@ -32,13 +32,11 @@ class TransactionTable extends Component {
     }, 5000);
   }
 
-
   componentWillUnmount() {
     this.state.requesting = false;
     this.state.canAutoUpdate = true;
     clearInterval(this.timerInfo);
   }
-
 
   getAllTransactions() {
     if (this.state.canAutoUpdate) {
@@ -54,14 +52,13 @@ class TransactionTable extends Component {
         }
       }).catch((err) => {
         console.log(err);
-        if(this.state.requesting) {
-          event.emit('show', lang.notificationDaemonDownOrSyncing);
+        if (this.state.requesting) {
+          event.emit('show', err.message);
           self.setState({ requesting: false });
         }
       });
     }
   }
-
 
   renderStatus(opt) {
     if (opt === 0) {
@@ -230,13 +227,13 @@ class TransactionTable extends Component {
             }
 
             let category = t.category;
-            if (category === 'generate'){
+            if (category === 'generate') {
               category = lang.stakedMin;
             }
-            if (category === 'staked'){
+            if (category === 'staked') {
               category = lang.staked;
             }
-            else if (category === 'send'){
+            else if (category === 'send') {
               category = lang.sent;
             }
             else if (category === 'receive') {
@@ -259,7 +256,7 @@ class TransactionTable extends Component {
                     <p style={{ margin: '0px' }}>{self.renderStatus(t.confirmations)}</p>
                   </div>
                   <div className="col-md-2 trans_col" onClick={self.rowClicked.bind(self, index)}>
-                    <p style={{ margin: '0px' }}><span className="desc1">{time}</span><span></span></p>
+                    <p style={{ margin: '0px' }}><span className="desc1">{time}</span></p>
                   </div>
                   <div id={`trans_bottom_${index}`} className="col-md-12 trans_col trans_bottom">
                     <div className="col-md-8 trans_col2">
