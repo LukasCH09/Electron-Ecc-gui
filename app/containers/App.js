@@ -47,12 +47,12 @@ export default class App extends Component<Props> {
   render() {
     return (
       <div id="boot-override">
-        <Sidebar route={this.props.route}></Sidebar>
+        <Sidebar route={this.props.route} />
         <div className="my_wrapper">
           {this.props.children}
         </div>
         <div className="snack">
-          <p id="snackMsg"></p>
+          <p id="snackMsg" />
         </div>
       </div>
     );

@@ -8,7 +8,7 @@ const shell = require('electron').shell;
 
 const lang = traduction();
 
-class About extends Component {
+export default class About extends Component {
   openLink(link) {
     shell.openExternal(link);
   }
@@ -52,5 +52,3 @@ class About extends Component {
     );
   }
 }
-
-export default About;

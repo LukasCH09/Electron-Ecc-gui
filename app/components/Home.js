@@ -249,7 +249,7 @@ export default class Home extends Component {
               <div className="panel-body">
                 <div>
                   <p className="title">{lang.overviewMyWallet}</p>
-                  <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)}/>
+                  <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)} />
                 </div>
                 <div className="col-lg-4 col-xs-6 col-md-4">
                   <p className="subtitle">{lang.overviewMyBalance}:</p>
@@ -291,7 +291,7 @@ export default class Home extends Component {
                     <option value={-1}>{lang.orphaned}</option>
                   </select>
                 </div>
-                <TransactionTable h={'250px'} option={this.state.select} countTras={100}/>
+                <TransactionTable h={'250px'} option={this.state.select} countTras={100} />
               </div>
             </div>
           </div>

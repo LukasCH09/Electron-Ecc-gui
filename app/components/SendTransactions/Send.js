@@ -36,9 +36,9 @@ class Send extends Component {
     this.checkIfWalletEncrypted();
   }
 
-  checkIfWalletEncrypted(){
+  checkIfWalletEncrypted() {
     const self = this;
-    wallet.help().then((data) =>{
+    wallet.help().then((data) => {
       if (data.indexOf('walletlock') > -1) {
         self.setState({ encrypted: true });
       } else {
@@ -271,7 +271,7 @@ class Send extends Component {
           <div className="col-md-12">
             <div className="panel panel-default">
               <div className="panel-body">
-                <AddressBook friendClicked={this.friendClicked}/>
+                <AddressBook friendClicked={this.friendClicked} />
               </div>
             </div>
           </div>
@@ -281,14 +281,14 @@ class Send extends Component {
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="input-group">
-                  <input type="text" className="inpuText form-control" name="eccAddress" placeholder={lang.sendNameAddress} onChange={this._handleGenericFormChange} value={this.state.eccAddress}/>
-                  <span className="input-group-btn" style={{paddingRight: "0px"}}>
+                  <input type="text" className="inpuText form-control" name="eccAddress" placeholder={lang.sendNameAddress} onChange={this._handleGenericFormChange} value={this.state.eccAddress} />
+                  <span className="input-group-btn" style={{ paddingRight: '0px' }}>
                     <button className="greenBtn btn btn-success btn-raised" type="button" onClick={this.handleClear}> {lang.sendClear} </button>
                   </span>
                 </div>
-                <div className="input-group" style={{marginTop:"10px"}}>
-                  <input type="number" className="inpuText form-control" name="amount" placeholder={lang.sendAmountToSend} onChange={this._handleGenericFormChange} value={this.state.amount}/>
-                  <span className="input-group-btn" style={{paddingRight: "0px"}}>
+                <div className="input-group" style={{ marginTop: '10px' }}>
+                  <input type="number" className="inpuText form-control" name="amount" placeholder={lang.sendAmountToSend} onChange={this._handleGenericFormChange} value={this.state.amount} />
+                  <span className="input-group-btn" style={{ paddingRight: '0px' }}>
                     <button className="greenBtn btn btn-success btn-raised" type="button" onClick={this._handleSendToAddress}> {lang.send} </button>
                   </span>
                 </div>

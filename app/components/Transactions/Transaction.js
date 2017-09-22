@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TransTable from './TransactionTable';
-import {traduction} from '../../lang/lang';
+import { traduction } from '../../lang/lang';
 
 const lang = traduction();
 
@@ -9,21 +9,21 @@ class Transaction extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      select: "all"
-    }
+      select: 'all'
+    };
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event){
-    this.setState({select: event.target.value});
+  handleChange(event) {
+    this.setState({ select: event.target.value });
   }
 
-  loadmore(){
-    this.refs.child_load_more.loadmore();
+  loadmore() {
+    this.child_load_more.loadmore();
   }
 
-  loadless(){
-    this.refs.child_load_more.loadless();
+  loadless() {
+    this.child_load_more.loadless();
   }
 
   render() {
@@ -45,7 +45,7 @@ class Transaction extends Component {
                     <option value={-1}>{lang.orphaned}</option>
                   </select>
                 </div>
-                <TransTable h={"90%"} option={this.state.select} countTras={100} ref="child_load_more"/>
+                <TransTable h={'90%'} option={this.state.select} countTras={100} ref={(input) => { this.child_load_more = input; }} />
                 <p className="btn_load_more" onClick={this.loadmore.bind(this)}>{lang.transactionsLoadMore}</p>
                 <p className="btn_load_less" onClick={this.loadless.bind(this)}>{lang.transactionsLoadPrevious}</p>
               </div>

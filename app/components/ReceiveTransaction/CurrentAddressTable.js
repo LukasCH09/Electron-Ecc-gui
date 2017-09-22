@@ -23,7 +23,7 @@ class CurrentAddresses extends Component {
     }
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.requesting = false;
   }
 
@@ -34,14 +34,14 @@ class CurrentAddresses extends Component {
   }
 
 
-  getAllAddresses(){
+  getAllAddresses() {
     const self = this;
     self.setState({ requesting: true });
     wallet.listAllAccounts().then((data) => {
       this.setState({ existingAddresses: data, requesting: false });
     }).catch((err) => {
       console.log(err);
-      if(this.state.requesting) {
+      if (this.state.requesting) {
         self.setState({ requesting: false });
         event.emit('animate', lang.notificationDaemonDownOrSyncing);
       }

@@ -49,14 +49,14 @@ class TransactionTable extends Component {
 
       wallet.getTransactions(null, countTras, 0).then((data) => {
         if (this.state.requesting) {
-          self.setState({transactions: data, requesting:false});
+          self.setState({ transactions: data, requesting: false });
           event.emit('hide');
         }
       }).catch((err) => {
         console.log(err);
-        if(this.state.requesting){
-          event.emit('show',lang.notificationDaemonDownOrSyncing);
-          self.setState({requesting: false });
+        if(this.state.requesting) {
+          event.emit('show', lang.notificationDaemonDownOrSyncing);
+          self.setState({ requesting: false });
         }
       });
     }

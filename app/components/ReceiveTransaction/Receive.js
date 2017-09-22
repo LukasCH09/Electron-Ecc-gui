@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import CurrentAddresses from './CurrentAddressTable';
-import low  from '../../utils/low';
-import Wallet  from '../../utils/wallet';
-import {traduction} from '../../lang/lang';
-var event = require('../../utils/eventhandler');
+import low from '../../utils/low';
+import Wallet from '../../utils/wallet';
+import { traduction } from '../../lang/lang';
+
+const event = require('../../utils/eventhandler');
 
 const lang = traduction();
 const wallet = new Wallet();
-const {clipboard} = require('electron');
+const { clipboard } = require('electron');
 
 
 class Receive extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       nameOfNewAddress: '',
@@ -24,7 +25,7 @@ class Receive extends Component {
     this._handleGenericFormChange = this._handleGenericFormChange.bind(this);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.state.requesting = false;
   }
 
@@ -32,24 +33,24 @@ class Receive extends Component {
     const self = this;
     let name;
 
-    if (self.state.nameOfNewAddress == ''){
+    if (self.state.nameOfNewAddress === ''){
       name = null;
-    }else{
+    } else {
       name = self.state.nameOfNewAddress;
     }
 
-    self.setState({requesting:true});
+    self.setState({ requesting: true });
 
-    wallet.createNewAddress(name).then((newAddress)=>{
-      self.setState({requesting:false, nameOfNewAddress: ""});
-      event.emit("animate",lang.notificationAddressCopiedToClipboard);
+    wallet.createNewAddress(name).then((newAddress) => {
+      self.setState({ requesting: false, nameOfNewAddress: '' });
+      event.emit('animate', lang.notificationAddressCopiedToClipboard);
       clipboard.writeText(newAddress);
-      self.refs.child_current_addresses.getAllAddresses();
+      self.child_current_addresses.getAllAddresses();
     }).catch((err) => {
       console.log(err);
-      if(this.state.requesting){
-        self.setState({requesting:false,nameOfNewAddress: ""});
-        event.emit("animate",lang.notificationErrorCreatingAdrress);
+      if (this.state.requesting) {
+        self.setState({ requesting: false, nameOfNewAddress: '' });
+        event.emit('animate', lang.notificationErrorCreatingAdrress);
       }
     });
 
@@ -58,23 +59,30 @@ class Receive extends Component {
   _handleGenericFormChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-    this.setState({ [name]: value});
+    this.setState({ [name]: value });
   }
 
   render() {
     return (
       <div className="receive">
-        <div className="row">  
+        <div className="row">
           <div className="col-md-12">
             <p className="title">{lang.receiveNewAdress}</p>
             <div className="panel panel-default">
               <div className="panel-body">
                 <div className="input-group">
-                  <span className="input-group-btn" style={{paddingLeft: "0px"}}>
+                  <span className="input-group-btn" style={{ paddingLeft: '0px' }}>
                     <button className="greenBtn btn btn-success btn-raised" type="button" onClick={this._handleAddressClick}>{lang.receiveCreateNewAdress}</button>
                   </span>
                   <div>
-                    <input className="inpuText form-control" onChange={this._handleGenericFormChange} value={this.state.nameOfNewAddress} name='nameOfNewAddress' placeholder={lang.receiveAdressNameOptional} type="text"/>
+                    <input
+                      className="inpuText form-control"
+                      onChange={this._handleGenericFormChange}
+                      value={this.state.nameOfNewAddress}
+                      name="nameOfNewAddress"
+                      placeholder={lang.receiveAdressNameOptional}
+                      type="text"
+                    />
                   </div>
                 </div>
               </div>
@@ -86,7 +94,7 @@ class Receive extends Component {
             <p className="title">{lang.receiveExistingAddresses}</p>
             <div className="panel panel-default">
               <div className="panel-body">
-                <CurrentAddresses ref="child_current_addresses"/>
+                <CurrentAddresses ref={(input) => { this.child_current_addresses = input; }} />
               </div>
             </div>
           </div>
