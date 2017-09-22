@@ -1,17 +1,10 @@
-import Send from '../../components/SendTransactions/Send';
 import React, { Component } from 'react';
-import $ from 'jquery';
+import Send from '../../components/SendTransactions/Send';
 
 export default class SendPage extends Component {
-
-	render() {
-		return (
-	  		<Send/>
-		);
-	}
+  render() {
+    return (
+      <Send />
+    );
+  }
 }
-
-
-
-
-

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import TransactionTable from './Transactions/TransactionTable';
-import Wallet  from '../utils/wallet';
-import {exchanges, Interval} from '../utils/exchange';
-import {traduction} from '../lang/lang';
+import Wallet from '../utils/wallet';
+import { exchanges } from '../utils/exchange';
+import { traduction } from '../lang/lang';
 
-var event = require('../utils/eventhandler');
+const event = require('../utils/eventhandler');
 
 const lang = traduction();
 const wallet = new Wallet();
 
-
 export default class Home extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       currentECC: 0,
@@ -19,13 +18,14 @@ export default class Home extends Component {
       unconfirmedECC: 0,
       stakeECC: 0,
       stakeEarnedEcc: 0,
-      currentExchangePrice: {'coinexchange': 0},
-      select: "all",
+      staking: false,
+      currentExchangePrice: { coinexchange: 0 },
+      select: 'all',
       locked: true,
       dialog: false,
-      timeL: "",
-      passPhrase: "",
-      passPhraseError: "",
+      timeL: '',
+      passPhrase: '',
+      passPhraseError: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.changeWalletState = this.changeWalletState.bind(this);
@@ -35,100 +35,118 @@ export default class Home extends Component {
     this.onTimeLChange = this.onTimeLChange.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.exchangeInterval();
-    this.getWalletInfo();    
+    this.getWalletInfo();
     this.setTimerFunctions();
   }
 
   componentWillUnmount() {
     clearInterval(this.exInterval);
     clearInterval(this.timerInfo);
-    this.state.requesting1=false;
-    this.state.requesting2=false;
+    this.state.requesting1 = false;
+    this.state.requesting2 = false;
   }
 
-  setTimerFunctions(){
-    var self = this;
-    
-    self.timerInfo = setInterval(function(){
-      if(!self.state.requesting1){
+  setTimerFunctions() {
+    const self = this;
+
+    self.timerInfo = setInterval(() => {
+      if (!self.state.requesting1) {
         self.getWalletInfo();
       }
     }, 5000);
   }
 
-  getWalletInfo(){
+  getWalletInfo() {
     const self = this;
 
-    this.setState({requesting1:true});
+    this.setState({ requesting1: true });
 
-    wallet.getInfo().then((data) =>{
-      if(self.state.requesting1){
-        var locked = true;
-        if(data.unlocked_until != 0){
+    wallet.getInfo().then((data) => {
+      console.log(data);
+      if (self.state.requesting1) {
+        let locked = true;
+        let staking = false;
+        if (data.unlocked_until !== 0) {
           locked = false;
         }
-        self.setState({locked: locked, currentECC: data.balance, stakeECC: data.stake, requesting1:false});
+        if (data.staking) {
+          staking = true;
+        }
+        self.setState({
+          locked,
+          currentECC: data.balance,
+          staking,
+          stakeECC: data.stake,
+          requesting1: false
+        });
       }
-      event.emit("hide");
+      event.emit('hide');
     }).catch((err) => {
       console.log(err);
-      if(self.state.requesting1 && err.message != "Method not found"){
-        event.emit("show",lang.notificationDaemonDownOrSyncing);
-        self.setState({locked: true, currentECC: 0, unconfirmedECC: 0, stakeECC: 0, stakeEarnedEcc: 0, requesting1:false});
+      if (self.state.requesting1 && err.message !== 'Method not found') {
+        event.emit('show', lang.notificationDaemonDownOrSyncing);
+        self.setState({
+          locked: true,
+          currentECC: 0,
+          unconfirmedECC: 0,
+          stakeECC: 0,
+          stakeEarnedEcc: 0,
+          requesting1: false
+        });
       }
     });
   }
 
-  
+
   exchangeInterval() {
     const self = this;
 
     exchanges().getLastPrices().then((data) => {
-      let currentExchangePrice = self.state.currentExchangePrice;
-      currentExchangePrice['coinexchange'] = data['CoinExchange.io'];
-      self.setState({currentExchangePrice: currentExchangePrice});
-      event.emit("hide");
+      const currentExchangePrice = self.state.currentExchangePrice;
+      currentExchangePrice.coinexchange = data['CoinExchange.io'];
+      self.setState({ currentExchangePrice });
+      event.emit('hide');
     }).catch((err) => {
       console.log(err);
-      event.emit("show",lang.notificationExchangeInfo);
+      event.emit('show', lang.notificationExchangeInfo);
     });
 
     self.exInterval = setInterval(() => {
       exchanges().getLastPrices().then((data) => {
-        let currentExchangePrice = self.state.currentExchangePrice;
-        currentExchangePrice['coinexchange'] = data['CoinExchange.io'];
-        if(self.refs.coinexio){
-          self.setState({currentExchangePrice: currentExchangePrice});
-          event.emit("hide");
+        const currentExchangePrice = self.state.currentExchangePrice;
+        currentExchangePrice.coinexchange = data['CoinExchange.io'];
+        if (self.refs.coinexio) {
+          self.setState({ currentExchangePrice });
+          event.emit('hide');
         }
       }).catch((err) => {
         console.log(err);
-        event.emit("show",lang.notificationExchangeInfo);
+        event.emit('show', lang.notificationExchangeInfo);
       });
     }, 5000);
   }
 
-  handleChange(event){
-    this.setState({select: event.target.value});
+  handleChange(event) {
+    this.setState({ select: event.target.value });
   }
 
-  onPassPhraseChange(event){
-      this.setState({passPhrase: event.target.value});
+  onPassPhraseChange(event) {
+    this.setState({ passPhrase: event.target.value });
   }
 
-  onTimeLChange(event){
-      this.setState({timeL: event.target.value});
+  onTimeLChange(event) {
+    this.setState({ timeL: event.target.value });
   }
 
-  changeWalletState(){
-    this.setState({dialog:true});
+  changeWalletState() {
+    this.setState({ dialog: true });
   }
 
-  renderDialogBody(){
-    if(this.state.locked){
-      return(
+  renderDialogBody() {
+    if (this.state.locked) {
+      return (
         <div>
           <div className="header">
             <p className="title">{lang.overviewModalAuthTitle}</p>
@@ -137,18 +155,18 @@ export default class Home extends Component {
             <p className="desc">{lang.ovweviewModalAuthDesc}</p>
             <div className="row">
               <div className="col-md-10 col-md-offset-1 input-group">
-                <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase}/>
+                <input className="form-control inpuText" type="password" value={this.state.passPhrase} onChange={this.onPassPhraseChange} placeholder={lang.walletPassPhrase} />
               </div>
-              <div className="col-md-10 col-md-offset-1 input-group" style={{marginTop:"15px"}}>
-                <input className="form-control inpuText" type="number" value={this.state.timeL} onChange={this.onTimeLChange} placeholder={lang.secondsUnlocked}/>
+              <div className="col-md-10 col-md-offset-1 input-group" style={{ marginTop: '15px' }}>
+                <input className="form-control inpuText" type="number" value={this.state.timeL} onChange={this.onTimeLChange} placeholder={lang.secondsUnlocked} />
               </div>
               <p className="passPhraseError">{this.state.passPhraseError}</p>
             </div>
           </div>
         </div>
       );
-    }else{
-      return(
+    } else {
+      return (
         <div>
           <div className="header">
             <p className="title">{lang.popupMessageConfirmationRequired}</p>
@@ -161,10 +179,10 @@ export default class Home extends Component {
     }
   }
 
-  renderDialog(){
-    if(!this.state.dialog){
+  renderDialog() {
+    if (!this.state.dialog) {
       return null;
-    }else{
+    } else {
       return (
         <div className="mancha">
           <div className="dialog">
@@ -179,56 +197,56 @@ export default class Home extends Component {
     }
   }
 
-  cancelDialog(){
-    this.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
+  cancelDialog() {
+    this.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
   }
 
-  confirmDialog(){
-    var self = this;
-    if(this.state.locked){
-      var passPhrase = this.state.passPhrase;
-      var timeL = this.state.timeL;
+  confirmDialog() {
+    const self = this;
+    if (this.state.locked) {
+      const passPhrase = this.state.passPhrase;
+      const timeL = this.state.timeL;
 
-      if(passPhrase.length == 0 || timeL.length == 0 || timeL < 0){
-        self.setState({passPhraseError: lang.invalidFields});
-      }else{
-        wallet.walletpassphrase(passPhrase,timeL).then((data) =>{
-          if(data != null &&  data.code == -14){
-            self.setState({passPhraseError: lang.walletWrongPass});
-          }else if(data != null && data.code == "ECONNREFUSED"){
-            event.emit("show",lang.notificationDaemonDownOrSyncing);
-            self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
-          }else if (data == null){
-            event.emit("animate",lang.walletUnlockedFor + " " + timeL + " " + lang.sedonds);
-            self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
-          }else{
-            event.emit("show",lang.notificationDaemonDownOrSyncing);
-            self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
+      if (passPhrase.length === 0 || timeL.length === 0 || timeL < 0) {
+        self.setState({ passPhraseError: lang.invalidFields });
+      } else {
+        wallet.walletpassphrase(passPhrase, timeL).then((data) => {
+          if (data !== null && data.code === -14) {
+            self.setState({ passPhraseError: lang.walletWrongPass });
+          } else if (data !== null && data.code === 'ECONNREFUSED') {
+            event.emit('show', lang.notificationDaemonDownOrSyncing);
+            self.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
+          } else if (data === null) {
+            event.emit('animate', `${lang.walletUnlockedFor} ${timeL} ${lang.sedonds}`);
+            self.setState({dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
+          } else {
+            event.emit('show', lang.notificationDaemonDownOrSyncing);
+            self.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
           }
         }).catch((err) => {
           console.log(err);
-          self.setState({passPhraseError: lang.walletUnlockError});
+          self.setState({ passPhraseError: lang.walletUnlockError });
         });
       }
-    }else{
-      wallet.walletlock().then((data) =>{
-        if(data == null){
-          event.emit("animate",lang.walletLocked);
-        }else{
-          event.emit("animate",lang.walletLockedError);
+    } else {
+      wallet.walletlock().then((data) => {
+        if (data === null) {
+          event.emit('animate', lang.walletLocked);
+        } else {
+          event.emit('animate', lang.walletLockedError);
         }
       }).catch((err) => {
         console.log(err);
-        event.emit("animate",lang.walletLockedError);
+        event.emit('animate', lang.walletLockedError);
       });
-      self.setState({dialog: false, passPhraseError: "", passPhrase: "", timeL: ""});
+      self.setState({ dialog: false, passPhraseError: '', passPhrase: '', timeL: '' });
     }
   }
 
   render() {
-    var pad = require("../../resources/images/padclose.png")
-    if(!this.state.locked){
-      pad = require("../../resources/images/padopen.png");
+    let pad = require('../../resources/images/padclose.png');
+    if (!this.state.locked) {
+      pad = require('../../resources/images/padopen.png');
     }
     return (
       <div className="home">
@@ -237,8 +255,8 @@ export default class Home extends Component {
             <div className="panel panel-default">
               <div className="panel-body">
                 <div>
-                   <p className="title">{lang.overviewMyWallet}</p>
-                   <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)}/>
+                  <p className="title">{lang.overviewMyWallet}</p>
+                  <img className="padicon" src={pad} onClick={this.changeWalletState.bind(this)} />
                 </div>
                 <div className="col-lg-4 col-xs-6 col-md-4">
                   <p className="subtitle">{lang.overviewMyBalance}:</p>
@@ -280,7 +298,7 @@ export default class Home extends Component {
                     <option value={-1}>{lang.orphaned}</option>
                   </select>
                 </div>
-                <TransactionTable h={"250px"} option={this.state.select} countTras={100}/>
+                <TransactionTable h={'250px'} option={this.state.select} countTras={100} />
               </div>
             </div>
           </div>
